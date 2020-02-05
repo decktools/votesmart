@@ -22,5 +22,5 @@ This is a wrapper around the [VoteSmart](https://justfacts.votesmart.org/) [API]
 ## Installation
 
 ``` r
-devtools::install_github("https://github.com/decktools/votesmart")
+devtools::install_github("decktools/votesmart")
 ```

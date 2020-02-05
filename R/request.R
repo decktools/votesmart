@@ -7,7 +7,6 @@ construct_url <- function(req, query) {
 }
 
 request <- function(url, verbose = FALSE) {
-
   if (verbose) {
     elmers_message(
       "Requesting: {url}."

@@ -12,9 +12,9 @@ clean_df <- function(df) {
 }
 
 clean_html <- function(x,
-                               split_on_nbsp = TRUE,
-                               split_on_newline = FALSE,
-                               remove_empty = TRUE) {
+  split_on_nbsp = TRUE,
+  split_on_newline = FALSE,
+  remove_empty = TRUE) {
   if (split_on_nbsp) {
     x %<>%
       stringr::str_split("&nbsp") %>%
@@ -50,4 +50,3 @@ as_char_vec <- function(x) {
 elmers <- glue::glue %>>>% as.character
 
 elmers_message <- elmers %>>>% message
-

@@ -19,7 +19,7 @@ capitals <-
   stringr::str_extract_all("[A-Z]") %>%
   .[[1]] %>%
   magrittr::extract(
-    ! . == ""
+    !. == ""
   )
 
 lowercase <-
@@ -27,14 +27,14 @@ lowercase <-
   stringr::str_split("[A-Z]") %>%
   .[[1]] %>%
   magrittr::extract(
-    ! . == ""
+    !. == ""
   )
 
 base_endpoints <-
   elmers("{capitals}{lowercase}") %>%
   stringr::str_squish() %>%
   magrittr::extract(
-    !. %in% c("Ballot", "Candidate")  # Ballot is covered by Measure and Candidate is covered by CandidateBio
+    !. %in% c("Ballot", "Candidate") # Ballot is covered by Measure and Candidate is covered by CandidateBio
   )
 
 base_endpoints[which(base_endpoints == "Bio")] <- "CandidateBio"
@@ -48,7 +48,6 @@ pages_tbl <-
 
 # Grab each endpoint and the possible inputs to it
 get_endpoints <- function(tbl = pages_tbl) {
-
   out <- tibble()
 
   for (i in 1:nrow(tbl)) {

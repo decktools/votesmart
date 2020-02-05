@@ -14,10 +14,10 @@
 #' candidates_get_by_office_state(c(NA, "NY", "CA"), c("1", "6"), verbose = TRUE)
 #' }
 candidates_get_by_office_state <- function(state_ids = NA,
-                                           office_ids,
-                                           election_years = lubridate::year(lubridate::today()),
-                                           all = TRUE,
-                                           verbose = TRUE) {
+  office_ids,
+  election_years = lubridate::year(lubridate::today()),
+  all = TRUE,
+  verbose = TRUE) {
   req <- "Candidates.getByOfficeState?"
 
   state_ids %<>%
@@ -47,7 +47,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
     lengths <-
       c(length_state_ids, length_office_ids, length_election_years) %>%
       magrittr::extract(
-        ! . == 1
+        !. == 1
       )
 
     if (!identical(lengths)) {
@@ -65,7 +65,6 @@ candidates_get_by_office_state <- function(state_ids = NA,
   out <- tibble()
 
   for (i in 1:nrow(query_df)) {
-
     q <- query_df$query[i]
     state_id <- query_df$state_id[i]
     office_id <- query_df$office_id[i]

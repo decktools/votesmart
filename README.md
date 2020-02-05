@@ -14,5 +14,5 @@ This is a wrapper around the
 ## Installation
 
 ``` r
-devtools::install_github("https://github.com/decktools/votesmart")
+devtools::install_github("decktools/votesmart")
 ```
