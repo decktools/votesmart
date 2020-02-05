@@ -1,0 +1,26 @@
+Package: votesmart
+Type: Package
+Title: Wrapper for the Project VoteSmart API
+Version: 0.1.0
+Authors@R: c(
+    person("Amanda", "Dobbyn", email = "amanda@deck.tools", role = c("aut", "cre")),
+    person("Max", "Wood", email = "max@deck.tools", role = c("aut"))
+    )
+Maintainer: Deck Techonologies <help@deck.tools>
+Description: An R interface to the Project VoteSmart API.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+  dplyr,
+  gestalt,
+  glue,
+  httr,
+  lubridate,
+  magrittr,
+  purrr,
+  stringr,
+  tidyr
+Suggests: 
+  testthat
+RoxygenNote: 7.0.2
