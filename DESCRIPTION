@@ -19,6 +19,7 @@ Imports:
   lubridate,
   magrittr,
   purrr,
+  snakecase,
   stringr,
   tidyr
 Suggests: 

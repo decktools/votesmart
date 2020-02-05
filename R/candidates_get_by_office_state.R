@@ -1,7 +1,7 @@
 #' Get candidates by the state in which they hold office
 #'
 #' @param state_ids Optional: vector of state abbreviations. Default is \code{NA}, for national elections.
-#' @param office_ids Required: vector of office ids that candidates hold. See \link{\code{Office.getLevels}} and \link{\code{Office.getOfficesByLevel}} for office ids.
+#' @param office_ids Required: vector of office ids that candidates hold. See \link{\code{office_get_levels}} and \link{\code{office_get_offices_by_level}} for office ids.
 #' @param election_years Optional: vector of election years in which the candidate held office. Default is the current year.
 #' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
 #' @param verbose Should cases when no data is available be messaged?
@@ -65,16 +65,17 @@ candidates_get_by_office_state <- function(state_ids = NA,
   out <- tibble()
 
   for (i in 1:nrow(query_df)) {
-    if (verbose) {
-      elmers_message(
-        "Requesting data for {{state_id: {state_id}, office_id: {office_id}, election_year: {election_year}}}."
-      )
-    }
 
     q <- query_df$query[i]
     state_id <- query_df$state_id[i]
     office_id <- query_df$office_id[i]
     election_year <- query_df$election_year[i]
+
+    if (verbose) {
+      elmers_message(
+        "Requesting data for {{state_id: {state_id}, office_id: {office_id}, election_year: {election_year}}}."
+      )
+    }
 
     url <-
       construct_url(req, q)

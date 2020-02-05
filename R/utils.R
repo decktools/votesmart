@@ -1,3 +1,7 @@
+get_key <- function() {
+  Sys.getenv("VOTESMART_API_KEY")
+}
+
 clean_df <- function(df) {
   df %>%
     rename_all(
@@ -45,5 +49,5 @@ as_char_vec <- function(x) {
 #' @importFrom gestalt %>>>%
 elmers <- glue::glue %>>>% as.character
 
-elmers_message <- dev.glue %>>>% message
+elmers_message <- elmers %>>>% message
 

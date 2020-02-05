@@ -1,6 +1,9 @@
 test_that("candidates_get_by_office_state", {
   yes_data <-
-    candidates_get_by_office_state(c(NA, "NY", "CA"), c(1, 6))
+    candidates_get_by_office_state(
+      state_ids = c(NA, "NY", "CA"),
+      office_ids = c(1, 6)
+    )
 
   no_data <-
     candidates_get_by_office_state("NY", 5, 2020)

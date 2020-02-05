@@ -15,7 +15,7 @@ candidates_get_by_office_state(
 \arguments{
 \item{state_ids}{Optional: vector of state abbreviations. Default is \code{NA}, for national elections.}
 
-\item{office_ids}{Required: vector of office ids that candidates hold. See \link{\code{Office.getLevels}} and \link{\code{Office.getOfficesByLevel}} for office ids.}
+\item{office_ids}{Required: vector of office ids that candidates hold. See \link{\code{office_get_levels}} and \link{\code{office_get_offices_by_level}} for office ids.}
 
 \item{election_years}{Optional: vector of election years in which the candidate held office. Default is the current year.}
 
