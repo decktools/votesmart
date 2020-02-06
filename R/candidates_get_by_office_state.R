@@ -1,7 +1,7 @@
 #' Get candidates by the state in which they hold office
 #'
 #' @param state_ids Optional: vector of state abbreviations. Default is \code{NA}, for national elections.
-#' @param office_ids Required: vector of office ids that candidates hold. See \link{\code{office_get_levels}} and \link{\code{office_get_offices_by_level}} for office ids.
+#' @param office_ids Required: vector of office ids that candidates hold. See \code{\link{office_get_levels}} and \link{\code{office_get_offices_by_level}} for office ids.
 #' @param election_years Optional: vector of election years in which the candidate held office. Default is the current year.
 #' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
 #' @param verbose Should cases when no data is available be messaged?
@@ -16,13 +16,12 @@
 #'   office_ids = c("1", "6"),
 #'   verbose = TRUE
 #' )
-#'}
+#' }
 candidates_get_by_office_state <- function(state_ids = NA,
   office_ids,
   election_years = lubridate::year(lubridate::today()),
   all = TRUE,
   verbose = TRUE) {
-
   state_ids %<>%
     as_char_vec()
   office_ids %<>%
@@ -121,5 +120,6 @@ candidates_get_by_office_state <- function(state_ids = NA,
     out %<>%
       bind_rows(this)
   }
-  out
+  out %>%
+    distinct()
 }

@@ -7,17 +7,16 @@
 #' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
 #' @param verbose Should cases when no data is available be messaged?
 #'
-#' @return
+#' @return A dataframe of candidates and their attributes. If a given \code{last_name} + \code{election_year} + \code{stage_id} combination returns no data, that row will be filled with \code{NA}s.
 #' @export
 #'
 #' @examples
 #' candidates_get_by_lastname(c("Ocasio-Cortez", "Omar"), 2018)
 candidates_get_by_lastname <- function(last_names,
-                                        election_years = lubridate::year(lubridate::today()),
-                                        stage_ids = "",
-                                        all = TRUE,
-                                        verbose = TRUE) {
-
+  election_years = lubridate::year(lubridate::today()),
+  stage_ids = "",
+  all = TRUE,
+  verbose = TRUE) {
   last_names %<>%
     as_char_vec()
   election_years %<>%
@@ -117,5 +116,6 @@ candidates_get_by_lastname <- function(last_names,
     out %<>%
       bind_rows(this)
   }
-  out
+  out %>%
+    distinct()
 }

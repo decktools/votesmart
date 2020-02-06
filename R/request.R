@@ -67,6 +67,6 @@ get <- function(req, query, level_one, level_two) {
       bind_rows()
   }
 
-   out %>%
+  out %>%
     clean_df()
 }

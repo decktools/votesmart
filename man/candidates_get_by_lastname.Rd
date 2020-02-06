@@ -24,7 +24,7 @@ candidates_get_by_lastname(
 \item{verbose}{Should cases when no data is available be messaged?}
 }
 \value{
-
+A dataframe of candidates and their attributes. If a given \code{last_name} + \code{election_year} + \code{stage_id} combination returns no data, that row will be filled with \code{NA}s.
 }
 \description{
 Get candidate data by last name

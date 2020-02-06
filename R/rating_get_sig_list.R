@@ -22,7 +22,8 @@ rating_get_sig_list <- function(category_ids,
   verbose = TRUE) {
   out <- tibble()
 
-  r <- get_req()
+  # r <- get_req()
+  r <- "Rating.getSigList?"
 
   if (all) {
     query_df <-

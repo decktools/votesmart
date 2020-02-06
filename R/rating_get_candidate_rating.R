@@ -15,15 +15,13 @@
 #' rating_get_candidate_ratings(pelosi_id)
 #' }
 rating_get_candidate_ratings <- function(candidate_ids,
-  sig_ids = NA,
+  sig_ids = "",
   all = TRUE,
   verbose = TRUE) {
   out <- tibble()
 
   # r <- get_req()
   r <- "Rating.getCandidateRating?"
-
-  sig_ids[which(sig_ids == "NA")] <- NA
 
   if (all) {
     query_df <-
@@ -32,11 +30,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
         sig_id = sig_ids
       ) %>%
       mutate(
-        query =
-          case_when(
-            is.na(sig_id) ~ elmers("&candidateId={candidate_id}"),
-            TRUE ~ elmers("&candidateId={candidate_id}&sigId={sig_id}")
-          )
+        query = elmers("&candidateId={candidate_id}&sigId={sig_id}")
       )
   } else {
     lengths <-
