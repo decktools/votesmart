@@ -13,6 +13,7 @@ rating_get_categories <- function(state_ids = NA) {
   out <- tibble()
 
   r <- get_req()
+  r <- "Rating.getCategories?"
 
   for (s in state_ids) {
     elmers_message(

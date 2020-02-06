@@ -17,9 +17,10 @@
 office_get_offices_by_level <- function(office_level_ids) {
   out <- tibble()
 
-  r <- get_req()
+  # r <- get_req()
+  r <- "Office.getOfficesByLevel?"
 
-  for (l in office_level_id) {
+  for (l in office_level_ids) {
     q <- elmers("&levelId={l}")
 
     this <-
