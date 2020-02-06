@@ -1,6 +1,6 @@
 #' Get offices by level
 #'
-#' @param office_level_id
+#' @param office_level_ids Vector of office levels.
 #'
 #' @return A dataframe with columns \code{office_id, name, title, office_level_id, office_type_id, office_branch_id, short_title}.
 #' @export
@@ -14,7 +14,7 @@
 #'   .[1] %>%
 #'   office_get_offices_by_level()
 #' }
-office_get_offices_by_level <- function(office_level_id) {
+office_get_offices_by_level <- function(office_level_ids) {
   out <- tibble()
 
   r <- get_req()

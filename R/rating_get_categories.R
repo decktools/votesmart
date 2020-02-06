@@ -2,7 +2,7 @@
 #'
 #' @param state_ids A vector of state abbreviations. Defaults to \code{NA} for national.
 #'
-#' @return A dataframe with columns \code {category_id, name, state_id}.
+#' @return A dataframe with columns \code{category_id, name, state_id}.
 #' @export
 #'
 #' @examples

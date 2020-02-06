@@ -6,7 +6,7 @@
 #' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
 #' @param verbose Should cases when no data is available be messaged?
 #'
-#' @return
+#' @return A dataframe with the columns \code{rating_id, candidate_id, sig_id, rating, rating_name, timespan, categories, rating_text}.
 #' @export
 #'
 #' @examples

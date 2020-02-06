@@ -10,7 +10,7 @@ rating_get_categories(state_ids = NA)
 \item{state_ids}{A vector of state abbreviations. Defaults to \code{NA} for national.}
 }
 \value{
-A dataframe with columns \code {category_id, name, state_id}.
+A dataframe with columns \code{category_id, name, state_id}.
 }
 \description{
 Get categories that contain ratings by state

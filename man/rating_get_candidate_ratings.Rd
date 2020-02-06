@@ -21,7 +21,7 @@ rating_get_candidate_ratings(
 \item{verbose}{Should cases when no data is available be messaged?}
 }
 \value{
-
+A dataframe with the columns \code{rating_id, candidate_id, sig_id, rating, rating_name, timespan, categories, rating_text}.
 }
 \description{
 Get SIG (Special Interest Group) ratings for candidates

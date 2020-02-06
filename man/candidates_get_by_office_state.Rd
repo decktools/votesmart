@@ -31,6 +31,10 @@ Get candidates by the state in which they hold office
 }
 \examples{
 \dontrun{
-candidates_get_by_office_state(state_ids = c(NA, "NY", "CA"), office_ids = c("1", "6"), verbose = TRUE)
+candidates_get_by_office_state(
+  state_ids = c(NA, "NY", "CA"),
+  office_ids = c("1", "6"),
+  verbose = TRUE
+)
 }
 }

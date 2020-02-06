@@ -4,10 +4,10 @@
 \alias{office_get_offices_by_level}
 \title{Get offices by level}
 \usage{
-office_get_offices_by_level(office_level_id)
+office_get_offices_by_level(office_level_ids)
 }
 \arguments{
-\item{office_level_id}{}
+\item{office_level_ids}{Vector of office levels.}
 }
 \value{
 A dataframe with columns \code{office_id, name, title, office_level_id, office_type_id, office_branch_id, short_title}.

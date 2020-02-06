@@ -11,13 +11,18 @@
 #'
 #' @examples
 #' \dontrun{
-#' candidates_get_by_office_state(state_ids = c(NA, "NY", "CA"), office_ids = c("1", "6"), verbose = TRUE)
-#' }
+#' candidates_get_by_office_state(
+#'   state_ids = c(NA, "NY", "CA"),
+#'   office_ids = c("1", "6"),
+#'   verbose = TRUE
+#' )
+#'}
 candidates_get_by_office_state <- function(state_ids = NA,
   office_ids,
   election_years = lubridate::year(lubridate::today()),
   all = TRUE,
   verbose = TRUE) {
+
   state_ids %<>%
     as_char_vec()
   office_ids %<>%
