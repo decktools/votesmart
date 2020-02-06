@@ -24,3 +24,11 @@ This is a wrapper around the [VoteSmart](https://justfacts.votesmart.org/) [API]
 ``` r
 devtools::install_github("decktools/votesmart")
 ```
+
+## Funs to make
+
+Office.getLevels
+Office.getOfficesByLevel
+Rating.getCategories
+Rating.getSigList
+Rating.getCandidateRating

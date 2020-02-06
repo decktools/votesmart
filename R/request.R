@@ -1,6 +1,6 @@
 BASE_URL <- "http://api.votesmart.org/"
 
-construct_url <- function(req, query) {
+construct_url <- function(req, query = "") {
   key <- get_key()
 
   elmers("{BASE_URL}{req}key={key}{query}&o=JSON")

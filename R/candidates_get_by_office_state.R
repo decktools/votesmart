@@ -18,7 +18,6 @@ candidates_get_by_office_state <- function(state_ids = NA,
   election_years = lubridate::year(lubridate::today()),
   all = TRUE,
   verbose = TRUE) {
-  req <- "Candidates.getByOfficeState?"
 
   state_ids %<>%
     as_char_vec()
@@ -76,15 +75,14 @@ candidates_get_by_office_state <- function(state_ids = NA,
       )
     }
 
-    url <-
-      construct_url(req, q)
+    this <- get(
+      req = "Candidates.getByOfficeState?",
+      query = q,
+      level_one = "candidateList",
+      level_two = "candidate"
+    )
 
-    raw <- request(url)
-
-    lst <-
-      raw$candidateList$candidate
-
-    if (is.null(lst)) {
+    if (is.na(this)) {
       if (verbose) {
         elmers_message(
           "No results found for query {q}."
@@ -100,16 +98,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
         )
     } else {
       # Turn each element into a tibble and rowbind them
-      this <- lst %>%
-        purrr::map(as_tibble) %>%
-        purrr::modify_depth(2, as.character) %>%
-        bind_rows() %>%
-        clean_df() %>%
-        mutate(
-          office_id = office_id,
-          state_id = state_id,
-          election_year = election_year
-        ) %>%
+      this %<>%
         select(
           candidate_id,
           first_name,
