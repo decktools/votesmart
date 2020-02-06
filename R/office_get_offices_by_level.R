@@ -41,5 +41,6 @@ office_get_offices_by_level <- function(office_level_id) {
       title,
       office_level_id,
       everything()
-    )
+    ) %>%
+    distinct()
 }
