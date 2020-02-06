@@ -13,5 +13,7 @@ A dataframe with the columns \code{office_level_id} and \code{name}.
 These are currently: F for Federal, S for State, and L for Local.
 }
 \examples{
+\dontrun{
 office_get_levels()
+}
 }

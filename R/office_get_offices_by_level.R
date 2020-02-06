@@ -6,21 +6,20 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' office_get_offices_by_level("F")
 #'
 #' office_get_levels() %>%
 #'   pull(office_level_id) %>%
 #'   .[1] %>%
 #'   office_get_offices_by_level()
-
+#' }
 office_get_offices_by_level <- function(office_level_id) {
-
   out <- tibble()
 
   r <- get_req()
 
   for (l in office_level_id) {
-
     q <- elmers("&levelId={l}")
 
     this <-

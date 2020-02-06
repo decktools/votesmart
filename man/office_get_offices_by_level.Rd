@@ -16,10 +16,12 @@ A dataframe with columns \code{office_id, name, title, office_level_id, office_t
 Get offices by level
 }
 \examples{
+\dontrun{
 office_get_offices_by_level("F")
 
 office_get_levels() \%>\%
   pull(office_level_id) \%>\%
   .[1] \%>\%
   office_get_offices_by_level()
+}
 }

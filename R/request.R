@@ -3,7 +3,8 @@ BASE_URL <- "http://api.votesmart.org/"
 # From the function calling this function, use the name of the function to construct the name of the endpoint
 get_req <- function() {
   calling_fun <-
-    deparse(sys.calls()[[sys.nframe() -1]])
+    deparse(sys.calls()[[sys.nframe() - 1]]) %>%
+    .[1]
 
   calling_fun %<>%
     stringr::str_remove_all("\\(.*")
@@ -14,7 +15,8 @@ get_req <- function() {
     stringr::str_to_title()
 
   rest <-
-    calling_fun %>% stringr::str_extract("_.*") %>%
+    calling_fun %>%
+    stringr::str_extract("_.*") %>%
     snakecase::to_lower_camel_case()
 
   elmers("{first_word}.{rest}?")

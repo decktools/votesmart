@@ -4,7 +4,7 @@
 \alias{rating_get_sig_list}
 \title{Get SIG (Special Interest Group) list by category and state}
 \usage{
-rating_get_sig_list(category_ids, state_ids = NA, all = TRUE)
+rating_get_sig_list(category_ids, state_ids = NA, all = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{category_ids}{Vector of category ids.}
@@ -12,6 +12,8 @@ rating_get_sig_list(category_ids, state_ids = NA, all = TRUE)
 \item{state_ids}{Vector of state abbreviations. Default \code{NA} for national.}
 
 \item{all}{Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?}
+
+\item{verbose}{Should cases when no data is available be messaged?}
 }
 \value{
 A dataframe with the columns \code{sig_id, name, category_id, state_id, parent_id}.
@@ -21,8 +23,10 @@ Get SIG (Special Interest Group) list by category and state
 }
 \examples{
 
+\dontrun{
 rating_get_categories() \%>\%
   pull(category_id) \%>\%
   sample(3) \%>\%
   rating_get_sig_list()
+}
 }

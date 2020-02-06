@@ -16,5 +16,7 @@ A dataframe with columns \code {category_id, name, state_id}.
 Get categories that contain ratings by state
 }
 \examples{
+\dontrun{
 rating_get_categories("NM")
+}
 }

@@ -18,7 +18,6 @@ candidates_get_by_office_state <- function(state_ids = NA,
   election_years = lubridate::year(lubridate::today()),
   all = TRUE,
   verbose = TRUE) {
-
   state_ids %<>%
     as_char_vec()
   office_ids %<>%

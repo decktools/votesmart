@@ -6,15 +6,15 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' rating_get_categories("NM")
+#' }
 rating_get_categories <- function(state_ids = NA) {
-
   out <- tibble()
 
   r <- get_req()
 
   for (s in state_ids) {
-
     elmers_message(
       "Beginning to get categories for state {s}."
     )

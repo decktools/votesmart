@@ -6,9 +6,10 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' office_get_levels()
+#' }
 office_get_levels <- function() {
-
   this <- get(
     req = "Office.getLevels?",
     query = "",
