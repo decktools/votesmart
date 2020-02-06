@@ -2,6 +2,7 @@
 
 export("%<>%")
 export("%>%")
+export(candidates_get_by_lastname)
 export(candidates_get_by_office_state)
 export(office_get_levels)
 export(office_get_offices_by_level)

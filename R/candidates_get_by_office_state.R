@@ -30,6 +30,8 @@ candidates_get_by_office_state <- function(state_ids = NA,
   election_years %<>%
     as_char_vec()
 
+  r <- "Candidates.getByOfficeState?"
+
   if (all) {
     query_df <-
       expand.grid(
@@ -44,17 +46,14 @@ candidates_get_by_office_state <- function(state_ids = NA,
           )
       )
   } else {
-    length_state_ids <- length(state_ids)
-    length_office_ids <- length(office_ids)
-    length_election_years <- length(election_years)
     lengths <-
-      c(length_state_ids, length_office_ids, length_election_years) %>%
+      c(length(state_ids), length(office_ids), length(election_years)) %>%
       magrittr::extract(
         !. == 1
       )
 
     if (!identical(lengths)) {
-      stop("If `all` is TRUE, lengths of inputs must be equivalent to each other, or 1.")
+      stop("If `all` is FALSE, lengths of inputs must be equivalent to each other, or 1.")
     }
 
     query_df <-

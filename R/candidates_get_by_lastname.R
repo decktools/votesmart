@@ -1,0 +1,121 @@
+
+#' Get candidate data by last name
+#'
+#' @param last_names Vector of candidate last names
+#' @param election_years Vector of election years. Default is the current year.
+#' @param stage_ids The \code{stage_id} of the election (see \code{Election.getStageCandidates} endpoint).
+#' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
+#' @param verbose Should cases when no data is available be messaged?
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' candidates_get_by_lastname(c("Ocasio-Cortez", "Omar"), 2018)
+candidates_get_by_lastname <- function(last_names,
+                                        election_years = lubridate::year(lubridate::today()),
+                                        stage_ids = "",
+                                        all = TRUE,
+                                        verbose = TRUE) {
+
+  last_names %<>%
+    as_char_vec()
+  election_years %<>%
+    as_char_vec()
+  stage_ids %<>%
+    as_char_vec()
+
+  r <- "Candidates.getByLastname?"
+
+  if (all) {
+    query_df <-
+      expand.grid(
+        last_name = last_names,
+        election_year = election_years,
+        stage_id = stage_ids
+      ) %>%
+      mutate(
+        query =
+          elmers(
+            "&lastName={last_name}&electionYear={election_year}&stageId={stage_id}"
+          )
+      )
+  } else {
+    lengths <-
+      c(length(last_names), length(election_years), length(stage_ids)) %>%
+      magrittr::extract(
+        !. == 1
+      )
+
+    if (!identical(lengths)) {
+      stop("If `all` is FALSE, lengths of inputs must be equivalent to each other, or 1.")
+    }
+
+    query_df <-
+      tibble(
+        last_name = last_names,
+        election_year = election_years,
+        stage_id = stage_ids
+      )
+  }
+
+  out <- tibble()
+
+  for (i in 1:nrow(query_df)) {
+    q <- query_df$query[i]
+    last_name <- query_df$last_name[i]
+    election_year <- query_df$election_year[i]
+    stage_id <- query_df$stage_id[i]
+
+    if (verbose) {
+      elmers_message(
+        "Requesting data for {{last_name: {last_name}, election_year: {election_year}, stage_id: {stage_id}}}."
+      )
+    }
+
+    this <- get(
+      req = r,
+      query = q,
+      level_one = "candidateList",
+      level_two = "candidate"
+    )
+
+    if (all(is.na(this))) {
+      if (verbose) {
+        elmers_message(
+          "No results found for query {q}."
+        )
+      }
+
+      this <-
+        tibble(
+          last_name = last_name,
+          election_year = election_year,
+          stage_id = stage_id
+        )
+    } else {
+      this %<>%
+        mutate(
+          election_year = election_year,
+          stage_id = stage_id
+        ) %>%
+        select(
+          candidate_id,
+          first_name,
+          nick_name,
+          middle_name,
+          last_name,
+          suffix,
+          title,
+          ballot_name,
+          stage_id,
+          election_year,
+          everything()
+        )
+    }
+
+    out %<>%
+      bind_rows(this)
+  }
+  out
+}

@@ -56,8 +56,17 @@ get <- function(req, query, level_one, level_two) {
     return(NA)
   }
 
-  lst %>%
-    purrr::map(as_tibble) %>%
-    bind_rows() %>%
+  if (purrr::vec_depth(lst) <= 2) {
+    out <-
+      lst %>%
+      as_tibble()
+  } else {
+    out <-
+      lst %>%
+      purrr::map(as_tibble) %>%
+      bind_rows()
+  }
+
+   out %>%
     clean_df()
 }

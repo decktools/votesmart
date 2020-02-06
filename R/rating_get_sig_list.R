@@ -46,7 +46,7 @@ rating_get_sig_list <- function(category_ids,
       )
 
     if (!identical(lengths)) {
-      stop("If `all` is TRUE, lengths of inputs must be equivalent to each other, or 1.")
+      stop("If `all` is FALSE, lengths of inputs must be equivalent to each other, or 1.")
     }
 
     query_df <-
