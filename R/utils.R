@@ -11,23 +11,6 @@ clean_df <- function(df) {
     dplyr::na_if("")
 }
 
-get <- function(req, query, level_one, level_two) {
-  url <- construct_url(req)
-
-  lst <-
-    raw[[level_one]][[level_two]]
-
-  if (is.null(lst)) {
-    return(NA)
-  }
-
-  lst %>%
-    purrr::map(as_tibble) %>%
-    purrr::modify_depth(2, as.character) %>%
-    bind_rows() %>%
-    clean_df()
-}
-
 clean_html <- function(x,
   split_on_nbsp = TRUE,
   split_on_newline = FALSE,

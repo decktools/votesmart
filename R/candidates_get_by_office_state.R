@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' candidates_get_by_office_state(c(NA, "NY", "CA"), c("1", "6"), verbose = TRUE)
+#' candidates_get_by_office_state(state_ids = c(NA, "NY", "CA"), office_ids = c("1", "6"), verbose = TRUE)
 #' }
 candidates_get_by_office_state <- function(state_ids = NA,
   office_ids,
@@ -82,7 +82,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
       level_two = "candidate"
     )
 
-    if (is.na(this)) {
+    if (all(is.na(this))) {
       if (verbose) {
         elmers_message(
           "No results found for query {q}."
