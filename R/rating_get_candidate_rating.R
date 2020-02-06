@@ -87,7 +87,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
           sig_id = sig_id
         )
     } else {
-      this %>%
+      this %<>%
         mutate(
           candidate_id = candidate_id
         ) %>%
