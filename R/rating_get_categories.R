@@ -10,9 +10,13 @@
 #' rating_get_categories("NM")
 #' }
 rating_get_categories <- function(state_ids = NA) {
-  out <- tibble()
+
+  state_ids %<>%
+    as_char_vec()
 
   r <- "Rating.getCategories?"
+
+  out <- tibble()
 
   for (s in state_ids) {
     elmers_message(

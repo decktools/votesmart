@@ -77,4 +77,3 @@ explode_categories <- function(tbl) {
   }
   tbl
 }
-

@@ -41,6 +41,11 @@ This key is never stored in your R session’s global environment.
 *These functions are named after the `snake_case`d version of the API
 [endpoints](http://api.votesmart.org/docs/).*
 
+**If you see an endpoint you want to be made available in this package
+that isn’t yet, submit an
+[issue](https://github.com/decktools/votesmart/issues) or a [pull
+request](https://github.com/decktools/votesmart/pulls)\!**
+
 Some of these functions are necessary precursors to obtain data you
 might want. For instance, in order to get candidates’ ratings by SIGs,
 you’ll need to get `office_level_id`s in order to get `office_id`s,
@@ -79,6 +84,12 @@ Get rating `category_id`s and their associated `name`s (e.g.
 
 Get a dataframe of SIG (Special Interest Group) given a rating
 `category_id` and a `state_id` (optional)
+
+**`votes_get_by_official`**
+
+Get a dataframe of the way officials have voted on bills given a
+`candidate_id`, an `office_id` (optional), a `category_id` (optional)
+and a `year` the vote occurred (optional)
 
 ## Package Data
 

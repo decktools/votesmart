@@ -18,9 +18,12 @@ rating_get_candidate_ratings <- function(candidate_ids,
   sig_ids = "",
   all = TRUE,
   verbose = TRUE) {
-  out <- tibble()
 
-  r <- "Rating.getCandidateRating?"
+  candidate_ids %<>%
+    as_char_vec()
+
+  sig_ids %<>%
+    as_char_vec()
 
   if (all) {
     query_df <-
@@ -55,6 +58,10 @@ rating_get_candidate_ratings <- function(candidate_ids,
           )
       )
   }
+
+  r <- "Rating.getCandidateRating?"
+
+  out <- tibble()
 
   for (i in 1:nrow(query_df)) {
     candidate_id <- query_df$candidate_id[i]

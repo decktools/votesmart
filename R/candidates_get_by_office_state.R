@@ -29,8 +29,6 @@ candidates_get_by_office_state <- function(state_ids = NA,
   election_years %<>%
     as_char_vec()
 
-  r <- "Candidates.getByOfficeState?"
-
   if (all) {
     query_df <-
       expand.grid(
@@ -63,6 +61,8 @@ candidates_get_by_office_state <- function(state_ids = NA,
       )
   }
 
+  r <- "Candidates.getByOfficeState?"
+
   out <- tibble()
 
   for (i in 1:nrow(query_df)) {
@@ -78,7 +78,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
     }
 
     this <- get(
-      req = "Candidates.getByOfficeState?",
+      req = r,
       query = q,
       level_one = "candidateList",
       level_two = "candidate"

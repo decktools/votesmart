@@ -50,7 +50,7 @@ get <- function(req, query, level_one, level_two) {
     out <-
       lst %>%
       as_tibble()
-  # Otherwise there are multiple rows
+    # Otherwise there are multiple rows
   } else {
     out <-
       lst %>%

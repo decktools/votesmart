@@ -24,8 +24,6 @@ candidates_get_by_lastname <- function(last_names,
   stage_ids %<>%
     as_char_vec()
 
-  r <- "Candidates.getByLastname?"
-
   if (all) {
     query_df <-
       expand.grid(
@@ -57,6 +55,8 @@ candidates_get_by_lastname <- function(last_names,
         stage_id = stage_ids
       )
   }
+
+  r <- "Candidates.getByLastname?"
 
   out <- tibble()
 

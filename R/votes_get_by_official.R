@@ -17,13 +17,12 @@
 #'   election_years = "2018"
 #' )
 #' votes_get_by_official(aoc)
-
 votes_get_by_official <- function(candidate_ids,
-                                           office_ids = "",
-                                           category_ids = "",
-                                           years = "",
-                                           all = TRUE,
-                                           verbose = TRUE) {
+  office_ids = "",
+  category_ids = "",
+  years = "",
+  all = TRUE,
+  verbose = TRUE) {
   candidate_ids %<>%
     as_char_vec()
   office_ids %<>%
@@ -32,8 +31,6 @@ votes_get_by_official <- function(candidate_ids,
     as_char_vec()
   years %<>%
     as_char_vec()
-
-  r <- "Votes.getByOfficial?"
 
   if (all) {
     query_df <-
@@ -68,6 +65,8 @@ votes_get_by_official <- function(candidate_ids,
         year = years
       )
   }
+
+  r <- "Votes.getByOfficial?"
 
   out <- tibble()
 

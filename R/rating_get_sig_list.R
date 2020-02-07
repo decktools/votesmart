@@ -20,9 +20,12 @@ rating_get_sig_list <- function(category_ids,
   state_ids = NA,
   all = TRUE,
   verbose = TRUE) {
-  out <- tibble()
 
-  r <- "Rating.getSigList?"
+  category_ids %<>%
+    as_char_vec()
+
+  state_ids %<>%
+    as_char_vec()
 
   if (all) {
     query_df <-
@@ -61,6 +64,10 @@ rating_get_sig_list <- function(category_ids,
           )
       )
   }
+
+  r <- "Rating.getSigList?"
+
+  out <- tibble()
 
   for (i in 1:nrow(query_df)) {
     category_id <- query_df$category_id[i]
