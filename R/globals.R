@@ -14,6 +14,7 @@ globalVariables(
     "name",
     "nick_name",
     "office_id",
+    "office_level_id",
     "parent_id",
     "rating",
     "rating_id",

@@ -1,5 +1,10 @@
 get_key <- function() {
-  Sys.getenv("VOTESMART_API_KEY")
+  key <- Sys.getenv("VOTESMART_API_KEY")
+
+  if (identical(key, "")) {
+    message("No VOTESMART_API_KEY key found.")
+  }
+  key
 }
 
 clean_df <- function(df) {
@@ -7,8 +12,8 @@ clean_df <- function(df) {
     rename_all(
       snakecase::to_snake_case
     ) %>%
-    tibble::as_tibble() %>%
-    dplyr::na_if("")
+    as_tibble() %>%
+    na_if("")
 }
 
 clean_html <- function(x,

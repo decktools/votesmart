@@ -56,8 +56,8 @@ get <- function(req, query, level_one, level_two) {
     return(NA)
   }
 
-  # TODO: fix for the case of rating_get_candidate_ratings("20318")
-  if (purrr::vec_depth(lst) <= 2) {
+  # Case where there will only be one row once we make into a tibble
+  if (length(lst[[1]]) == 1) {
     out <-
       lst %>%
       as_tibble()

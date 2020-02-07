@@ -6,7 +6,7 @@
 \usage{
 rating_get_candidate_ratings(
   candidate_ids,
-  sig_ids = NA,
+  sig_ids = "",
   all = TRUE,
   verbose = TRUE
 )

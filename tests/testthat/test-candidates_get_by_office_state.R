@@ -10,7 +10,7 @@ test_that("candidates_get_by_office_state", {
 
   expect_gte(
     nrow(yes_data),
-    500
+    100
   )
 
   expect_equal(

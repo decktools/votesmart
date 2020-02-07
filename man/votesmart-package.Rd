@@ -8,6 +8,14 @@
 \description{
 An R interface to the Project VoteSmart API.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{http://github.com/decktools/votesmart/}
+  \item Report bugs at \url{https://github.com/decktools/votesmart/issues/}
+}
+
+}
 \author{
 \strong{Maintainer}: Amanda Dobbyn \email{amanda@deck.tools}
 
