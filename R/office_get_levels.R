@@ -10,17 +10,17 @@
 #' office_get_levels()
 #' }
 office_get_levels <- function() {
-  this <- get(
+  out <- get(
     req = "Office.getLevels?",
     query = "",
     level_one = "levels",
     level_two = "level"
   )
 
-  if (all(is.na(this))) {
+  if (all(is.na(out))) {
     message("Error getting office levels.")
     return(tibble())
   }
 
-  this
+  out
 }

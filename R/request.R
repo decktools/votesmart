@@ -1,25 +1,12 @@
 BASE_URL <- "http://api.votesmart.org/"
 
-# From the function calling this function, use the name of the function to construct the name of the endpoint
-get_req <- function() {
-  calling_fun <-
-    deparse(sys.calls()[[sys.nframe() - 1]]) %>%
-    .[1]
+get_key <- function() {
+  key <- Sys.getenv("VOTESMART_API_KEY")
 
-  calling_fun %<>%
-    stringr::str_remove_all("\\(.*")
-
-  first_word <-
-    calling_fun %>%
-    stringr::str_remove("_.*") %>%
-    stringr::str_to_title()
-
-  rest <-
-    calling_fun %>%
-    stringr::str_extract("_.*") %>%
-    snakecase::to_lower_camel_case()
-
-  elmers("{first_word}.{rest}?")
+  if (identical(key, "")) {
+    message("No VOTESMART_API_KEY key found.")
+  }
+  key
 }
 
 construct_url <- function(req, query = "") {
@@ -50,8 +37,10 @@ get <- function(req, query, level_one, level_two) {
   raw <- request(url)
 
   lst <-
+    # Data is contained two levels down. These have different names for each endpoint.
     raw[[level_one]][[level_two]]
 
+  # We've gotten an error that there's no data
   if (is.null(lst)) {
     return(NA)
   }
@@ -61,6 +50,7 @@ get <- function(req, query, level_one, level_two) {
     out <-
       lst %>%
       as_tibble()
+  # Otherwise there are multiple rows
   } else {
     out <-
       lst %>%

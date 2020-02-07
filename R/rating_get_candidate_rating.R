@@ -20,7 +20,6 @@ rating_get_candidate_ratings <- function(candidate_ids,
   verbose = TRUE) {
   out <- tibble()
 
-  # r <- get_req()
   r <- "Rating.getCandidateRating?"
 
   if (all) {
