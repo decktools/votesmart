@@ -48,22 +48,22 @@ elmers <- glue::glue %>>>% as.character
 elmers_message <- elmers %>>>% message
 
 # Take the v heterogeneous categories list col and tidy it into the same nested tibble format
-explode_categories <- function(tbl) {
+explode_column <- function(tbl, col = "categories") {
   for (i in 1:nrow(tbl)) {
-    if (length(tbl$categories[i][[1]]) == 0) {
-      tbl$categories[i] %<>%
+    if (length(tbl[[col]][i][[1]]) == 0) {
+      tbl[[col]][i] %<>%
         tibble(
           category_id = NA,
           category_name = NA
         ) %>%
         list()
     } else {
-      if (purrr::vec_depth(tbl$categories[i]) > 3) {
-        tbl$categories[i] %<>%
+      if (purrr::vec_depth(tbl[[col]][i]) > 3) {
+        tbl[[col]][i] %<>%
           purrr::flatten()
       }
 
-      tbl$categories[i] %<>%
+      tbl[[col]][i] %<>%
         purrr::map_df(bind_rows) %>%
         distinct() %>%
         rename_all(

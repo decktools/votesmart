@@ -1,7 +1,7 @@
 
 #' Get votes by official
 #'
-#' @param candidate_ids Vector of candidate_ids.
+#' @param candidate_ids Vector of candidate_ids (required).
 #' @param office_ids Vector of office_ids.
 #' @param category_ids Vector of category_ids.
 #' @param years Vector of years in which the vote was taken.
@@ -113,7 +113,7 @@ votes_get_by_official <- function(candidate_ids,
           candidate_id = candidate_id,
           year = year
         ) %>%
-        explode_categories() %>%
+        explode_column("categories") %>%
         select(
           bill_id,
           candidate_id,

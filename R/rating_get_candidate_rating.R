@@ -97,7 +97,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
         mutate(
           candidate_id = candidate_id
         ) %>%
-        explode_categories() %>%
+        explode_column("categories") %>%
         select(
           rating_id,
           candidate_id,

@@ -14,7 +14,7 @@ votes_get_by_official(
 )
 }
 \arguments{
-\item{candidate_ids}{Vector of candidate_ids.}
+\item{candidate_ids}{Vector of candidate_ids (required).}
 
 \item{office_ids}{Vector of office_ids.}
 

@@ -26,6 +26,8 @@ devtools::install_github("decktools/votesmart")
 You’ll need a VoteSmart API key in order to use this package. You can
 register for one [here](https://votesmart.org/share/api#.XjxqEjJKjOQ).
 
+\<\<\<\<TODO: insert demo key here\>\>\>\>
+
 Store your key in an environment variable named `VOTESMART_API_KEY` with
 
     Sys.setenv(VOTESMART_API_KEY = "<your_key>")
