@@ -1,9 +1,9 @@
-
 globalVariables(
   c(
     ".",
     "ballot_name",
     "bill_id",
+    "bill_number",
     "candidate_id",
     "categories",
     "election_electionstage_id",
@@ -19,13 +19,17 @@ globalVariables(
     "nick_name",
     "office_id",
     "office_level_id",
+    "office_state_id",
     "parent_id",
+    "query",
     "rating",
     "rating_id",
     "rating_name",
     "rating_text",
     "sig_id",
     "stage",
+    "state_id",
+    "state_id_parent",
     "suffix",
     "timespan",
     "title",

@@ -27,5 +27,7 @@ A dataframe of candidates and their attributes. If a given \code{year} + \code{s
 Get election info by election year and state
 }
 \examples{
+\dontrun{
 election_get_election_by_year_state(years = c(2016, 2017))
+}
 }

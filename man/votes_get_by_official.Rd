@@ -33,9 +33,11 @@ votes_get_by_official(
 Get votes by official
 }
 \examples{
+\dontrun{
 aoc <- candidates_get_by_lastname(
   "ocasio-cortez",
   election_years = "2018"
 )
-votes_get_by_official(aoc)
+votes_get_by_official(aoc$candidate_id)
+}
 }

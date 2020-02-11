@@ -15,7 +15,6 @@
 #'   office_get_offices_by_level()
 #' }
 office_get_offices_by_level <- function(office_level_ids) {
-
   office_level_ids %<>%
     as_char_vec()
 

@@ -10,7 +10,6 @@
 #' office_get_levels()
 #' }
 office_get_levels <- function() {
-
   r <- "Office.getLevels?"
 
   out <- get(

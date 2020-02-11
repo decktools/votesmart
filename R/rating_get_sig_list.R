@@ -20,7 +20,6 @@ rating_get_sig_list <- function(category_ids,
   state_ids = NA,
   all = TRUE,
   verbose = TRUE) {
-
   category_ids %<>%
     as_char_vec()
 
@@ -95,7 +94,8 @@ rating_get_sig_list <- function(category_ids,
 
       this <-
         query_df %>%
-        select(-query)
+        select(-query) %>%
+        na_if("")
     } else {
       this %<>%
         mutate(

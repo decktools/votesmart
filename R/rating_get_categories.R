@@ -10,7 +10,6 @@
 #' rating_get_categories("NM")
 #' }
 rating_get_categories <- function(state_ids = NA) {
-
   state_ids %<>%
     as_char_vec()
 

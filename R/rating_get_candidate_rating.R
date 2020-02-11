@@ -18,7 +18,6 @@ rating_get_candidate_ratings <- function(candidate_ids,
   sig_ids = "",
   all = TRUE,
   verbose = TRUE) {
-
   candidate_ids %<>%
     as_char_vec()
 
@@ -85,7 +84,8 @@ rating_get_candidate_ratings <- function(candidate_ids,
 
       this <-
         query_df %>%
-        select(-query)
+        select(-query) %>%
+        na_if("")
     } else {
       this %<>%
         mutate(

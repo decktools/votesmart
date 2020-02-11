@@ -107,17 +107,21 @@ votes_get_by_official <- function(candidate_ids,
 
       # Other cols will be NA
       this <-
-        query_df(-query)
+        query_df %>%
+        select(-query) %>%
+        rename(
+          category_id_1 = category_id
+        ) %>%
+        na_if("")
     } else {
       # Turn each element into a tibble and rowbind them
-      browser()
       this %<>%
         mutate(
           candidate_id = candidate_id,
           year = year
         ) %>%
         rename_all(
-          stringr::str_remove, "categories_"
+          stringr::str_remove, "categories_category_"
         ) %>%
         select(
           bill_id,

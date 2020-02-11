@@ -17,10 +17,10 @@
 #' @examples
 #' candidates_get_by_levenshtein(c("Bookr", "Klobucar"), 2020)
 candidates_get_by_levenshtein <- function(last_names,
-                                       election_years = lubridate::year(lubridate::today()),
-                                       stage_ids = "",
-                                       all = TRUE,
-                                       verbose = TRUE) {
+  election_years = lubridate::year(lubridate::today()),
+  stage_ids = "",
+  all = TRUE,
+  verbose = TRUE) {
   last_names %<>%
     as_char_vec()
   election_years %<>%
@@ -98,7 +98,8 @@ candidates_get_by_levenshtein <- function(last_names,
 
       this <-
         query_df %>%
-        select(-query)
+        select(-query) %>%
+        na_if("")
     } else {
       this %<>%
         mutate(

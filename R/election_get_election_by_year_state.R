@@ -14,10 +14,9 @@
 #' election_get_election_by_year_state(years = c(2016, 2017))
 #' }
 election_get_election_by_year_state <- function(years = lubridate::year(lubridate::today()),
-                                                state_ids = "",
-                                                all = TRUE,
-                                                verbose = TRUE) {
-
+  state_ids = "",
+  all = TRUE,
+  verbose = TRUE) {
   years %<>%
     as_char_vec()
   state_ids %<>%
@@ -36,13 +35,13 @@ election_get_election_by_year_state <- function(years = lubridate::year(lubridat
           )
       )
   } else {
-    lengths <-
+    arg_lengths <-
       c(length(years), length(state_ids)) %>%
       magrittr::extract(
         !. == 1
       )
 
-    if (!identical(lengths)) {
+    if (length(arg_lengths) > 1 && (max(arg_lengths) - min(arg_lengths) != 0)) {
       stop("If `all` is FALSE, lengths of inputs must be equivalent to each other, or 1.")
     }
 
@@ -86,8 +85,11 @@ election_get_election_by_year_state <- function(years = lubridate::year(lubridat
 
       this <-
         query_df %>%
-        select(-query)
-
+        select(-query) %>%
+        rename(
+          election_year = year
+        ) %>%
+        na_if("")
     } else {
       this %<>%
         mutate(
