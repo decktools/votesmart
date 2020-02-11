@@ -95,7 +95,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
       this <-
         tibble(
           office_id = office_id,
-          state_id = state_id,
+          office_state_id = state_id,
           election_year = election_year
         ) %>%
         purrr::map_dfc(as.character)
@@ -111,7 +111,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
           suffix,
           title,
           ballot_name,
-          state_id,
+          office_state_id,
           office_id,
           election_year,
           everything()

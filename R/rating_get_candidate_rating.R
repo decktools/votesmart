@@ -97,7 +97,6 @@ rating_get_candidate_ratings <- function(candidate_ids,
         mutate(
           candidate_id = candidate_id
         ) %>%
-        explode_categories() %>%
         select(
           rating_id,
           candidate_id,
@@ -105,8 +104,8 @@ rating_get_candidate_ratings <- function(candidate_ids,
           rating,
           rating_name,
           timespan,
-          categories,
-          rating_text
+          rating_text,
+          everything()
         )
     }
 
