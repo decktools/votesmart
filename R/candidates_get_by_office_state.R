@@ -31,7 +31,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
 
   if (all) {
     query_df <-
-      expand.grid(
+      expand_grid(
         state_id = state_ids,
         office_id = office_ids,
         election_year = election_years

@@ -36,7 +36,7 @@ votes_get_by_official <- function(candidate_ids,
 
   if (all) {
     query_df <-
-      expand.grid(
+      expand_grid(
         candidate_id = candidate_ids,
         office_id = office_ids,
         category_id = category_ids,
@@ -110,20 +110,22 @@ votes_get_by_official <- function(candidate_ids,
         purrr::map_dfc(as.character)
     } else {
       # Turn each element into a tibble and rowbind them
+      browser()
       this %<>%
         mutate(
           candidate_id = candidate_id,
           year = year
         ) %>%
-        rename_if(
-          stringr::str_detect("categories_"),
-          stringr::str_remove("categories_")
+        rename_all(
+          stringr::str_remove, "categories_"
         ) %>%
         select(
           bill_id,
           candidate_id,
-          office_id,
+          bill_number,
+          title,
           vote,
+          office_id,
           everything()
         )
     }

@@ -29,7 +29,7 @@ rating_get_sig_list <- function(category_ids,
 
   if (all) {
     query_df <-
-      expand.grid(
+      expand_grid(
         category_id = category_ids,
         state_id = state_ids
       ) %>%

@@ -23,7 +23,7 @@ election_get_election_by_year_state <- function(years = lubridate::year(lubridat
 
   if (all) {
     query_df <-
-      expand.grid(
+      expand_grid(
         year = years,
         state_id = state_ids
       ) %>%

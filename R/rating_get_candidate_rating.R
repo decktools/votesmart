@@ -27,7 +27,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
 
   if (all) {
     query_df <-
-      expand.grid(
+      expand_grid(
         candidate_id = candidate_ids,
         sig_id = sig_ids
       ) %>%

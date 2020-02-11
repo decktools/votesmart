@@ -30,7 +30,7 @@ candidates_get_by_levenshtein <- function(last_names,
 
   if (all) {
     query_df <-
-      expand.grid(
+      expand_grid(
         last_name = last_names,
         election_year = election_years,
         stage_id = stage_ids
