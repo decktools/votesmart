@@ -10,7 +10,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' election_get_election_by_year_state(years = c(2016, 2017))
+#' }
 election_get_election_by_year_state <- function(years = lubridate::year(lubridate::today()),
                                                 state_ids = "",
                                                 all = TRUE,
@@ -66,11 +68,9 @@ election_get_election_by_year_state <- function(years = lubridate::year(lubridat
       )
     }
 
-    this <- get(
+    this <- get_election(
       req = r,
-      query = q,
-      level_one = "elections",
-      level_two = "election"
+      query = q
     )
 
     if (all(is.na(this))) {
@@ -89,11 +89,6 @@ election_get_election_by_year_state <- function(years = lubridate::year(lubridat
       this %<>%
         mutate(
           election_year = year
-        ) %>%
-        select(-stage_state_id) %>%
-        rename(
-          stage_id = stage_stage_id,
-          election_stage_id = stage_election_electionstage_id
         ) %>%
         select(
           election_id,

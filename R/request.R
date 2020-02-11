@@ -31,6 +31,61 @@ request <- function(url, verbose = FALSE) {
   httr::content(resp)
 }
 
+# Special treatment for election_get_election_by_year_state
+get_election <- function(req, query) {
+  url <- construct_url(req, query)
+
+  raw <- request(url)
+
+  lst <-
+    raw$elections$election
+
+  # We've gotten an error that there's no data
+  if (is.null(lst)) {
+    return(NA)
+  }
+
+  # Extra nested when state is NA
+  if ("stage" %in% names(lst)) {
+    lst$stage %<>%
+      purrr::map(as_tibble) %>%
+      bind_rows() %>%
+      purrr::map_dfc(as.character) %>%
+      clean_df() %>%
+      rename(
+        stage_name = name
+      ) %>%
+      list()
+
+    out <-
+      lst %>%
+      as_tibble() %>%
+      clean_df() %>%
+      rename(
+        state_id_parent = state_id
+      ) %>%
+      tidyr::unnest(stage) %>%
+      select(
+        # Since these aren't in the state equivalent
+        -state_id_parent, -stage_name
+      )
+  } else {
+    out <-
+      lst %>%
+      purrr::map(purrr::flatten) %>%
+      purrr::map(as.data.frame) %>%
+      purrr::modify_depth(2, as.character) %>%
+      bind_rows() %>%
+      as_tibble() %>%
+      select(-contains(".")) %>%
+      clean_df()
+  }
+  out %>%
+    rename(
+      election_stage_id = election_electionstage_id
+    )
+}
+
 get <- function(req, query, level_one, level_two) {
   url <- construct_url(req, query)
 
