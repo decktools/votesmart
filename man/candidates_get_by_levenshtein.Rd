@@ -33,5 +33,7 @@ From the API docs, \url{http://api.votesmart.org/docs/Candidates.html}, "This me
 The actual Levenshtein distance of the result from the \code{last_name} provided is not available from the API.
 }
 \examples{
+\dontrun{
 candidates_get_by_levenshtein(c("Bookr", "Klobucar"), 2020)
+}
 }

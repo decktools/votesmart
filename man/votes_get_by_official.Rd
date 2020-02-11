@@ -27,7 +27,7 @@ votes_get_by_official(
 \item{verbose}{Should cases when no data is available be messaged?}
 }
 \value{
-
+A dataframe of candidates' votes on bills and their attributes. If a given input combination returns no data, that row will be filled with \code{NA}s.
 }
 \description{
 Get votes by official

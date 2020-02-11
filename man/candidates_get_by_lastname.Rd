@@ -30,5 +30,7 @@ A dataframe of candidates and their attributes. If a given \code{last_name} + \c
 Get candidate data by last name
 }
 \examples{
+\dontrun{
 candidates_get_by_lastname(c("Ocasio-Cortez", "Omar"), 2018)
+}
 }
