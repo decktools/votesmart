@@ -44,17 +44,34 @@ get_election <- function(req, query) {
   if (is.null(lst)) {
     return(NA)
   }
+  browser()
 
   # Extra nested when state is NA
   if ("stage" %in% names(lst)) {
+    # Only one element
+    if (length(lst$stage$stageId) == 1) {
+      lst %<>%
+        as.data.frame() %>%
+        as_tibble() %>%
+        rename_all(
+          stringr::str_remove,
+          "stage."
+        ) %>%
+        clean_df()
+    } else {
+      lst$stage %<>%
+        purrr::map(as_tibble) %>%
+        bind_rows() %>%
+        purrr::map_dfc(as.character) %>%
+        clean_df()
+    }
+
+    # This stage name becomes name.1 in the state version and we take it out there, so do the same here
+    if ("name" %in% names(lst$stage)) {
+      lst$stage %<>%
+        select(-name)
+    }
     lst$stage %<>%
-      purrr::map(as_tibble) %>%
-      bind_rows() %>%
-      purrr::map_dfc(as.character) %>%
-      clean_df() %>%
-      rename(
-        stage_name = name
-      ) %>%
       list()
 
     out <-
@@ -66,8 +83,8 @@ get_election <- function(req, query) {
       ) %>%
       tidyr::unnest(stage) %>%
       select(
-        # Since these aren't in the state equivalent
-        -state_id_parent, -stage_name
+        # This isn't in the state equivalent
+        -state_id_parent
       )
   } else {
     out <-
