@@ -12,11 +12,13 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' aoc <- candidates_get_by_lastname(
 #'   "ocasio-cortez",
 #'   election_years = "2018"
 #' )
-#' votes_get_by_official(aoc)
+#' votes_get_by_official(aoc$candidate_id)
+#' }
 votes_get_by_official <- function(candidate_ids,
   office_ids = "",
   category_ids = "",
@@ -113,12 +115,14 @@ votes_get_by_official <- function(candidate_ids,
           candidate_id = candidate_id,
           year = year
         ) %>%
-        explode_column("categories") %>%
+        rename_if(
+          stringr::str_detect("categories_"),
+          stringr::str_remove("categories_")
+        ) %>%
         select(
           bill_id,
           candidate_id,
           office_id,
-          category_id,
           vote,
           everything()
         )

@@ -3,8 +3,12 @@ globalVariables(
   c(
     ".",
     "ballot_name",
+    "bill_id",
     "candidate_id",
     "categories",
+    "election_electionstage_id",
+    "election_id",
+    "election_year",
     "endpoint",
     "endpoint_input_mapping_nested",
     "first_name",
@@ -21,8 +25,10 @@ globalVariables(
     "rating_name",
     "rating_text",
     "sig_id",
+    "stage",
     "suffix",
     "timespan",
-    "title"
+    "title",
+    "vote"
   )
 )

@@ -48,7 +48,7 @@ elmers <- glue::glue %>>>% as.character
 elmers_message <- elmers %>>>% message
 
 # Take the v heterogeneous categories list col and tidy it into the same nested tibble format
-explode_column <- function(tbl, col = "categories") {
+explode_categories <- function(tbl, col = "categories") {
   for (i in 1:nrow(tbl)) {
     if (length(tbl[[col]][i][[1]]) == 0) {
       tbl[[col]][i] %<>%
@@ -71,6 +71,37 @@ explode_column <- function(tbl, col = "categories") {
         ) %>%
         rename(
           category_name = name
+        ) %>%
+        list()
+    }
+  }
+  tbl
+}
+
+
+explode_stage <- function(tbl, col = "stage") {
+  for (i in 1:nrow(tbl)) {
+    if (length(tbl[[col]][i][[1]]) == 0) {
+      tbl[[col]][i] %<>%
+        tibble(
+          stage_id = NA,
+          stage_name = NA
+        ) %>%
+        list()
+    } else {
+      # if (purrr::vec_depth(tbl[[col]][i]) > 3) {
+      #   tbl[[col]][i] %<>%
+      #     purrr::flatten()
+      # }
+
+      tbl[[col]][i] %<>%
+        purrr::map_df(bind_rows) %>%
+        distinct() %>%
+        rename_all(
+          snakecase::to_snake_case
+        ) %>%
+        rename(
+          stage_name = name
         ) %>%
         list()
     }

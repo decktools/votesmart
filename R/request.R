@@ -54,10 +54,12 @@ get <- function(req, query, level_one, level_two) {
   } else {
     out <-
       lst %>%
-      purrr::map(as_tibble) %>%
-      bind_rows()
+      purrr::map(as.data.frame) %>%
+      bind_rows() %>%
+      as_tibble()
   }
 
   out %>%
-    clean_df()
+    clean_df() %>%
+    purrr::map_dfc(as.character)
 }

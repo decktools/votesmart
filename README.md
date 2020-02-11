@@ -5,6 +5,12 @@
 
 </p>
 
+<object id="nakedpolitician4" data="http://votesmart.org/static/swf/naked_politician_r4.swf" class="hidefrommenu" type="application/x-shockwave-flash" height="250" width="320">
+
+<param value="transparent" name="wmode">
+
+</object>
+
 # votesmart
 
 This package is a wrapper around the
@@ -55,6 +61,16 @@ which is a required argument to get candidate information using
 `candidates_get_by_office_state`.
 
 Below is a summary of the functions currently available.
+
+**`candidates_get_by_last_name`**
+
+Get a dataframe of candidates given a vector of `last_name`s,
+`election_year`s (optional), and `stage_id`s (optional)
+
+**`candidates_get_by_levenshtein`**
+
+Get a dataframe of fuzzy-matched candidates given a vector of
+`last_name`s, `election_year`s (optional), and `stage_id`s (optional)
 
 **`candidates_get_by_office_state`**
 

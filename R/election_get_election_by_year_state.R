@@ -90,12 +90,11 @@ election_get_election_by_year_state <- function(years = lubridate::year(lubridat
         mutate(
           election_year = year
         ) %>%
-        select(-state_id) %>%
-        explode_column("stage") %>%
+        select(-stage_state_id) %>%
         rename(
-          election_stage_id = election_electionstage_id
+          stage_id = stage_stage_id,
+          election_stage_id = stage_election_electionstage_id
         ) %>%
-        tidyr::unnest(stage) %>%
         select(
           election_id,
           election_year,
