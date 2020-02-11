@@ -34,13 +34,13 @@ rating_get_candidate_ratings <- function(candidate_ids,
         query = elmers("&candidateId={candidate_id}&sigId={sig_id}")
       )
   } else {
-    lengths <-
+    arg_lengths <-
       c(length(candidate_ids), length(sig_ids)) %>%
       magrittr::extract(
         !. == 1
       )
 
-    if (!identical(lengths)) {
+    if (length(arg_lengths) > 1 && (max(arg_lengths) - min(arg_lengths) != 0)) {
       stop("If `all` is FALSE, lengths of inputs must be equivalent to each other, or 1.")
     }
 

@@ -42,13 +42,13 @@ candidates_get_by_levenshtein <- function(last_names,
           )
       )
   } else {
-    lengths <-
+    arg_lengths <-
       c(length(last_names), length(election_years), length(stage_ids)) %>%
       magrittr::extract(
         !. == 1
       )
 
-    if (!identical(lengths)) {
+    if (length(arg_lengths) > 1 && (max(arg_lengths) - min(arg_lengths) != 0)) {
       stop("If `all` is FALSE, lengths of inputs must be equivalent to each other, or 1.")
     }
 

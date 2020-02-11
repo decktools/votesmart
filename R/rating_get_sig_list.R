@@ -39,15 +39,13 @@ rating_get_sig_list <- function(category_ids,
           )
       )
   } else {
-    length_category_ids <- length(category_ids)
-    length_state_ids <- length(state_ids)
-    lengths <-
-      c(length_category_ids, length_state_ids) %>%
+    arg_lengths <-
+      c(length(category_ids), length(state_ids)) %>%
       magrittr::extract(
         !. == 1
       )
 
-    if (!identical(lengths)) {
+    if (length(arg_lengths) > 1 && (max(arg_lengths) - min(arg_lengths) != 0)) {
       stop("If `all` is FALSE, lengths of inputs must be equivalent to each other, or 1.")
     }
 

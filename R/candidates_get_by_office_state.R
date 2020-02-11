@@ -43,13 +43,13 @@ candidates_get_by_office_state <- function(state_ids = NA,
           )
       )
   } else {
-    lengths <-
+    arg_lengths <-
       c(length(state_ids), length(office_ids), length(election_years)) %>%
       magrittr::extract(
         !. == 1
       )
 
-    if (!identical(lengths)) {
+    if (length(arg_lengths) > 1 && (max(arg_lengths) - min(arg_lengths) != 0)) {
       stop("If `all` is FALSE, lengths of inputs must be equivalent to each other, or 1.")
     }
 
