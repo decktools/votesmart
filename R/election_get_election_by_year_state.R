@@ -49,7 +49,11 @@ election_get_election_by_year_state <- function(years = lubridate::year(lubridat
     query_df <-
       tibble(
         year = years,
-        state_id = state_ids
+        state_id = state_ids,
+        query =
+          elmers(
+            "&year={year}&stateId={state_id}"
+          )
       )
   }
 
@@ -81,10 +85,9 @@ election_get_election_by_year_state <- function(years = lubridate::year(lubridat
       }
 
       this <-
-        tibble(
-          year = years,
-          state_id = state_ids
-        )
+        query_df %>%
+        select(-query)
+
     } else {
       this %<>%
         mutate(

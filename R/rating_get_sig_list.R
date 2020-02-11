@@ -94,10 +94,8 @@ rating_get_sig_list <- function(category_ids,
       }
 
       this <-
-        tibble(
-          category_id = category_id,
-          state_id = state_id
-        )
+        query_df %>%
+        select(-query)
     } else {
       this %<>%
         mutate(

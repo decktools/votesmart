@@ -65,6 +65,12 @@ votes_get_by_official <- function(candidate_ids,
         office_id = office_ids,
         category_id = category_ids,
         year = years
+      ) %>%
+      mutate(
+        query =
+          elmers(
+            "&candidateId={candidate_id}&officeId={office_id}&categoryId={category_id}&year={year}"
+          )
       )
   }
 
@@ -101,13 +107,7 @@ votes_get_by_official <- function(candidate_ids,
 
       # Other cols will be NA
       this <-
-        tibble(
-          candidate_id = candidate_id,
-          office_id = office_id,
-          category_id = category_id,
-          year = year
-        ) %>%
-        purrr::map_dfc(as.character)
+        query_df(-query)
     } else {
       # Turn each element into a tibble and rowbind them
       browser()

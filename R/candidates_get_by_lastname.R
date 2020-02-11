@@ -53,6 +53,12 @@ candidates_get_by_lastname <- function(last_names,
         last_name = last_names,
         election_year = election_years,
         stage_id = stage_ids
+      ) %>%
+      mutate(
+        query =
+          elmers(
+            "&lastName={last_name}&electionYear={election_year}&stageId={stage_id}"
+          )
       )
   }
 
@@ -87,11 +93,8 @@ candidates_get_by_lastname <- function(last_names,
       }
 
       this <-
-        tibble(
-          last_name = last_name,
-          election_year = election_year,
-          stage_id = stage_id
-        )
+        query_df %>%
+        select(-query)
     } else {
       this %<>%
         mutate(

@@ -58,6 +58,12 @@ candidates_get_by_office_state <- function(state_ids = NA,
         state_id = state_ids,
         office_id = office_ids,
         election_year = election_years
+      ) %>%
+      mutate(
+        query =
+          elmers(
+            "&stateId={state_id}&officeId={office_id}&electionYear={election_year}"
+          )
       )
   }
 
@@ -93,12 +99,8 @@ candidates_get_by_office_state <- function(state_ids = NA,
 
       # Other cols will be NA
       this <-
-        tibble(
-          office_id = office_id,
-          office_state_id = state_id,
-          election_year = election_year
-        ) %>%
-        purrr::map_dfc(as.character)
+        query_df %>%
+        select(-query)
     } else {
       # Turn each element into a tibble and rowbind them
       this %<>%

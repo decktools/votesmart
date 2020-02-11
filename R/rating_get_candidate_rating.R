@@ -51,11 +51,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
         sig_id = sig_ids
       ) %>%
       mutate(
-        query =
-          case_when(
-            is.na(sig_id) ~ elmers("&candidateId={candidate_id}"),
-            TRUE ~ elmers("&candidateId={candidate_id}&sigId={sig_id}")
-          )
+        query = elmers("&candidateId={candidate_id}&sigId={sig_id}")
       )
   }
 
@@ -88,10 +84,8 @@ rating_get_candidate_ratings <- function(candidate_ids,
       }
 
       this <-
-        tibble(
-          candidate_id = candidate_id,
-          sig_id = sig_id
-        )
+        query_df %>%
+        select(-query)
     } else {
       this %<>%
         mutate(

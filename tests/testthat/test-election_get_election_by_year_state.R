@@ -6,7 +6,8 @@ test_that("election_get_election_by_year_state", {
 
   state <-
     election_get_election_by_year_state(
-      state_ids = c("NY", sample(state.abb, 3)),
+      # NY has multiple elements in lst$stage and MT only has one
+      state_ids = c("NY", "MT", sample(state.abb, 1)),
       years = c(2017, sample(2008:2018, 3))
     )
 
