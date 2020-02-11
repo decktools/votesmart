@@ -8,7 +8,7 @@
 #' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
 #' @param verbose Should cases when no data is available be messaged?
 #'
-#' @return
+#' @return A dataframe of candidates' votes on bills and their attributes. If a given input combination returns no data, that row will be filled with \code{NA}s.
 #' @export
 #'
 #' @examples

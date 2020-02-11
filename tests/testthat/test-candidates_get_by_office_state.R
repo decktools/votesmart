@@ -4,7 +4,7 @@ test_that("candidates_get_by_office_state", {
   yes_data <-
     candidates_get_by_office_state(
       state_ids = c(NA, "NY", "CA"),
-      office_ids = c(1, 6),
+      office_ids = c(1, 6, 10),
       all = do_all
     )
 

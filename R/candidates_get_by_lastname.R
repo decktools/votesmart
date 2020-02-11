@@ -11,7 +11,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' candidates_get_by_lastname(c("Ocasio-Cortez", "Omar"), 2018)
+#' }
 candidates_get_by_lastname <- function(last_names,
   election_years = lubridate::year(lubridate::today()),
   stage_ids = "",

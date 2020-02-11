@@ -15,7 +15,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' candidates_get_by_levenshtein(c("Bookr", "Klobucar"), 2020)
+#' }
 candidates_get_by_levenshtein <- function(last_names,
   election_years = lubridate::year(lubridate::today()),
   stage_ids = "",

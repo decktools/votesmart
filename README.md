@@ -5,12 +5,6 @@
 
 </p>
 
-<object id="nakedpolitician4" data="http://votesmart.org/static/swf/naked_politician_r4.swf" class="hidefrommenu" type="application/x-shockwave-flash" height="250" width="320">
-
-<param value="transparent" name="wmode">
-
-</object>
-
 # votesmart
 
 This package is a wrapper around the
@@ -78,6 +72,11 @@ Get a dataframe of candidates by the state in which they ran for office
 given a vector of `state_id`s (optional), `office_id`s, and
 `election_year`s (optional)
 
+**`election_get_election_by_year_state`**
+
+Get a dataframe of election ids and their attributes given a vector of
+`year`s and `state_id`s (optional).
+
 **`office_get_levels`**
 
 Get the VoteSmart `office_level_id`s and their associated names
@@ -88,7 +87,7 @@ Get the VoteSmart `office_level_id`s and their associated names
 Get `office_id`s and their associated names (e.g. `"President"`) for a
 given `office_level_id`
 
-**`rating_get_candidate_ratings`**
+**`rating_get_candidate_rating`**
 
 Get SIG (Special Interest Group) ratings for candidates given a
 `candidate_id` and a `sig_id` (optional)
