@@ -1,5 +1,4 @@
 test_that("rating_get_candidate_ratings", {
-
   sig_ids <- c(2167, 2880)
 
   candidate_ids <- c(pelosi_id, aoc_id)
@@ -9,14 +8,13 @@ test_that("rating_get_candidate_ratings", {
     sig_ids
   )
 
-  expect_gte(
-    ncol(res),
-    50
+  expect_true(
+    "rating_id" %in% names(res)
   )
 
   expect_error(
     rating_get_candidate_ratings(
-      candidate_ids[1],
+      candidate_ids %>% c(pete_id),
       sig_ids,
       all = FALSE
     )

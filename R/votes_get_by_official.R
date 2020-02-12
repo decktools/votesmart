@@ -1,9 +1,9 @@
 
 #' Get votes by official
 #'
-#' @param candidate_ids Vector of candidate_ids (required).
-#' @param office_ids Vector of office_ids.
-#' @param category_ids Vector of category_ids.
+#' @param candidate_ids Vector of candidate_ids (required). See \link{candidates_get_by_lastname}, \link{candidates_get_by_levenshtein}, and \link{candidates_get_by_office_state}.
+#' @param office_ids Vector of office_ids. See \link{office_get_offices_by_level}.
+#' @param category_ids Vector of category_ids. See \link{rating_get_categories}.
 #' @param years Vector of years in which the vote was taken.
 #' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
 #' @param verbose Should cases when no data is available be messaged?

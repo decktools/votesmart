@@ -15,4 +15,16 @@ test_that("candidates_get_by_lastname", {
     nrow(res),
     2
   )
+
+  lev_res <-
+    candidates_get_by_lastname(
+      last_names,
+      election_years,
+      all = do_all
+    )
+
+  expect_gt(
+    nrow(lev_res),
+    2
+  )
 })

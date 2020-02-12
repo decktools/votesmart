@@ -5,6 +5,12 @@
 
 </p>
 
+<!-- badges: start -->
+
+[![Travis build
+status](https://travis-ci.org/decktools/votesmart.svg?branch=master)](https://travis-ci.org/decktools/votesmart)
+<!-- badges: end -->
+
 # votesmart
 
 This package is a wrapper around the

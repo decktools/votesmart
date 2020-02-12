@@ -1,5 +1,4 @@
 test_that("rating_get_sig_list", {
-
   do_all <- sample(c(TRUE, FALSE), 1)
 
   res <-
@@ -13,5 +12,4 @@ test_that("rating_get_sig_list", {
     names(res),
     5
   )
-
 })
