@@ -2,7 +2,7 @@
 #' Get SIG (Special Interest Group) ratings for candidates
 #'
 #' @param candidate_ids A vector of candidate ids.
-#' @param sig_ids A vector of SIG ids. Default is \code{NA}.
+#' @param sig_ids A vector of SIG ids. Default is \code{""} for all SIGs.
 #' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
 #' @param verbose Should cases when no data is available be messaged?
 #'
@@ -90,6 +90,14 @@ rating_get_candidate_ratings <- function(candidate_ids,
       this %<>%
         mutate(
           candidate_id = candidate_id
+        ) %>%
+        rename_all(
+          stringr::str_remove,
+          "categories_"
+        ) %>%
+        rename_all(
+          stringr::str_remove,
+          "_category"
         ) %>%
         select(
           rating_id,

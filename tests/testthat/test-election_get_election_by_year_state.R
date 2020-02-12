@@ -18,13 +18,11 @@ test_that("election_get_election_by_year_state", {
   expect_length(setdiff(names(state), names(national)), 0)
   expect_length(setdiff(names(national), names(state)), 0)
 
-  expect_gte(
-    nrow(national),
-    10
+  expect_true(
+    "election_id" %in% names(national)
   )
 
-  expect_gte(
-    nrow(state),
-    10
+  expect_true(
+    "election_id" %in% names(state)
   )
 })

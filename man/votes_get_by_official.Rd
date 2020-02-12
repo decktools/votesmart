@@ -14,11 +14,11 @@ votes_get_by_official(
 )
 }
 \arguments{
-\item{candidate_ids}{Vector of candidate_ids (required).}
+\item{candidate_ids}{Vector of candidate_ids (required). See \link{candidates_get_by_lastname}, \link{candidates_get_by_levenshtein}, and \link{candidates_get_by_office_state}.}
 
-\item{office_ids}{Vector of office_ids.}
+\item{office_ids}{Vector of office_ids. See \link{office_get_offices_by_level}.}
 
-\item{category_ids}{Vector of category_ids.}
+\item{category_ids}{Vector of category_ids. See \link{rating_get_categories}.}
 
 \item{years}{Vector of years in which the vote was taken.}
 

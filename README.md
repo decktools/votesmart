@@ -9,6 +9,10 @@
 
 [![Travis build
 status](https://travis-ci.org/decktools/votesmart.svg?branch=master)](https://travis-ci.org/decktools/votesmart)
+[![Codecov test
+coverage](https://codecov.io/gh/decktools/votesmart/branch/master/graph/badge.svg)](https://codecov.io/gh/decktools/votesmart?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.org/package=votesmart)
 <!-- badges: end -->
 
 # votesmart
@@ -20,6 +24,9 @@ This package is a wrapper around the
 VoteSmart provides information on US political candidates’ positions on
 issues, votes on bills, and ratings by third party organizations, among
 other data.
+
+This package currently contains no rate limiting infrastructure as there
+is very little information about what rate limits there are, if any.
 
 ## Installation
 
@@ -126,3 +133,8 @@ associated arguments with
 or
 
     data("endpoint_input_mapping_nested")
+
+If you’d like a certain endpoint to be integrated into this pacage, feel
+free to submit a [pull
+request](https://github.com/decktools/votesmart/pulls) or an
+[issue](https://github.com/decktools/votesmart/issues)\!

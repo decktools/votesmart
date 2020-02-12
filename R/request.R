@@ -57,6 +57,7 @@ get_election <- function(req, query) {
       purrr::map(as_tibble) %>%
       bind_rows() %>%
       purrr::map_dfc(as.character) %>%
+      purrr::map_dfc(stringr::str_squish) %>%
       clean_df()
 
     # This stage name becomes name.1 in the state version and we take it out there, so do the same here
@@ -130,5 +131,6 @@ get <- function(req, query, level_one, level_two) {
 
   out %>%
     clean_df() %>%
-    purrr::map_dfc(as.character)
+    purrr::map_dfc(as.character) %>%
+    purrr::map_dfc(stringr::str_squish)
 }
