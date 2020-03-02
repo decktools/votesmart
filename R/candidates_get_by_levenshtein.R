@@ -108,6 +108,7 @@ candidates_get_by_levenshtein <- function(last_names,
           election_year = election_year,
           stage_id = stage_id
         ) %>%
+        transform_election_special() %>%
         select(
           candidate_id,
           first_name,

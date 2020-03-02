@@ -14,7 +14,7 @@ rating_get_candidate_ratings(
 \arguments{
 \item{candidate_ids}{A vector of candidate ids.}
 
-\item{sig_ids}{A vector of SIG ids. Default is \code{NA}.}
+\item{sig_ids}{A vector of SIG ids. Default is \code{""} for all SIGs.}
 
 \item{all}{Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?}
 

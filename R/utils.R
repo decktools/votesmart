@@ -4,7 +4,8 @@ clean_df <- function(df) {
       snakecase::to_snake_case
     ) %>%
     as_tibble() %>%
-    na_if("")
+    na_if("") %>%
+    na_if("NA")
 }
 
 clean_html <- function(x,
@@ -48,3 +49,17 @@ elmers <- glue::glue %>>>% as.character
 elmers_message <- elmers %>>>% message
 
 expand_grid <- expand.grid %>>>% as_tibble %>>>% purrr::map_dfc(as.character)
+
+transform_election_special <- function(tbl) {
+  if ("election_special" %in% names(tbl)) {
+    tbl %>%
+      mutate(
+        election_special =
+          case_when(
+            election_special == "f" ~ FALSE,
+            is.na(election_special) ~ NA,
+            TRUE ~ TRUE
+          )
+      )
+  }
+}

@@ -108,6 +108,19 @@ candidates_get_by_office_state <- function(state_ids = NA,
     } else {
       # Turn each element into a tibble and rowbind them
       this %<>%
+        mutate(
+          # Assign office_state_id using the one we provided because sometimes it's incorrectly assigned NA
+          office_state_id = state_id,
+          office_id = office_id,
+          election_year = election_year,
+          election_special =
+            case_when(
+              election_special == "f" ~ FALSE,
+              is.na(election_special) ~ NA,
+              TRUE ~ TRUE
+            )
+        ) %>%
+        select(-state_id) %>%
         select(
           candidate_id,
           first_name,
