@@ -18,7 +18,7 @@ The first step to using the `votesmart` package is to register an API key and st
 
 ```{r setup}
 library(votesmart)
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 ```
 
 ## Get Candidates
@@ -41,7 +41,12 @@ There are a number of non-Barneys returned, so we can next filter our results to
 ```{r}
 (barneys <- 
   franks %>% 
-  filter(first_name == "Barney"))
+  filter(first_name == "Barney") %>% 
+   select(
+     candidate_id, first_name, last_name, 
+     election_year, election_state_id, election_office
+   )
+)
 ```
 
 Each candidate gets their own unique `candidate_id`, which we can `pull` out.
@@ -58,7 +63,7 @@ Each candidate gets their own unique `candidate_id`, which we can `pull` out.
 
 One of the most powerful things about VoteSmart is its wealth of information about candidates' positions on issues as rated by a number of Special Interest Groups, or SIGs.
 
-Given a `candidate_id`, we can ask for those ratings using `rating_get_candidate_ratings` to get a sense of where a candidate stands on a variety of issues.
+Given a `candidate_id`, we can ask for those ratings using `rating_get_candidate_ratings` to get a sense of where a candidate stands on a variety of issues, as scored by a given SIG.
 
 ```{r}
 (barney_ratings <- 
@@ -68,39 +73,19 @@ Given a `candidate_id`, we can ask for those ratings using `rating_get_candidate
       ))
 
 main_cols <- c("rating", "category_name", "sig_id", "timespan")
-
-barney_ratings %>% 
-  arrange(
-    rating
-  ) %>% 
-  select(main_cols)
 ```
 
-Some ratings are tagged with multiple cateogi
-On the environment: 
+Some ratings are tagged with multiple cateogies. We'll filter to Barney's stance on the environment using just the first cateogry name.
+
 
 ```{r}
 (barney_on_env <- 
   barney_ratings %>% 
   filter(category_name == "Environment") %>% 
   select(main_cols))
-
-barney_on_env %>% 
-  summarise(
-    avg_rating = mean(as.numeric(rating), na.rm = TRUE)
-  )
 ```
 
-Keep in mind that these are ratings given by SIGs, which could have very different base stances on issues. For example, a pro-life group might give a candidate a rating of 0 whereas a pro-choice group might give that same candidate a 100.
-
-```{r}
-barney_ratings %>% 
-  filter(category_name == "Abortion") %>% 
-  select(main_cols)
-```
-
-
-Another thing to be aware of is that some ratings are letter grades:
+Something to be aware of is that some ratings are letter grades:
 
 ```{r}
 barney_ratings %>% 
@@ -110,29 +95,85 @@ barney_ratings %>%
   select(main_cols)
 ```
 
-In our `barney_ratings` dataframe, each rating is tied to a `sig_id`.
-
-We can get more information about these SIGs with the funciton `rating_get_sig_list`. That function requires a vector of `category_ids`, however, so let's first get a vector of some `category_ids`.
-
-## Get Categories
+But using just Barney's number grades, we can get his average rating:
 
 ```{r}
-category_df <-
-  rating_get_categories(NA) %>% # NA for national
-  distinct()
+barney_on_env %>% 
+  summarise(
+    avg_rating = mean(as.numeric(rating), na.rm = TRUE)
+  )
+```
+
+
+Keep in mind that these are ratings given by SIGs, which could have very different base stances on issues. For example, a pro-life group might give a candidate a rating of 0 whereas a pro-choice group might give that same candidate a 100.
+
+```{r}
+barney_ratings %>% 
+  filter(category_name == "Abortion") %>% 
+  select(
+    rating, sig_id, category_name
+  )
+```
+
+
+
+## SIGs
+
+We can get more information about these SIGs given their IDs.
+
+```{r}
+# TODO: make this fun
+# rating_get_sig(
+#   barney_ratings %>% 
+#     pull(sig_id) %>% 
+#     unique() %>% 
+#     sample(3)
+# )
+```
+
+Or, if we don't yet have `sig_id`s, we can get a list of SIGs with the funciton `rating_get_sig_list`. That function requires a vector of `category_ids`, however, so let's first get a vector of some `category_ids`.
+
+```{r}
+(category_df <-
+  rating_get_categories(
+    state_ids = NA # NA for national
+  ) %>% 
+  distinct() %>% 
+   sample_n(nrow(.)) # So we can see multiple categories in the 10 rows shown here
+)
 
 category_vec <- unique(category_df$category_id)
 ```
 
-## Get Special Interest Groups
+```{r}
+(some_categories <- category_vec %>% sample(3))
+
+(sigs <- 
+  rating_get_sig_list(
+    category_ids = some_categories,
+    state_ids = NA
+  ) %>% 
+    select(sig_id, name, category_id, state_id)
+)
+```
+
+We already have the category names corresponding to those `category_id`s in our `category_df`.
 
 ```{r}
-sigs <- 
-  rating_get_sig_list(
-    category_vec,
-    NA
+sigs %>% 
+  rename(
+    sig_name = name
+  ) %>% 
+  left_join(
+    category_df,
+    by = c("state_id", "category_id")
+  ) %>% 
+  rename(
+    category_name = name
   )
 ```
+
+
 
 
 
