@@ -141,4 +141,4 @@ data("endpoint_input_mapping_nested")
   
 <br>
 
-Feel free to reach out in the [Issues](https://github.com/decktools/votesmart/issues) with any bugs or feature requests! `emo::ji("dizzy")`
+Feel free to reach out in the [Issues](https://github.com/decktools/votesmart/issues) with any bugs or feature requests! `r emo::ji("dizzy")`

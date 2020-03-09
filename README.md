@@ -158,4 +158,4 @@ or
 
 Feel free to reach out in the
 [Issues](https://github.com/decktools/votesmart/issues) with any bugs or
-feature requests\! `emo::ji("dizzy")`
+feature requests\! 💫
