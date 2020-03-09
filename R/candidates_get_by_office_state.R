@@ -109,6 +109,8 @@ candidates_get_by_office_state <- function(state_ids = NA,
       # Turn each element into a tibble and rowbind them
       this %<>%
         mutate(
+          # Sometimes these are off so set them explicitly
+          election_state_id = state_id,
           office_id = office_id,
           election_year = election_year,
         ) %>%

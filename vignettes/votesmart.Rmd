@@ -1,0 +1,100 @@
+---
+title: "votesmart"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{votesmart}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The first step to using the `votesmart` package is to register an API key and store it in an environment variable by following [these intructions](https://github.com/decktools/votesmart#api-keys).
+
+```{r setup}
+library(votesmart)
+library(dplyr)
+```
+
+
+```{r}
+(franks <- candidates_get_by_lastname("frank", 2000))
+
+barney <- 
+  franks %>% 
+  filter(first_name == "Barney")
+```
+
+## Get Barney's Ratings
+
+```{r}
+(barney_ratings <- 
+  rating_get_candidate_ratings(
+        barney$candidate_id,
+        # All SIGs
+        sig_ids = ""
+      ))
+
+barney_ratings %>% 
+  arrange(
+    rating
+  ) %>% 
+  select(
+    rating, category_name, sig_id
+  )
+```
+
+On the environment: 
+```{r}
+(barney_on_env <- 
+  barney_ratings %>% 
+  filter(category_name == "Environment") %>% 
+  select(rating, category_name, sig_id, timespan))
+
+barney_on_env %>% 
+  summarise(
+    avg_rating = mean(as.numeric(rating), na.rm = TRUE)
+  )
+```
+
+
+Some ratings are letter grades:
+
+```{r}
+main_cols <- c("rating", "category_name", "sig_id", "timespan")
+
+barney_ratings %>% 
+  filter(
+    stringr::str_detect(rating, "[A-Z]")
+  ) %>% 
+  select(main_cols)
+```
+
+
+We can get more information about these SIGs with the funciton `rating_get_sig_list`. That function requires a vector of `category_ids`, however, so let's first get 
+
+## Get Categories
+
+```{r}
+category_df <-
+  rating_get_categories(NA) %>% # NA for national
+  distinct()
+```
+
+## Get Special Interest Groups
+
+```{r}
+sigs <- 
+  rating_get_sig_list(
+    unique(category_df$category_id),
+    NA
+  )
+```
+
+
+
