@@ -21,40 +21,69 @@ library(votesmart)
 library(dplyr)
 ```
 
+## Get Candidates
+
+There are currently three functions for getting information on VoteSmart candidates: `candidates_get_by_lastname`, `candidates_get_by_levenshtein`, and `candidates_get_by_office_state`.
+
+Let's search for former US House Rep [Barney Frank](https://en.wikipedia.org/wiki/Barney_Frank).
+
+The default election year is the current year, so we'll specify a few years in which Barney ran for office. 
 
 ```{r}
-(franks <- candidates_get_by_lastname("frank", 2000))
-
-barney <- 
-  franks %>% 
-  filter(first_name == "Barney")
+(franks <- candidates_get_by_lastname(
+  last_names = "frank", 
+  election_years = c(2000, 2004)
+))
 ```
 
+There are a number of non-Barneys returned, so we can next filter our results to Barney. The two rows returned correspond to the two `election_year`s we specified. 
+
+```{r}
+(barneys <- 
+  franks %>% 
+  filter(first_name == "Barney"))
+```
+
+Each candidate gets their own unique `candidate_id`, which we can `pull` out.
+
+```{r}
+(barney_id <- 
+  barneys %>% 
+  pull(candidate_id) %>% 
+  unique())
+```
+
+
 ## Get Barney's Ratings
+
+One of the most powerful things about VoteSmart is its wealth of information about candidates' positions on issues as rated by a number of Special Interest Groups, or SIGs.
+
+Given a `candidate_id`, we can ask for those ratings using `rating_get_candidate_ratings` to get a sense of where a candidate stands on a variety of issues.
 
 ```{r}
 (barney_ratings <- 
   rating_get_candidate_ratings(
-        barney$candidate_id,
-        # All SIGs
-        sig_ids = ""
+        candidate_ids = barney_id,
+        sig_ids = "" # All SIGs
       ))
+
+main_cols <- c("rating", "category_name", "sig_id", "timespan")
 
 barney_ratings %>% 
   arrange(
     rating
   ) %>% 
-  select(
-    rating, category_name, sig_id
-  )
+  select(main_cols)
 ```
 
+Some ratings are tagged with multiple cateogi
 On the environment: 
+
 ```{r}
 (barney_on_env <- 
   barney_ratings %>% 
   filter(category_name == "Environment") %>% 
-  select(rating, category_name, sig_id, timespan))
+  select(main_cols))
 
 barney_on_env %>% 
   summarise(
@@ -62,12 +91,18 @@ barney_on_env %>%
   )
 ```
 
-
-Some ratings are letter grades:
+Keep in mind that these are ratings given by SIGs, which could have very different base stances on issues. For example, a pro-life group might give a candidate a rating of 0 whereas a pro-choice group might give that same candidate a 100.
 
 ```{r}
-main_cols <- c("rating", "category_name", "sig_id", "timespan")
+barney_ratings %>% 
+  filter(category_name == "Abortion") %>% 
+  select(main_cols)
+```
 
+
+Another thing to be aware of is that some ratings are letter grades:
+
+```{r}
 barney_ratings %>% 
   filter(
     stringr::str_detect(rating, "[A-Z]")
@@ -75,8 +110,9 @@ barney_ratings %>%
   select(main_cols)
 ```
 
+In our `barney_ratings` dataframe, each rating is tied to a `sig_id`.
 
-We can get more information about these SIGs with the funciton `rating_get_sig_list`. That function requires a vector of `category_ids`, however, so let's first get 
+We can get more information about these SIGs with the funciton `rating_get_sig_list`. That function requires a vector of `category_ids`, however, so let's first get a vector of some `category_ids`.
 
 ## Get Categories
 
@@ -84,6 +120,8 @@ We can get more information about these SIGs with the funciton `rating_get_sig_l
 category_df <-
   rating_get_categories(NA) %>% # NA for national
   distinct()
+
+category_vec <- unique(category_df$category_id)
 ```
 
 ## Get Special Interest Groups
@@ -91,7 +129,7 @@ category_df <-
 ```{r}
 sigs <- 
   rating_get_sig_list(
-    unique(category_df$category_id),
+    category_vec,
     NA
   )
 ```
