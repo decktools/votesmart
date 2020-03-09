@@ -243,5 +243,5 @@ sigs %>%
 
 ***
 
-For more info or to report a bug to VoteSmart, please refer to the [VoteSmart API docs](http://api.votesmart.org/docs/index.html)! `r emo::ji("milky_way")`
+For more info or to report a bug to VoteSmart, please refer to the [VoteSmart API docs](http://api.votesmart.org/docs/index.html)! 
 
