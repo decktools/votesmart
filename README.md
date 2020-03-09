@@ -129,7 +129,8 @@ and a `year` the vote occurred (optional)
 
 ## Package Data
 
-Not all endpoints are yet available through this package.
+Not all VoteSmart endpoints have yet been made available through this
+package.
 
 You can see a full dataframe of the VoteSmart endpoints and their
 associated arguments with
@@ -140,17 +141,20 @@ or
 
     data("endpoint_input_mapping_nested")
 
-If you’d like a certain endpoint to be integrated into this pacage, feel
-free to submit a [pull
+If you’d like a certain endpoint to be integrated into this package,
+feel free to submit a [pull
 request](https://github.com/decktools/votesmart/pulls) or an
 [issue](https://github.com/decktools/votesmart/issues)\!
 
 ## Other Details
 
-This package currently contains no rate limiting infrastructure as there
-is very little information about what rate limits there are, if any.
+  - This package currently contains no rate limiting infrastructure as
+    there is very little information about what rate limits VoteSmart
+    imposes, if any
 
-The VoteSmart API does not allow for bulk requests, i.e. a single
-request can only contain one value for each parameter. The funcitons in
-this package allow multiple inputs to be specified for each argument,
-but requests are sent one at a time for each combination of inputs.
+  - The VoteSmart API does not allow for bulk requests, i.e. a single
+    request can only contain one value for each parameter
+    
+      - The funcitons in this package allow multiple inputs to be
+        specified for each argument, but requests are sent one at a time
+        for each combination of inputs

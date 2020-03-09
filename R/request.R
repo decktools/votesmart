@@ -111,7 +111,6 @@ get <- function(req, query, level_one, level_two) {
       idx <- which(names(lst) == "generalInfo")
       lst <- lst[-idx]
     }
-
   } else {
     lst <-
       # Data is contained two levels down. These have different names for each endpoint.

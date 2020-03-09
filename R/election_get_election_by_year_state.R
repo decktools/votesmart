@@ -13,7 +13,8 @@
 #' \dontrun{
 #' election_get_election_by_year_state(years = c(2016, 2017))
 #' }
-election_get_election_by_year_state <- function(years = lubridate::year(lubridate::today()),
+election_get_election_by_year_state <- function(years =
+  lubridate::year(lubridate::today()),
   state_ids = "",
   all = TRUE,
   verbose = TRUE) {

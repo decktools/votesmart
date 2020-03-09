@@ -15,7 +15,7 @@
 #'   rating_get_sig()
 #' }
 rating_get_sig <- function(sig_ids,
-                                verbose = TRUE) {
+  verbose = TRUE) {
   sig_ids %<>%
     as_char_vec()
 
