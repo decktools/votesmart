@@ -9,8 +9,6 @@
 
 [![Travis build
 status](https://travis-ci.org/decktools/votesmart.svg?branch=master)](https://travis-ci.org/decktools/votesmart)
-[![Codecov test
-coverage](https://codecov.io/gh/decktools/votesmart/branch/master/graph/badge.svg)](https://codecov.io/gh/decktools/votesmart?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.org/package=votesmart)
 <!-- badges: end -->
@@ -19,7 +17,9 @@ status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.
 
 This package is a wrapper around the
 [VoteSmart](https://justfacts.votesmart.org/)
-[API](http://api.votesmart.org/docs/).
+[API](http://api.votesmart.org/docs/) provided by your friendly
+neighborhood progressive tech organization, [Deck
+Technologies](https://www.deck.tools/).
 
 VoteSmart provides information on US political candidates’ positions on
 issues, votes on bills, and ratings by third party organizations, among
@@ -52,7 +52,7 @@ This key is never stored in your R session’s global environment.
 [endpoints](http://api.votesmart.org/docs/).*
 
 **If you see an endpoint you want to be made available in this package
-that isn’t yet, submit an
+that isn’t yet, feel free to submit an
 [issue](https://github.com/decktools/votesmart/issues) or a [pull
 request](https://github.com/decktools/votesmart/pulls)\!**
 
@@ -68,7 +68,7 @@ For some examples, check out the vignette with:
 
 <br>
 
-Below is a summary of the functions currently available.
+#### Summary of Functions
 
 **`candidates_get_by_last_name`**
 
@@ -141,11 +141,6 @@ or
 
     data("endpoint_input_mapping_nested")
 
-If you’d like a certain endpoint to be integrated into this package,
-feel free to submit a [pull
-request](https://github.com/decktools/votesmart/pulls) or an
-[issue](https://github.com/decktools/votesmart/issues)\!
-
 ## Other Details
 
   - This package currently contains no rate limiting infrastructure as
@@ -158,3 +153,9 @@ request](https://github.com/decktools/votesmart/pulls) or an
       - The funcitons in this package allow multiple inputs to be
         specified for each argument, but requests are sent one at a time
         for each combination of inputs
+
+<br>
+
+Feel free to reach out in the
+[Issues](https://github.com/decktools/votesmart/issues) with any bugs or
+feature requests\! `emo::ji("dizzy")`
