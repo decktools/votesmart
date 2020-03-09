@@ -12,7 +12,7 @@
 #'
 #' \dontrun{
 #' rating_get_categories() %>%
-#'   pull(category_id) %>%
+#'   dplyr::pull(category_id) %>%
 #'   sample(3) %>%
 #'   rating_get_sig_list()
 #' }

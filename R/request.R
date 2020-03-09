@@ -103,9 +103,20 @@ get <- function(req, query, level_one, level_two) {
 
   raw <- request(url)
 
-  lst <-
-    # Data is contained two levels down. These have different names for each endpoint.
-    raw[[level_one]][[level_two]]
+  if (is.na(level_two)) {
+    lst <-
+      raw[[level_one]]
+
+    if ("generalInfo" %in% names(lst)) {
+      idx <- which(names(lst) == "generalInfo")
+      lst <- lst[-idx]
+    }
+
+  } else {
+    lst <-
+      # Data is contained two levels down. These have different names for each endpoint.
+      raw[[level_one]][[level_two]]
+  }
 
   # We've gotten an error that there's no data
   if (is.null(lst)) {
@@ -117,6 +128,7 @@ get <- function(req, query, level_one, level_two) {
     out <-
       lst %>%
       as_tibble()
+
     # Otherwise there are multiple rows
   } else {
     out <-

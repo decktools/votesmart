@@ -25,9 +25,6 @@ VoteSmart provides information on US political candidates’ positions on
 issues, votes on bills, and ratings by third party organizations, among
 other data.
 
-This package currently contains no rate limiting infrastructure as there
-is very little information about what rate limits there are, if any.
-
 ## Installation
 
 ``` r
@@ -64,6 +61,12 @@ might want. For instance, in order to get candidates’ ratings by SIGs,
 you’ll need to get `office_level_id`s in order to get `office_id`s,
 which is a required argument to get candidate information using
 `candidates_get_by_office_state`.
+
+For some examples, check out the vignette with:
+
+    vignette("votesmart")
+
+<br>
 
 Below is a summary of the functions currently available.
 
@@ -108,6 +111,11 @@ Get SIG (Special Interest Group) ratings for candidates given a
 Get rating `category_id`s and their associated `name`s (e.g.
 `"Abortion"`, `"Environment"`) given a vector of `state_id`s (optional)
 
+**`rating_get_sig`**
+
+Get information about a vector of SIGs (Special Interest Groups) given a
+`sig_id`
+
 **`rating_get_sig_list`**
 
 Get a dataframe of SIG (Special Interest Group) given a rating
@@ -136,3 +144,13 @@ If you’d like a certain endpoint to be integrated into this pacage, feel
 free to submit a [pull
 request](https://github.com/decktools/votesmart/pulls) or an
 [issue](https://github.com/decktools/votesmart/issues)\!
+
+## Other Details
+
+This package currently contains no rate limiting infrastructure as there
+is very little information about what rate limits there are, if any.
+
+The VoteSmart API does not allow for bulk requests, i.e. a single
+request can only contain one value for each parameter. The funcitons in
+this package allow multiple inputs to be specified for each argument,
+but requests are sent one at a time for each combination of inputs.

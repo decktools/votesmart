@@ -27,8 +27,6 @@ This package is a wrapper around the [VoteSmart](https://justfacts.votesmart.org
 
 VoteSmart provides information on US political candidates' positions on issues, votes on bills, and ratings by third party organizations, among other data.
 
-This package currently contains no rate limiting infrastructure as there is very little information about what rate limits there are, if any.
-
 
 ## Installation
 
@@ -62,6 +60,14 @@ This key is never stored in your R session's global environment.
 
 Some of these functions are necessary precursors to obtain data you might want. For instance, in order to get candidates' ratings by SIGs, you'll need to get `office_level_id`s in order to get `office_id`s, which is a required argument to get candidate information using `candidates_get_by_office_state`.
 
+For some examples, check out the vignette with:
+
+```
+vignette("votesmart")
+```
+
+<br>
+
 Below is a summary of the functions currently available.
 
 **`candidates_get_by_last_name`**
@@ -88,7 +94,6 @@ Get the VoteSmart `office_level_id`s and their associated names (federal, state,
 
 Get `office_id`s and their associated names (e.g. `"President"`) for a given `office_level_id`
 
-
 **`rating_get_candidate_rating`** 
 
 Get SIG (Special Interest Group) ratings for candidates given a `candidate_id` and a `sig_id` (optional)
@@ -97,6 +102,10 @@ Get SIG (Special Interest Group) ratings for candidates given a `candidate_id` a
 **`rating_get_categories`**
 
 Get rating `category_id`s and their associated `name`s (e.g. `"Abortion"`, `"Environment"`) given a vector of `state_id`s (optional)
+
+**`rating_get_sig`**
+
+Get information about a vector of SIGs (Special Interest Groups) given a `sig_id`
 
 
 **`rating_get_sig_list`**
@@ -125,3 +134,10 @@ data("endpoint_input_mapping_nested")
 ```
 
 If you'd like a certain endpoint to be integrated into this pacage, feel free to submit a [pull request](https://github.com/decktools/votesmart/pulls) or an [issue](https://github.com/decktools/votesmart/issues)!
+
+
+## Other Details
+
+This package currently contains no rate limiting infrastructure as there is very little information about what rate limits there are, if any.
+
+The VoteSmart API does not allow for bulk requests, i.e. a single request can only contain one value for each parameter. The funcitons in this package allow multiple inputs to be specified for each argument, but requests are sent one at a time for each combination of inputs.
