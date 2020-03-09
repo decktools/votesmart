@@ -19,11 +19,6 @@ rating_get_sig <- function(sig_ids,
   sig_ids %<>%
     as_char_vec()
 
-  rating_get_sig_list(2) %>%
-    dplyr::pull(sig_id) %>%
-    sample(3) %>%
-    rating_get_sig()
-
   query_df <-
     tibble(
       sig_id = sig_ids

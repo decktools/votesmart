@@ -14,20 +14,48 @@ knitr::opts_chunk$set(
 )
 ```
 
-The first step to using the `votesmart` package is to register an API key and store it in an environment variable by following [these intructions](https://github.com/decktools/votesmart#api-keys).
+```{r, include = FALSE}
+Sys.setenv(VOTESMART_API_KEY = bonanza::secrets.get("VOTESMART_API_KEY"))
+```
+
 
 ```{r setup}
 library(votesmart)
 suppressPackageStartupMessages(library(dplyr))
+
+conflicted::conflict_prefer("filter", "dplyr") # Prefer dplyr::filter over stats::filter
 ```
+
+The first step to using the `votesmart` package is to register an API key and store it in an environment variable by following [these intructions](https://github.com/decktools/votesmart#api-keys).
+
+Let's make sure our API key is set. If it's not, the result of `Sys.getenv("VOTESMART_API_KEY")` will be `""` (i.e. a string of `nchar` 0).
+
+```{r}
+key <- Sys.getenv("VOTESMART_API_KEY")
+
+nchar(key) > 0
+```
+
 
 ## Get Candidates
 
 There are currently three functions for getting information on VoteSmart candidates: `candidates_get_by_lastname`, `candidates_get_by_levenshtein`, and `candidates_get_by_office_state`.
 
-Let's search for former US House Rep [Barney Frank](https://en.wikipedia.org/wiki/Barney_Frank).
+Let's search for former US House Rep [Barney Frank](https://en.wikipedia.org/wiki/Barney_Frank) using `candidates_get_by_lastname`.
 
-The default election year is the current year, so we'll specify a few years in which Barney ran for office. 
+From `?candidates_get_by_lastname`, this function's defaults are:
+
+```
+candidates_get_by_lastname(
+  last_names,
+  election_years = lubridate::year(lubridate::today()),
+  stage_ids = "",
+  all = TRUE,
+  verbose = TRUE
+)
+```
+
+Since the default election year is the current year, we'll specify a few years in which Barney ran for office. 
 
 ```{r}
 (franks <- candidates_get_by_lastname(
@@ -36,7 +64,7 @@ The default election year is the current year, so we'll specify a few years in w
 ))
 ```
 
-There are a number of non-Barneys returned, so we can next filter our results to Barney. The two rows returned correspond to the two `election_year`s we specified. 
+Looking at the `first_name` column, are a number of non-Barneys returned. We can next filter our results to Barney. The two rows returned correspond to the two `election_year`s we specified. 
 
 ```{r}
 (barneys <- 
@@ -122,13 +150,15 @@ barney_ratings %>%
 We can get more information about these SIGs given their IDs.
 
 ```{r}
-# TODO: make this fun
-# rating_get_sig(
-#   barney_ratings %>% 
-#     pull(sig_id) %>% 
-#     unique() %>% 
-#     sample(3)
-# )
+some_sigs <- 
+  barney_ratings %>%
+    pull(sig_id) %>%
+    unique() %>%
+    sample(3)
+
+rating_get_sig(
+  sig_ids = some_sigs
+)
 ```
 
 Or, if we don't yet have `sig_id`s, we can get a list of SIGs with the funciton `rating_get_sig_list`. That function requires a vector of `category_ids`, however, so let's first get a vector of some `category_ids`.

@@ -7,7 +7,7 @@
 #'
 #' @param last_names Vector of candidate last names
 #' @param election_years Vector of election years. Default is the current year.
-#' @param stage_ids The \code{stage_id} of the election (see \code{election_get_stage_candidates} endpoint).
+#' @param stage_ids The \code{stage_id} of the election (\code{"P"} for primary or \code{"G"} for general). See also \code{\link{election_get_election_by_year_state}}.
 #' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
 #' @param verbose Should cases when no data is available be messaged?
 #'

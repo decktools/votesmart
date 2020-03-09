@@ -5,7 +5,12 @@ clean_df <- function(df) {
     ) %>%
     as_tibble() %>%
     na_if("") %>%
-    na_if("NA")
+    na_if("NA") %>%
+    # Remove \"s
+    purrr::map_dfc(
+      stringr::str_remove_all,
+      '\\\"'
+    )
 }
 
 clean_html <- function(x,

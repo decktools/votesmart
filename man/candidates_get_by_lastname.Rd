@@ -17,7 +17,7 @@ candidates_get_by_lastname(
 
 \item{election_years}{Vector of election years. Default is the current year.}
 
-\item{stage_ids}{The \code{stage_id} of the election (see \code{Election.getStageCandidates} endpoint).}
+\item{stage_ids}{The \code{stage_id} of the election (\code{"P"} for primary or \code{"G"} for general). See also \code{\link{election_get_election_by_year_state}}.}
 
 \item{all}{Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?}
 

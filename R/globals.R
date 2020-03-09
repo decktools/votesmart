@@ -6,6 +6,7 @@ globalVariables(
     "bill_number",
     "candidate_id",
     "categories",
+    "description",
     "election_electionstage_id",
     "election_id",
     "election_year",

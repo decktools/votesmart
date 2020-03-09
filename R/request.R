@@ -72,15 +72,15 @@ get_election <- function(req, query) {
     out <-
       lst %>%
       as_tibble() %>%
-      clean_df() %>%
+      tidyr::unnest(stage) %>%
       rename(
         state_id_parent = state_id
       ) %>%
-      tidyr::unnest(stage) %>%
       select(
         # This isn't in the state equivalent
         -state_id_parent
-      )
+      ) %>%
+      clean_df()
   } else {
     out <-
       lst %>%
