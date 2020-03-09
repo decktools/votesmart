@@ -32,6 +32,7 @@ Imports:
 Suggests: 
     conflicted,
     covr,
+    emo,
     knitr,
     rmarkdown,
     testthat (>= 2.1.0)

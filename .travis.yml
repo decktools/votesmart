@@ -1,18 +1,6 @@
 language: R
 cache: packages
 
-stages:
-  - name: test
-    if: branch != master
-  - name: test and deploy
-    if: branch = master
-
-jobs:
-  include:
-    - stage: test
-      after_success: skip
-    - stage: test and deploy
-
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
   provider: script
