@@ -44,6 +44,12 @@ conflicted::conflict_prefer("filter", "dplyr")
 
 <br>
 
+### Motivation
+
+Some of these functions are necessary precursors to obtain data you might want. For instance, in order to get candidates' ratings by SIGs, you'll need to get `office_level_id`s in order to get `office_id`s, which is a required argument to get candidate information using `candidates_get_by_office_state`. We'll go through what might be a typical example of how you might use the `votesmart` package.
+
+<br>
+
 ## Get Candidate Info
 
 There are currently three functions for getting data on VoteSmart candidates: `candidates_get_by_lastname`, `candidates_get_by_levenshtein`, and `candidates_get_by_office_state`.

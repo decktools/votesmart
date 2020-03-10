@@ -13,25 +13,28 @@ status](https://travis-ci.org/decktools/votesmart.svg?branch=master)](https://tr
 status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.org/package=votesmart)
 <!-- badges: end -->
 
-# votesmart
+# votesmart <img src="./img/deck_logo.png" alt="deck" height="35px" align="right" />
+
+<!-- # votesmart -->
 
 This package is a wrapper around the
 [VoteSmart](https://justfacts.votesmart.org/)
 [API](http://api.votesmart.org/docs/) provided by your friendly
-neighborhood progressive tech organization, [Deck
-Technologies](https://www.deck.tools/).
+neighborhood progressive tech organization, 🌟 [*Deck
+Technologies*](https://www.deck.tools/) 🌟. Feel free to use this package
+in any way you like.
 
 VoteSmart provides information on US political candidates’ positions on
 issues, votes on bills, and ratings by third party organizations, among
 other data.
 
-## Installation
+### Installation
 
 ``` r
 devtools::install_github("decktools/votesmart")
 ```
 
-## API Keys
+### API Keys
 
 You’ll need a VoteSmart API key in order to use this package. You can
 register for one [here](https://votesmart.org/share/api#.XjxqEjJKjOQ).
@@ -46,7 +49,7 @@ You can check that it’s there with
 
 This key is never stored in your R session’s global environment.
 
-## Available Functions
+### Available Functions
 
 *These functions are named after the `snake_case`d version of the API
 [endpoints](http://api.votesmart.org/docs/).*
@@ -56,17 +59,9 @@ that isn’t yet, feel free to submit an
 [issue](https://github.com/decktools/votesmart/issues) or a [pull
 request](https://github.com/decktools/votesmart/pulls)\!**
 
-Some of these functions are necessary precursors to obtain data you
-might want. For instance, in order to get candidates’ ratings by SIGs,
-you’ll need to get `office_level_id`s in order to get `office_id`s,
-which is a required argument to get candidate information using
-`candidates_get_by_office_state`.
-
-For some examples, check out the vignette with:
+For examples of how these all fit together, check out the vignette with:
 
     vignette("votesmart")
-
-<br>
 
 #### Summary of Functions
 
@@ -127,10 +122,10 @@ Get a dataframe of the way officials have voted on bills given a
 `candidate_id`, an `office_id` (optional), a `category_id` (optional)
 and a `year` the vote occurred (optional)
 
-## Package Data
+#### Package Data
 
-Not all VoteSmart endpoints have yet been made available through this
-package.
+Only a subset of all of the VoteSmart endpoints have yet been made
+available through this package.
 
 You can see a full dataframe of the VoteSmart endpoints and their
 associated arguments with
@@ -141,7 +136,7 @@ or
 
     data("endpoint_input_mapping_nested")
 
-## Other Details
+### Other Details
 
   - This package currently contains no rate limiting infrastructure as
     there is very little information about what rate limits VoteSmart
