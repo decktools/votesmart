@@ -7,7 +7,7 @@ output: github_document
 </p>
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/decktools/votesmart.svg?branch=master)](https://travis-ci.org/decktools/votesmart)
+[![Travis build status](https://travis-ci.com/decktools/votesmart.svg?token=G3ZELzKsL1syAMRqs54K&branch=master)](https://travis-ci.com/decktools/votesmart.svg?token=G3ZELzKsL1syAMRqs54K&branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.org/package=votesmart)
 <!-- badges: end -->
 
@@ -139,7 +139,7 @@ data("endpoint_input_mapping_nested")
 * This package currently contains no rate limiting infrastructure as there is very little information about what rate limits VoteSmart imposes, if any
 
 * The VoteSmart API does not allow for bulk requests, i.e. a single request can only contain one value for each parameter
-  * The funcitons in this package allow multiple inputs to be specified for each argument, but requests are sent one at a time for each combination of inputs
+  * The functions in this package allow multiple inputs to be specified for each argument, but requests are sent one at a time for each combination of inputs
   
 <br>
 

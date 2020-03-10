@@ -145,7 +145,7 @@ or
   - The VoteSmart API does not allow for bulk requests, i.e. a single
     request can only contain one value for each parameter
     
-      - The funcitons in this package allow multiple inputs to be
+      - The functions in this package allow multiple inputs to be
         specified for each argument, but requests are sent one at a time
         for each combination of inputs
 

@@ -25,7 +25,7 @@ if ("bonanza" %in% installed.packages() && nchar(Sys.getenv("VOTESMART_API_KEY")
 library(votesmart)
 ```
 
-The first step to using the `votesmart` package is to register an API key and store it in an environment variable by following [these intructions](https://github.com/decktools/votesmart#api-keys).
+The first step to using the `votesmart` package is to register an API key and store it in an environment variable by following [these instructions](https://github.com/decktools/votesmart#api-keys).
 
 Let's make sure our API key is set. 
 
@@ -122,13 +122,13 @@ Given a `candidate_id`, we can ask for those ratings using `rating_get_candidate
 )
 ```
 
-There are a lot of columns here because some ratings are tagged with multiple cateogies. 
+There are a lot of columns here because some ratings are tagged with multiple categories. 
 
 ```{r}
 main_cols <- c("rating", "category_name", "sig_id", "timespan")
 ```
 
-We'll filter to Barney's ratings on the environment using just the first cateogry name.
+We'll filter to Barney's ratings on the environment using just the first category name.
 
 ```{r}
 (barney_on_env <- 
@@ -195,7 +195,7 @@ rating_get_sig(
 
 <br>
 
-Or, if we don't yet know any `sig_id`s, we can get a dataframe of them with the funciton `rating_get_sig_list`. 
+Or, if we don't yet know any `sig_id`s, we can get a dataframe of them with the function `rating_get_sig_list`. 
 
 That function requires a vector of issue `category_ids`, however, so let's first get a vector of some `category_ids`.
 
