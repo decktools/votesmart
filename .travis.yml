@@ -16,5 +16,5 @@ notifications:
 
 branches:
   only:
-  - master
   - gh-pages
+  - /.*/
