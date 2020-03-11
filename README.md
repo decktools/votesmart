@@ -7,18 +7,17 @@
 
 <!-- badges: start -->
 
-<https://travis-ci.com/decktools/votesmart.svg?token=G3ZELzKsL1syAMRqs54K&branch=master>
+[![Travis build
+status](https://travis-ci.com/decktools/votesmart.svg?token=G3ZELzKsL1syAMRqs54K&branch=master)](https://travis-ci.com/decktools/votesmart)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.org/package=votesmart)
 <!-- badges: end -->
 
 # votesmart <img src="./man/img/deck_logo.png" alt="deck" height="35px" align="right" />
 
-<!-- # votesmart -->
-
 This package is a wrapper around the
 [VoteSmart](https://justfacts.votesmart.org/)
-[API](http://api.votesmart.org/docs/) provided by your friendly
+[API](http://api.votesmart.org/docs/) written by your friendly
 neighborhood progressive tech organization, 🌟 [*Deck
 Technologies*](https://www.deck.tools/) 🌟. Feel free to use this package
 in any way you like.
@@ -30,7 +29,7 @@ other data.
 ### Installation
 
 ``` r
-devtools::install_github("decktools/votesmart")
+devtools::install_github("decktools/votesmart", build_vignettes = TRUE)
 ```
 
 ### API Keys
