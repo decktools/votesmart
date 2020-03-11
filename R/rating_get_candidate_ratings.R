@@ -105,7 +105,10 @@ rating_get_candidate_ratings <- function(candidate_ids,
         distinct(value, .keep_all = TRUE) %>%
         tidyr::drop_na(value) %>%
         # Rename categories now that we've deduped
-        mutate(name = elmers("category_{row_number()}")) %>%
+        mutate(
+          name = elmers("category_name_{row_number()}"),
+          value = elmers("category_id_{row_number()}")
+        ) %>%
         # Back to wide format
         tidyr::pivot_wider() %>%
         ungroup() %>%
