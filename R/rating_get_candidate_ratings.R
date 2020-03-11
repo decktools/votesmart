@@ -99,6 +99,18 @@ rating_get_candidate_ratings <- function(candidate_ids,
           stringr::str_remove,
           "_category"
         ) %>%
+        # Distinct all the category values which are sometimes doubled up
+        tidyr::pivot_longer(contains("category")) %>%
+        group_by(rating_id) %>%
+        distinct(value, .keep_all = TRUE) %>%
+        tidyr::drop_na(value) %>%
+        # Rename categories now that we've deduped
+        mutate(
+          name = elmers("category_name_{row_number()}")
+        ) %>%
+        # Back to wide format
+        tidyr::pivot_wider() %>%
+        ungroup() %>%
         select(
           rating_id,
           candidate_id,
