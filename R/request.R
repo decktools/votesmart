@@ -143,5 +143,6 @@ get <- function(req, query, level_one, level_two) {
   out %>%
     clean_df() %>%
     purrr::map_dfc(as.character) %>%
-    purrr::map_dfc(stringr::str_squish)
+    purrr::map_dfc(stringr::str_squish) %>%
+    na_if("")
 }
