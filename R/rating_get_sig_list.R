@@ -5,7 +5,7 @@
 #' @param all Boolean: should all possible combinations of the variables be searched for, or just the exact combination of them in the order they are supplied?
 #' @param verbose Should cases when no data is available be messaged?
 #'
-#' @return A dataframe with the columns \code{sig_id, name, category_id, state_id, parent_id}.
+#' @return A dataframe with the columns \code{sig_id, name, category_id, state_id}.
 #' @export
 #'
 #' @examples
@@ -101,7 +101,7 @@ rating_get_sig_list <- function(category_ids,
           state_id = state_id
         ) %>%
         select(
-          sig_id, name, category_id, state_id, parent_id
+          sig_id, name, category_id, state_id
         )
     }
 

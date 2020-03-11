@@ -7,13 +7,12 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/decktools/votesmart.svg?branch=master)](https://travis-ci.org/decktools/votesmart)
+<https://travis-ci.com/decktools/votesmart.svg?token=G3ZELzKsL1syAMRqs54K&branch=master>
 [![CRAN
 status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.org/package=votesmart)
 <!-- badges: end -->
 
-# votesmart <img src="./img/deck_logo.png" alt="deck" height="35px" align="right" />
+# votesmart <img src="./man/img/deck_logo.png" alt="deck" height="35px" align="right" />
 
 <!-- # votesmart -->
 
@@ -65,10 +64,11 @@ For examples of how these all fit together, check out the vignette with:
 
 #### Summary of Functions
 
-**`candidates_get_by_last_name`**
+**`candidates_get_by_lastname`**
 
 Get a dataframe of candidates given a vector of `last_name`s,
-`election_year`s (optional), and `stage_id`s (optional)
+`election_year`s (optional, defaulting to current year), and `stage_id`s
+(optional)
 
 **`candidates_get_by_levenshtein`**
 
@@ -96,7 +96,7 @@ Get the VoteSmart `office_level_id`s and their associated names
 Get `office_id`s and their associated names (e.g. `"President"`) for a
 given `office_level_id`
 
-**`rating_get_candidate_rating`**
+**`rating_get_candidate_ratings`**
 
 Get SIG (Special Interest Group) ratings for candidates given a
 `candidate_id` and a `sig_id` (optional)
