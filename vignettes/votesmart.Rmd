@@ -14,13 +14,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r, include = FALSE}
-if ("bonanza" %in% installed.packages() && nchar(Sys.getenv("VOTESMART_API_KEY")) == 0) {
-  Sys.setenv(VOTESMART_API_KEY = bonanza::secrets.get("VOTESMART_API_KEY"))
-}
-```
-
-
 ```{r setup}
 library(votesmart)
 ```
@@ -125,7 +118,7 @@ Given a `candidate_id`, we can ask for those ratings using `rating_get_candidate
 There are a lot of columns here because some ratings are tagged with multiple categories. 
 
 ```{r}
-main_cols <- c("rating", "category_name", "sig_id", "timespan")
+main_cols <- c("rating", "category_name_1", "sig_id", "timespan")
 ```
 
 We'll filter to Barney's ratings on the environment using just the first category name.
@@ -133,7 +126,7 @@ We'll filter to Barney's ratings on the environment using just the first categor
 ```{r}
 (barney_on_env <- 
   barney_ratings %>% 
-  filter(category_name == "Environment") %>% 
+  filter(category_name_1 == "Environment") %>% 
   select(main_cols)
 )
 ```
@@ -145,7 +138,7 @@ barney_ratings %>%
   filter(
     stringr::str_detect(rating, "[A-Z]")
   ) %>% 
-  select(rating, category_name)
+  select(rating, category_name_1)
 ```
 
 But using just Barney's number grades, we can get his average rating on this category per `timespan`:
@@ -164,9 +157,9 @@ Keep in mind that these are ratings given by SIGs, which often have very differe
 
 ```{r}
 barney_ratings %>% 
-  filter(category_name == "Abortion") %>% 
+  filter(category_name_1 == "Abortion") %>% 
   select(
-    rating, sig_id, category_name
+    rating, sig_id, category_name_1
   )
 ```
 
