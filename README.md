@@ -57,9 +57,101 @@ that isn’t yet, feel free to submit an
 [issue](https://github.com/decktools/votesmart/issues) or a [pull
 request](https://github.com/decktools/votesmart/pulls)\!**
 
-For examples of how these all fit together, check out the vignette with:
+For more in-depth examples of how these all fit together, check out the
+vignette with:
 
     vignette("votesmart")
+
+A short example:
+
+``` r
+library(votesmart)
+
+(warrens <- candidates_get_by_lastname("warren", election_years = 2012))
+#> Requesting data for {last_name: warren, election_year: 2012, stage_id: }.
+#> # A tibble: 8 x 32
+#>   candidate_id first_name nick_name middle_name last_name suffix title
+#>   <chr>        <chr>      <chr>     <chr>       <chr>     <chr>  <chr>
+#> 1 139104       Adam       <NA>      Lee         Warren    <NA>   <NA> 
+#> 2 103860       Dennis     <NA>      <NA>        Warren    <NA>   <NA> 
+#> 3 141272       Elizabeth  <NA>      Ann         Warren    <NA>   Sena…
+#> 4 117839       Harry      <NA>      Joseph      Warren    <NA>   Repr…
+#> 5 138202       Pete       <NA>      <NA>        Warren    <NA>   <NA> 
+#> 6 137066       Stephen    <NA>      <NA>        Warren    <NA>   <NA> 
+#> 7 135832       Tom        <NA>      <NA>        Warren    <NA>   <NA> 
+#> 8 139311       Wesley     <NA>      G.          Warren    <NA>   <NA> 
+#> # … with 25 more variables: ballot_name <chr>, stage_id <chr>,
+#> #   election_year <chr>, preferred_name <chr>, election_parties <chr>,
+#> #   election_status <chr>, election_stage <chr>, election_district_id <chr>,
+#> #   election_district_name <chr>, election_office <chr>,
+#> #   election_office_id <chr>, election_state_id <chr>,
+#> #   election_office_type_id <chr>, election_special <lgl>, election_date <chr>,
+#> #   office_parties <chr>, office_status <chr>, office_district_id <chr>,
+#> #   office_district_name <chr>, office_state_id <chr>, office_id <chr>,
+#> #   office_name <chr>, office_type_id <chr>, running_mate_id <chr>,
+#> #   running_mate_name <chr>
+```
+
+Taking Elizabeth Warren’s `candidate_id`, we can see how she’s rated by
+SIGs on a variety of issues.
+
+``` r
+(id <- 
+  warrens %>% 
+  filter(first_name == "Elizabeth") %>% 
+  pull(candidate_id)
+)
+#> [1] "141272"
+
+(ratings <- 
+  rating_get_candidate_ratings(
+    candidate_ids = id,
+  )
+)
+#> Requesting data for {candidate_id: 141272, sig_id: }.
+#> # A tibble: 514 x 17
+#>    rating_id candidate_id sig_id rating rating_name timespan rating_text
+#>    <chr>     <chr>        <chr>  <chr>  <chr>       <chr>    <chr>      
+#>  1 11196     141272       2884   74     Presidenti… 2020     Senator El…
+#>  2 11199     141272       2709   100    Climate Te… 2020     Senator El…
+#>  3 11366     141272       101    90     Positions … 2020     Senator El…
+#>  4 11438     141272       2804   83     Presidenti… 2020     Senator El…
+#>  5 11450     141272       2884   85     Presidenti… 2020     <NA>       
+#>  6 11452     141272       2884   87     Presidenti… 2020     Senator El…
+#>  7 11504     141272       2859   80     Climate Sc… 2020     Senator El…
+#>  8 11601     141272       2811   95     Presidenti… 2020     Senator El…
+#>  9 11629     141272       2983   62     Presidenti… 2020     Senator El…
+#> 10 11422     141272       2167   92     Positions … 2019-20… <NA>       
+#> # … with 504 more rows, and 10 more variables: category_name_1 <chr>,
+#> #   category_name_2 <chr>, category_name_3 <chr>, category_name_4 <chr>,
+#> #   category_name_5 <chr>, category_name_6 <chr>, category_name_7 <chr>,
+#> #   category_name_8 <chr>, category_name_9 <chr>, category_name_10 <chr>
+```
+
+``` r
+ratings %>% 
+  filter(
+    category_name_2 %in% 
+      c("Environment", 
+        "Fiscally Conservative",
+        "Education", 
+        "Civil Liberties and Civil Rights", 
+        "Campaign Finance") 
+  ) %>% 
+  group_by(category_name_2) %>% 
+  summarise(
+    avg_rating = mean(as.numeric(rating), na.rm = TRUE)
+  ) %>% 
+  arrange(category_name_2)
+#> # A tibble: 5 x 2
+#>   category_name_2                  avg_rating
+#>   <chr>                                 <dbl>
+#> 1 Campaign Finance                     100   
+#> 2 Civil Liberties and Civil Rights      84.5 
+#> 3 Education                             82.5 
+#> 4 Environment                           91.1 
+#> 5 Fiscally Conservative                  9.58
+```
 
 #### Summary of Functions
 

@@ -16,7 +16,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  cache = TRUE
 )
 ```
 
@@ -59,10 +60,58 @@ This key is never stored in your R session's global environment.
 
 **If you see an endpoint you want to be made available in this package that isn't yet, feel free to submit an [issue](https://github.com/decktools/votesmart/issues) or a [pull request](https://github.com/decktools/votesmart/pulls)!**
 
-For examples of how these all fit together, check out the vignette with:
+For more in-depth examples of how these all fit together, check out the vignette with:
 
 ```
 vignette("votesmart")
+```
+
+A short example:
+
+```{r, include=FALSE}
+if ("bonanza" %in% installed.packages()) {
+  Sys.setenv(VOTESMART_API_KEY = bonanza::secrets.get("VOTESMART_API_KEY"))
+}
+```
+
+
+```{r}
+library(votesmart)
+
+(warrens <- candidates_get_by_lastname("warren", election_years = 2012))
+```
+
+Taking Elizabeth Warren's `candidate_id`, we can see how she's rated by SIGs on a variety of issues.
+
+```{r}
+(id <- 
+  warrens %>% 
+  filter(first_name == "Elizabeth") %>% 
+  pull(candidate_id)
+)
+
+(ratings <- 
+  rating_get_candidate_ratings(
+    candidate_ids = id,
+  )
+)
+```
+
+```{r}
+ratings %>% 
+  filter(
+    category_name_2 %in% 
+      c("Environment", 
+        "Fiscally Conservative",
+        "Education", 
+        "Civil Liberties and Civil Rights", 
+        "Campaign Finance") 
+  ) %>% 
+  group_by(category_name_2) %>% 
+  summarise(
+    avg_rating = mean(as.numeric(rating), na.rm = TRUE)
+  ) %>% 
+  arrange(category_name_2)
 ```
 
 
