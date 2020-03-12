@@ -16,7 +16,7 @@ rating_get_sig_list(category_ids, state_ids = NA, all = TRUE, verbose = TRUE)
 \item{verbose}{Should cases when no data is available be messaged?}
 }
 \value{
-A dataframe with the columns \code{sig_id, name, category_id, state_id, parent_id}.
+A dataframe with the columns \code{sig_id, name, category_id, state_id}.
 }
 \description{
 Get SIG (Special Interest Group) list by category and state

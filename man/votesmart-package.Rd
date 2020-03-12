@@ -22,6 +22,7 @@ Useful links:
 Authors:
 \itemize{
   \item Max Wood \email{max@deck.tools}
+  \item Alyssa Frazee \email{alyssa@deck.tools}
 }
 
 }

@@ -10,6 +10,6 @@ test_that("rating_get_sig_list", {
 
   expect_length(
     names(res),
-    5
+    4
   )
 })

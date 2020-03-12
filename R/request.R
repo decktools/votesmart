@@ -128,6 +128,13 @@ get <- function(req, query, level_one, level_two) {
       lst %>%
       as_tibble()
 
+    if ("categories" %in% names(out)) {
+      out$category_id <- out$categories$category$categoryId
+      out$category_name <- out$categories$category$name
+      out %>%
+        select(-categories)
+    }
+
     # Otherwise there are multiple rows
   } else {
     out <-

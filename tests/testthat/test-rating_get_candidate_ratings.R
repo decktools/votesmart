@@ -1,22 +1,29 @@
+abrams_id <- 67385
+aoc_id <- 180416
+pelosi_id <- 26732
+obama_id <- 9490
+pete_id <- 127151
+warren_id <- 141272
 
-test_that("`get` can deal with multiple rows returned or just one", {
-  do_all <- sample(c(TRUE, FALSE), 1)
+test_that("rating_get_candidate_ratings", {
+  sig_ids <- c(2167, 2880)
 
-  pelosi_id <- "26732"
+  candidate_ids <- c(pelosi_id, aoc_id)
 
-  pelosi_ratings <- rating_get_candidate_ratings(pelosi_id, all = do_all)
-
-  single_row_id <- "20318"
-
-  single_row_ratings <- rating_get_candidate_ratings(single_row_id, all = do_all)
-
-  expect_gte(
-    nrow(pelosi_ratings),
-    100
+  res <- rating_get_candidate_ratings(
+    candidate_ids,
+    sig_ids
   )
 
-  expect_equal(
-    nrow(single_row_ratings),
-    1
+  expect_true(
+    "rating_id" %in% names(res)
+  )
+
+  expect_error(
+    rating_get_candidate_ratings(
+      candidate_ids %>% c(pete_id),
+      sig_ids,
+      all = FALSE
+    )
   )
 })

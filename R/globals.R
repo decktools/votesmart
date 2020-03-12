@@ -34,6 +34,7 @@ globalVariables(
     "suffix",
     "timespan",
     "title",
+    "value",
     "vote"
   )
 )

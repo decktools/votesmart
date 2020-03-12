@@ -8,11 +8,7 @@ obama_id <- 9490
 pete_id <- 127151
 warren_id <- 141272
 
-pkgs <- installed.packages() %>%
-  dplyr::as_tibble() %>%
-  dplyr::pull(Package)
-
-if ("bonanza" %in% pkgs) {
+if ("bonanza" %in% installed.packages()) {
   Sys.setenv(VOTESMART_API_KEY = bonanza::secrets.get("VOTESMART_API_KEY"))
   test_check("votesmart")
 } else {
