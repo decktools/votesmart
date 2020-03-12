@@ -100,26 +100,36 @@ rating_get_candidate_ratings <- function(candidate_ids,
           "_category"
         )
 
+      # Will need to reattach after nesting
+      rating_ids <- this$rating_id
+
       this %<>%
         # Distinct all the category values which are sometimes doubled up
         tidyr::pivot_longer(contains("category")) %>%
         group_by(rating_id) %>%
         distinct(value, .keep_all = TRUE) %>%
         tidyr::drop_na(value) %>%
-        ungroup() %>%
+        # Split into individual tibbles by rating_id, apply wrangle.chunk_it to each, and then recombine
+        tidyr::nest(-rating_id) %>%
+        pull(data) %>%
+        purrr::map(bonanza::wrangle.chunk_it, n_per_chunk = 2) %>%
+        bind_rows() %>%
+        rowwise() %>%
         # Rename categories now that we've deduped
-        bonanza::wrangle.chunk_it(n_per_chunk = 2) %>%
         mutate(
-          name =
+          type =
             case_when(
-              stringr::str_detect(value, "[0-9]") ~
-                elmers("category_value_{chunk}"),
-              TRUE ~ elmers("category_name_{chunk}")
-            )
+              stringr::str_detect(value, "[0-9]") ~ "id",
+              TRUE ~ "name"
+            ),
+          name = elmers("category_{type}_{chunk}")
         ) %>%
-        select(-chunk) %>%
+        select(-chunk, -type) %>%
         # Back to wide format
         tidyr::pivot_wider() %>%
+        bind_cols(
+          rating_id = rating_ids
+        ) %>%
         ungroup() %>%
         select(
           rating_id,
@@ -136,6 +146,12 @@ rating_get_candidate_ratings <- function(candidate_ids,
     out %<>%
       bind_rows(this)
   }
+
+  if ("categories" %in% names(out)) {
+    out %<>%
+      select(-categories)
+  }
+
   out %>%
     distinct()
 }
