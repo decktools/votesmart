@@ -47,22 +47,16 @@ You can check that it’s there with
 
 This key is never stored in your R session’s global environment.
 
-### Available Functions
+### An Example
 
-*These functions are named after the `snake_case`d version of the API
-[endpoints](http://api.votesmart.org/docs/).*
+A key feature of VoteSmart’s data is the ratings that Special Interest
+Groups (SIGs) give to candidates on various issues.
 
-**If you see an endpoint you want to be made available in this package
-that isn’t yet, feel free to submit an
-[issue](https://github.com/decktools/votesmart/issues) or a [pull
-request](https://github.com/decktools/votesmart/pulls)\!**
+Let’s say we want to know how Elizabeth Warren tends to be rated on a
+few issues.
 
-For more in-depth examples of how these all fit together, check out the
-vignette with:
-
-    vignette("votesmart")
-
-A short example:
+We’ll first want to know what her VoteSmart `candidate_id` is. We can
+search for her using `candidates_get_by_lastname`:
 
 ``` r
 library(votesmart)
@@ -92,8 +86,8 @@ library(votesmart)
 #> #   running_mate_name <chr>
 ```
 
-Taking Elizabeth Warren’s `candidate_id`, we can see how she’s rated by
-SIGs on a variety of issues.
+Filtering to her first name and taking her `candidate_id`, we can now
+grab Warren’s ratings by all SIGs with `rating_get_candidate_ratings`.
 
 ``` r
 (id <- 
@@ -128,6 +122,8 @@ SIGs on a variety of issues.
 #> #   category_name_8 <chr>, category_name_9 <chr>, category_name_10 <chr>
 ```
 
+And compute on them:
+
 ``` r
 ratings %>% 
   filter(
@@ -152,6 +148,21 @@ ratings %>%
 #> 4 Environment                           91.1 
 #> 5 Fiscally Conservative                  9.58
 ```
+
+For more in-depth examples of how these all fit together, check out the
+vignette with:
+
+    vignette("votesmart")
+
+### Available Functions
+
+*These functions are named after the `snake_case`d version of the API
+[endpoints](http://api.votesmart.org/docs/).*
+
+**If you see an endpoint you want to be made available in this package
+that isn’t yet, feel free to submit an
+[issue](https://github.com/decktools/votesmart/issues) or a [pull
+request](https://github.com/decktools/votesmart/pulls)\!**
 
 #### Summary of Functions
 

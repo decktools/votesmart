@@ -54,19 +54,9 @@ Sys.getenv("VOTESMART_API_KEY")
 
 This key is never stored in your R session's global environment.
 
-### Available Functions
+### An Example
 
-*These functions are named after the `snake_case`d version of the API [endpoints](http://api.votesmart.org/docs/).*
-
-**If you see an endpoint you want to be made available in this package that isn't yet, feel free to submit an [issue](https://github.com/decktools/votesmart/issues) or a [pull request](https://github.com/decktools/votesmart/pulls)!**
-
-For more in-depth examples of how these all fit together, check out the vignette with:
-
-```
-vignette("votesmart")
-```
-
-A short example:
+A key feature of VoteSmart's data is the ratings that Special Interest Groups (SIGs) give to candidates on various issues.
 
 ```{r, include=FALSE}
 if ("bonanza" %in% installed.packages()) {
@@ -74,6 +64,9 @@ if ("bonanza" %in% installed.packages()) {
 }
 ```
 
+Let's say we want to know how Elizabeth Warren tends to be rated on a few issues.
+
+We'll first want to know what her VoteSmart `candidate_id` is. We can search for her using `candidates_get_by_lastname`:
 
 ```{r}
 library(votesmart)
@@ -81,7 +74,7 @@ library(votesmart)
 (warrens <- candidates_get_by_lastname("warren", election_years = 2012))
 ```
 
-Taking Elizabeth Warren's `candidate_id`, we can see how she's rated by SIGs on a variety of issues.
+Filtering to her first name and taking her `candidate_id`, we can now grab Warren's ratings by all SIGs with `rating_get_candidate_ratings`.
 
 ```{r}
 (id <- 
@@ -96,6 +89,8 @@ Taking Elizabeth Warren's `candidate_id`, we can see how she's rated by SIGs on 
   )
 )
 ```
+
+And compute on them:
 
 ```{r}
 ratings %>% 
@@ -113,6 +108,18 @@ ratings %>%
   ) %>% 
   arrange(category_name_2)
 ```
+
+For more in-depth examples of how these all fit together, check out the vignette with:
+
+```
+vignette("votesmart")
+```
+
+### Available Functions
+
+*These functions are named after the `snake_case`d version of the API [endpoints](http://api.votesmart.org/docs/).*
+
+**If you see an endpoint you want to be made available in this package that isn't yet, feel free to submit an [issue](https://github.com/decktools/votesmart/issues) or a [pull request](https://github.com/decktools/votesmart/pulls)!**
 
 
 #### Summary of Functions
