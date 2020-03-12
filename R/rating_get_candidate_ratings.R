@@ -98,16 +98,26 @@ rating_get_candidate_ratings <- function(candidate_ids,
         rename_all(
           stringr::str_remove,
           "_category"
-        ) %>%
+        )
+
+      this %<>%
         # Distinct all the category values which are sometimes doubled up
         tidyr::pivot_longer(contains("category")) %>%
         group_by(rating_id) %>%
         distinct(value, .keep_all = TRUE) %>%
         tidyr::drop_na(value) %>%
+        ungroup() %>%
         # Rename categories now that we've deduped
+        bonanza::wrangle.chunk_it(n_per_chunk = 2) %>%
         mutate(
-          name = elmers("category_name_{row_number()}")
+          name =
+            case_when(
+              stringr::str_detect(value, "[0-9]") ~
+                elmers("category_value_{chunk}"),
+              TRUE ~ elmers("category_name_{chunk}")
+            )
         ) %>%
+        select(-chunk) %>%
         # Back to wide format
         tidyr::pivot_wider() %>%
         ungroup() %>%
