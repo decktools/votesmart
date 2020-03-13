@@ -144,7 +144,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
         out %<>%
           bind_rows(this)
       })
-      }
+    }
   }
 
   if ("categories" %in% names(out)) {

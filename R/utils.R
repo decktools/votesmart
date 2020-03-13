@@ -70,11 +70,11 @@ transform_election_special <- function(tbl) {
 }
 
 chunk_it <- function(tbl,
-                             n_per_chunk = NA,
-                             n_chunks = NA,
-                             list_it = FALSE) {
+  n_per_chunk = NA,
+  n_chunks = NA,
+  list_it = FALSE) {
   if ((is.na(n_per_chunk) && is.na(n_chunks)) ||
-      !is.na(n_per_chunk) && !is.na(n_chunks)) {
+    !is.na(n_per_chunk) && !is.na(n_chunks)) {
     stop("Exactly one of n_per_chunk or n_chunks must be set.")
   }
 
