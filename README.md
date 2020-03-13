@@ -61,30 +61,22 @@ search for her using `candidates_get_by_lastname`:
 ``` r
 library(votesmart)
 
-(warrens <- candidates_get_by_lastname("warren", election_years = 2012))
+warrens <- candidates_get_by_lastname("warren", election_years = 2012)
 #> Requesting data for {last_name: warren, election_year: 2012, stage_id: }.
-#> # A tibble: 8 x 32
-#>   candidate_id first_name nick_name middle_name last_name suffix title
-#>   <chr>        <chr>      <chr>     <chr>       <chr>     <chr>  <chr>
-#> 1 139104       Adam       <NA>      Lee         Warren    <NA>   <NA> 
-#> 2 103860       Dennis     <NA>      <NA>        Warren    <NA>   <NA> 
-#> 3 141272       Elizabeth  <NA>      Ann         Warren    <NA>   Sena…
-#> 4 117839       Harry      <NA>      Joseph      Warren    <NA>   Repr…
-#> 5 138202       Pete       <NA>      <NA>        Warren    <NA>   <NA> 
-#> 6 137066       Stephen    <NA>      <NA>        Warren    <NA>   <NA> 
-#> 7 135832       Tom        <NA>      <NA>        Warren    <NA>   <NA> 
-#> 8 139311       Wesley     <NA>      G.          Warren    <NA>   <NA> 
-#> # … with 25 more variables: ballot_name <chr>, stage_id <chr>,
-#> #   election_year <chr>, preferred_name <chr>, election_parties <chr>,
-#> #   election_status <chr>, election_stage <chr>, election_district_id <chr>,
-#> #   election_district_name <chr>, election_office <chr>,
-#> #   election_office_id <chr>, election_state_id <chr>,
-#> #   election_office_type_id <chr>, election_special <lgl>, election_date <chr>,
-#> #   office_parties <chr>, office_status <chr>, office_district_id <chr>,
-#> #   office_district_name <chr>, office_state_id <chr>, office_id <chr>,
-#> #   office_name <chr>, office_type_id <chr>, running_mate_id <chr>,
-#> #   running_mate_name <chr>
+
+kable(warrens)
 ```
+
+| candidate\_id | first\_name | nick\_name | middle\_name | last\_name | suffix | title          | ballot\_name        | stage\_id | election\_year | preferred\_name | election\_parties | election\_status | election\_stage | election\_district\_id | election\_district\_name | election\_office | election\_office\_id | election\_state\_id | election\_office\_type\_id | election\_special | election\_date | office\_parties | office\_status | office\_district\_id | office\_district\_name | office\_state\_id | office\_id | office\_name | office\_type\_id | running\_mate\_id | running\_mate\_name |
+| :------------ | :---------- | :--------- | :----------- | :--------- | :----- | :------------- | :------------------ | :-------- | :------------- | :-------------- | :---------------- | :--------------- | :-------------- | :--------------------- | :----------------------- | :--------------- | :------------------- | :------------------ | :------------------------- | :---------------- | :------------- | :-------------- | :------------- | :------------------- | :--------------------- | :---------------- | :--------- | :----------- | :--------------- | :---------------- | :------------------ |
+| 139104        | Adam        | NA         | Lee          | Warren     | NA     | NA             | Adam Lee Warren     |           | 2012           | Adam            | Republican        | Lost             | Primary         | NA                     | NA                       | Attorney General | 12                   | MO                  | S                          | FALSE             | 08/07/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
+| 103860        | Dennis      | NA         | NA           | Warren     | NA     | NA             | Dennis C. Warren    |           | 2012           | Dennis          | Republican        | Withdrawn        | General         | 28446                  | 16                       | State Senate     | 9                    | ID                  | L                          | FALSE             | 11/06/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
+| 141272        | Elizabeth   | NA         | Ann          | Warren     | NA     | Senator        | Elizabeth A. Warren |           | 2012           | Elizabeth       | Democratic        | Won              | General         | NA                     | NA                       | U.S. Senate      | 6                    | MA                  | C                          | FALSE             | 11/06/2012     | Democratic      | active         | 20512                | Sr                     | MA                | 6          | U.S. Senate  | C                | NA                | NA                  |
+| 117839        | Harry       | NA         | Joseph       | Warren     | NA     | Representative | Harry Warren        |           | 2012           | Harry           | Republican        | Won              | General         | 25520                  | 77                       | State House      | 8                    | NC                  | L                          | FALSE             | 11/06/2012     | Republican      | active         | 25519                | 76                     | NC                | 8          | State House  | L                | NA                | NA                  |
+| 138202        | Pete        | NA         | NA           | Warren     | NA     | NA             | Pete Warren         |           | 2012           | Pete            | Republican        | Removed          | Primary         | 21842                  | 30                       | State House      | 8                    | FL                  | L                          | FALSE             | 08/14/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
+| 137066        | Stephen     | NA         | NA           | Warren     | NA     | NA             | Stephen Warren      |           | 2012           | Stephen         | Republican        | Lost             | Primary         | 27865                  | 22B                      | State House      | 8                    | ID                  | L                          | FALSE             | 05/15/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
+| 135832        | Tom         | NA         | NA           | Warren     | NA     | NA             | Tom Warren          |           | 2012           | Tom             | Democratic        | Lost             | General         | 25782                  | 76                       | State House      | 8                    | OH                  | L                          | FALSE             | 11/06/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
+| 139311        | Wesley      | NA         | G.           | Warren     | NA     | NA             | Wesley G. Warren    |           | 2012           | Wesley          | Republican        | Lost             | General         | 21874                  | 62                       | State House      | 8                    | FL                  | L                          | FALSE             | 11/06/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
 
 Filtering to her first name and taking her `candidate_id`, we can now
 grab Warren’s ratings by all SIGs with `rating_get_candidate_ratings`.
@@ -97,54 +89,48 @@ grab Warren’s ratings by all SIGs with `rating_get_candidate_ratings`.
 )
 #> [1] "141272"
 
-(ratings <- 
+ratings <- 
   rating_get_candidate_ratings(
     candidate_ids = id,
   )
-)
 #> Requesting data for {candidate_id: 141272, sig_id: }.
-#> # A tibble: 514 x 17
-#>    rating_id candidate_id sig_id rating rating_name timespan rating_text
-#>    <chr>     <chr>        <chr>  <chr>  <chr>       <chr>    <chr>      
-#>  1 11196     141272       2884   74     Presidenti… 2020     Senator El…
-#>  2 11199     141272       2709   100    Climate Te… 2020     Senator El…
-#>  3 11366     141272       101    90     Positions … 2020     Senator El…
-#>  4 11438     141272       2804   83     Presidenti… 2020     Senator El…
-#>  5 11450     141272       2884   85     Presidenti… 2020     <NA>       
-#>  6 11452     141272       2884   87     Presidenti… 2020     Senator El…
-#>  7 11504     141272       2859   80     Climate Sc… 2020     Senator El…
-#>  8 11601     141272       2811   95     Presidenti… 2020     Senator El…
-#>  9 11629     141272       2983   62     Presidenti… 2020     Senator El…
-#> 10 11422     141272       2167   92     Positions … 2019-20… <NA>       
-#> # … with 504 more rows, and 10 more variables: category_name_1 <chr>,
-#> #   category_name_2 <chr>, category_name_3 <chr>, category_name_4 <chr>,
-#> #   category_name_5 <chr>, category_name_6 <chr>, category_name_7 <chr>,
-#> #   category_name_8 <chr>, category_name_9 <chr>, category_name_10 <chr>
+#> Warning: `cols` is now required.
+#> Please use `cols = c(category_id_1, category_name_1, category_id_2, category_name_2, 
+#>     category_id_3, category_name_3, category_id_4, category_name_4, 
+#>     category_id_5, category_name_5)`
+
+kable(ratings %>% sample_n(3))
 ```
+
+| rating\_id | candidate\_id | sig\_id | rating | rating\_name                        | timespan | rating\_text                                                                                            | category\_id\_1 | category\_name\_1         | category\_id\_2 | category\_name\_2 | category\_id\_3 | category\_name\_3              | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 |
+| :--------- | :------------ | :------ | :----- | :---------------------------------- | :------- | :------------------------------------------------------------------------------------------------------ | :-------------- | :------------------------ | :-------------- | :---------------- | :-------------- | :----------------------------- | :-------------- | :---------------- | :-------------- | :---------------- |
+| 7500       | 141272        | 265     | 100    | Positions (Sept. 2013)              | 2013     | Senator Elizabeth Warren supported the interests of the Population Connection 100 percent in 2013.      | 75              | Abortion and Reproductive | 98              | NA                | 31              | Marriage, Family, and Children | NA              | NA                | NA              | NA                |
+| 11446      | 141272        | 1627    | 50     | Freedom Index                       | 2019     | Senator Elizabeth Warren supported the interests of the The John Birch Society 50 percent in 2019.      | 17              | Conservative              | 30              | Environment       | 86              | Fiscally Conservative          | 37              | Guns              | NA              | NA                |
+| 11366      | 141272        | 101     | 90     | Positions (Presidential Candidates) | 2020     | Senator Elizabeth Warren supported the interests of the Council for a Livable World 90 percent in 2020. | 22              | Defense                   | 32              | Foreign Affairs   | 61              | National Security              | NA              | NA                | NA              | NA                |
 
 And compute on them:
 
 ``` r
 ratings %>% 
   filter(
-    category_name_2 %in% 
+    category_name_1 %in% 
       c("Environment", 
         "Fiscally Conservative",
         "Education", 
         "Civil Liberties and Civil Rights", 
         "Campaign Finance") 
   ) %>% 
-  group_by(category_name_2) %>% 
+  group_by(category_name_1) %>% 
   summarise(
     avg_rating = mean(as.numeric(rating), na.rm = TRUE)
   ) %>% 
-  arrange(category_name_2)
+  arrange(category_name_1)
 #> # A tibble: 5 x 2
-#>   category_name_2                  avg_rating
+#>   category_name_1                  avg_rating
 #>   <chr>                                 <dbl>
 #> 1 Campaign Finance                     100   
 #> 2 Civil Liberties and Civil Rights      84.5 
-#> 3 Education                             82.5 
+#> 3 Education                             88.3 
 #> 4 Environment                           91.1 
 #> 5 Fiscally Conservative                  9.58
 ```
