@@ -57,8 +57,6 @@ few issues.
 
 ``` r
 library(votesmart)
-suppressPackageStartupMessages(library(dplyr))
-library(knitr)
 ```
 
 We’ll first want to know what her VoteSmart `candidate_id` is. We can
@@ -72,7 +70,7 @@ warrens <-
   )
 #> Requesting data for {last_name: warren, election_year: 2012, stage_id: }.
 
-kable(warrens)
+knitr::kable(warrens)
 ```
 
 | candidate\_id | first\_name | nick\_name | middle\_name | last\_name | suffix | title          | ballot\_name        | stage\_id | election\_year | preferred\_name | election\_parties | election\_status | election\_stage | election\_district\_id | election\_district\_name | election\_office | election\_office\_id | election\_state\_id | election\_office\_type\_id | election\_special | election\_date | office\_parties | office\_status | office\_district\_id | office\_district\_name | office\_state\_id | office\_id | office\_name | office\_type\_id | running\_mate\_id | running\_mate\_name |
@@ -102,19 +100,15 @@ ratings <-
     candidate_ids = id,
   )
 #> Requesting data for {candidate_id: 141272, sig_id: }.
-#> Warning: `cols` is now required.
-#> Please use `cols = c(category_id_1, category_name_1, category_id_2, category_name_2, 
-#>     category_id_3, category_name_3, category_id_4, category_name_4, 
-#>     category_id_5, category_name_5)`
 
-kable(ratings %>% sample_n(3))
+knitr::kable(ratings %>% sample_n(3))
 ```
 
-| rating\_id | candidate\_id | sig\_id | rating | rating\_name                   | timespan  | rating\_text                                                                                                             | category\_id\_1 | category\_name\_1                | category\_id\_2 | category\_name\_2                      | category\_id\_3 | category\_name\_3 | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 |
-| :--------- | :------------ | :------ | :----- | :----------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------- | :-------------- | :------------------------------- | :-------------- | :------------------------------------- | :-------------- | :---------------- | :-------------- | :---------------- | :-------------- | :---------------- |
-| 9684       | 141272        | 1256    | 100    | Positions                      | 2015-2016 | Senator Elizabeth Warren supported the interests of the Human Rights Campaign 100 percent in 2015-2016.                  | 13              | Civil Liberties and Civil Rights | 76              | Sexual Orientation and Gender Identity | NA              | NA                | NA              | NA                | NA              | NA                |
-| 8867       | 141272        | 13      | 8      | Positions                      | 2014      | Senator Elizabeth Warren supported the interests of the Council for Citizens Against Government Waste 8 percent in 2014. | 90              | Government Budget and Spending   | 36              | Government Operations                  | NA              | NA                | NA              | NA                | NA              | NA                |
-| 7238       | 141272        | 310     | 6      | Lifetime Score (June 23, 2014) | 2014      | Senator Elizabeth Warren supported the interests of the Americans for Prosperity 6 percent in 2014.                      | 17              | Conservative                     | 86              | Fiscally Conservative                  | NA              | NA                | NA              | NA                | NA              | NA                |
+| rating\_id | candidate\_id | sig\_id | rating | rating\_name   | timespan  | rating\_text                                                                                                                              | category\_id\_1 | category\_name\_1                | category\_id\_2 | category\_name\_2 | category\_id\_3 | category\_name\_3 | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 |
+| :--------- | :------------ | :------ | :----- | :------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------- | :-------------- | :------------------------------- | :-------------- | :---------------- | :-------------- | :---------------- | :-------------- | :---------------- | :-------------- | :---------------- |
+| 9668       | 141272        | 2024    | 100    | Positions      | 2007-2016 | Senator Elizabeth Warren supported the interests of the National Religious Campaign Against Torture Action Fund 100 percent in 2007-2016. | 13              | Civil Liberties and Civil Rights | 107             | Religion          | NA              | NA                | NA              | NA                | NA              | NA                |
+| 8571       | 141272        | 1378    | 100    | Positions      | 2013-2014 | Senator Elizabeth Warren supported the interests of the American Civil Liberties Union 100 percent in 2013-2014.                          | 13              | Civil Liberties and Civil Rights | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                |
+| 10575      | 141272        | 959     | 100    | Lifetime Score | 2017      | Senator Elizabeth Warren supported the interests of the Alliance for Retired Americans 100 percent in 2017.                               | 83              | Entitlements and the Safety Net  | 53              | Senior Citizens   | NA              | NA                | NA              | NA                | NA              | NA                |
 
 And compute on them:
 

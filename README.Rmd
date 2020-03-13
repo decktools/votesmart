@@ -68,8 +68,6 @@ Let's say we want to know how Elizabeth Warren tends to be rated on a few issues
 
 ```{r}
 library(votesmart)
-suppressPackageStartupMessages(library(dplyr))
-library(knitr)
 ```
 
 
@@ -82,7 +80,7 @@ warrens <-
     election_years = 2012
   )
 
-kable(warrens)
+knitr::kable(warrens)
 ```
 
 Filtering to her first name and taking her `candidate_id`, we can now grab Warren's ratings by all SIGs with `rating_get_candidate_ratings`.
@@ -99,7 +97,7 @@ ratings <-
     candidate_ids = id,
   )
 
-kable(ratings %>% sample_n(3))
+knitr::kable(ratings %>% sample_n(3))
 ```
 
 And compute on them:
