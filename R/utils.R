@@ -68,3 +68,49 @@ transform_election_special <- function(tbl) {
       )
   }
 }
+
+chunk_it <- function(tbl,
+                             n_per_chunk = NA,
+                             n_chunks = NA,
+                             list_it = FALSE) {
+  if ((is.na(n_per_chunk) && is.na(n_chunks)) ||
+      !is.na(n_per_chunk) && !is.na(n_chunks)) {
+    stop("Exactly one of n_per_chunk or n_chunks must be set.")
+  }
+
+  if (!is.na(n_per_chunk)) {
+    if (n_per_chunk > nrow(tbl)) {
+      message("n_per_chunk is more than the number of rows. Only one chunk assigned.")
+    }
+
+    n_chunks <- ceiling(nrow(tbl) / n_per_chunk)
+  } else {
+    if (n_chunks > nrow(tbl)) {
+      message("n_chunks is more than the number of rows. Assigning one chunk to each row.")
+      n_chunks <- nrow(tbl)
+    }
+  }
+
+  if (n_chunks == 1) {
+    # Setting `breaks` to 1 in `cut` will break it
+    tbl %<>%
+      mutate(
+        chunk = 1
+      )
+  } else {
+    tbl %<>%
+      mutate(
+        chunk = cut(row_number(), n_chunks, labels = FALSE)
+      )
+  }
+
+  if (list_it) {
+    suppressWarnings(
+      tbl %<>%
+        tidyr::nest(-chunk) %>%
+        pull(data)
+    )
+  }
+
+  tbl
+}

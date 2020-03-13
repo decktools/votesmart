@@ -14,6 +14,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r, include = FALSE}
+if ("bonanza" %in% installed.packages() && nchar(Sys.getenv("VOTESMART_API_KEY")) == 0) {
+  Sys.setenv(VOTESMART_API_KEY = bonanza::secrets.get("VOTESMART_API_KEY"))
+}
+```
+
+
 ```{r setup}
 library(votesmart)
 ```
@@ -219,7 +226,7 @@ Now we can get our dataframe of SIGs given some categories.
 )
 ```
 
-We already have the category names corresponding to those `category_id`s in our `category_df`, so we can join `category_df` onto `sigs`s to attach `category_name`s to each of those SIGs.
+We already have the category names corresponding to those `category_id`s in our `category_df`, so we can join `category_df` onto `sigs`s to attach `category_name_1`s to each of those SIGs.
 
 ```{r}
 sigs %>% 
@@ -231,7 +238,7 @@ sigs %>%
     by = c("state_id", "category_id")
   ) %>% 
   rename(
-    category_name = name
+    category_name_1 = name
   ) %>% 
   sample_n(nrow(.))
 ```
