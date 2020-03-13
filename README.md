@@ -49,19 +49,27 @@ This key is never stored in your R session’s global environment.
 
 ### An Example
 
-A key feature of VoteSmart’s data is the ratings that Special Interest
-Groups (SIGs) give to candidates on various issues.
+VoteSmart collects ratings on various issues that Special Interest
+Groups (SIGs) give to political candidates.
 
 Let’s say we want to know how Elizabeth Warren tends to be rated on a
 few issues.
+
+``` r
+library(votesmart)
+suppressPackageStartupMessages(library(dplyr))
+library(knitr)
+```
 
 We’ll first want to know what her VoteSmart `candidate_id` is. We can
 search for her using `candidates_get_by_lastname`:
 
 ``` r
-library(votesmart)
-
-warrens <- candidates_get_by_lastname("warren", election_years = 2012)
+warrens <- 
+  candidates_get_by_lastname(
+    "warren", 
+    election_years = 2012
+  )
 #> Requesting data for {last_name: warren, election_year: 2012, stage_id: }.
 
 kable(warrens)
@@ -102,11 +110,11 @@ ratings <-
 kable(ratings %>% sample_n(3))
 ```
 
-| rating\_id | candidate\_id | sig\_id | rating | rating\_name                        | timespan | rating\_text                                                                                            | category\_id\_1 | category\_name\_1         | category\_id\_2 | category\_name\_2 | category\_id\_3 | category\_name\_3              | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 |
-| :--------- | :------------ | :------ | :----- | :---------------------------------- | :------- | :------------------------------------------------------------------------------------------------------ | :-------------- | :------------------------ | :-------------- | :---------------- | :-------------- | :----------------------------- | :-------------- | :---------------- | :-------------- | :---------------- |
-| 7500       | 141272        | 265     | 100    | Positions (Sept. 2013)              | 2013     | Senator Elizabeth Warren supported the interests of the Population Connection 100 percent in 2013.      | 75              | Abortion and Reproductive | 98              | NA                | 31              | Marriage, Family, and Children | NA              | NA                | NA              | NA                |
-| 11446      | 141272        | 1627    | 50     | Freedom Index                       | 2019     | Senator Elizabeth Warren supported the interests of the The John Birch Society 50 percent in 2019.      | 17              | Conservative              | 30              | Environment       | 86              | Fiscally Conservative          | 37              | Guns              | NA              | NA                |
-| 11366      | 141272        | 101     | 90     | Positions (Presidential Candidates) | 2020     | Senator Elizabeth Warren supported the interests of the Council for a Livable World 90 percent in 2020. | 22              | Defense                   | 32              | Foreign Affairs   | 61              | National Security              | NA              | NA                | NA              | NA                |
+| rating\_id | candidate\_id | sig\_id | rating | rating\_name                   | timespan  | rating\_text                                                                                                             | category\_id\_1 | category\_name\_1                | category\_id\_2 | category\_name\_2                      | category\_id\_3 | category\_name\_3 | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 |
+| :--------- | :------------ | :------ | :----- | :----------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------- | :-------------- | :------------------------------- | :-------------- | :------------------------------------- | :-------------- | :---------------- | :-------------- | :---------------- | :-------------- | :---------------- |
+| 9684       | 141272        | 1256    | 100    | Positions                      | 2015-2016 | Senator Elizabeth Warren supported the interests of the Human Rights Campaign 100 percent in 2015-2016.                  | 13              | Civil Liberties and Civil Rights | 76              | Sexual Orientation and Gender Identity | NA              | NA                | NA              | NA                | NA              | NA                |
+| 8867       | 141272        | 13      | 8      | Positions                      | 2014      | Senator Elizabeth Warren supported the interests of the Council for Citizens Against Government Waste 8 percent in 2014. | 90              | Government Budget and Spending   | 36              | Government Operations                  | NA              | NA                | NA              | NA                | NA              | NA                |
+| 7238       | 141272        | 310     | 6      | Lifetime Score (June 23, 2014) | 2014      | Senator Elizabeth Warren supported the interests of the Americans for Prosperity 6 percent in 2014.                      | 17              | Conservative                     | 86              | Fiscally Conservative                  | NA              | NA                | NA              | NA                | NA              | NA                |
 
 And compute on them:
 

@@ -19,9 +19,6 @@ knitr::opts_chunk$set(
   out.width = "100%",
   cache = FALSE
 )
-
-library(dplyr)
-library(knitr)
 ```
 
 
@@ -59,7 +56,7 @@ This key is never stored in your R session's global environment.
 
 ### An Example
 
-A key feature of VoteSmart's data is the ratings that Special Interest Groups (SIGs) give to candidates on various issues.
+VoteSmart collects ratings on various issues that Special Interest Groups (SIGs) give to political candidates.
 
 ```{r, include=FALSE}
 if ("bonanza" %in% installed.packages()) {
@@ -69,12 +66,21 @@ if ("bonanza" %in% installed.packages()) {
 
 Let's say we want to know how Elizabeth Warren tends to be rated on a few issues.
 
+```{r}
+library(votesmart)
+suppressPackageStartupMessages(library(dplyr))
+library(knitr)
+```
+
+
 We'll first want to know what her VoteSmart `candidate_id` is. We can search for her using `candidates_get_by_lastname`:
 
 ```{r}
-library(votesmart)
-
-warrens <- candidates_get_by_lastname("warren", election_years = 2012)
+warrens <- 
+  candidates_get_by_lastname(
+    "warren", 
+    election_years = 2012
+  )
 
 kable(warrens)
 ```
