@@ -130,6 +130,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
           # Back to wide format
           tidyr::pivot_wider() %>%
           ungroup() %>%
+          tidyr::unnest() %>%
           select(
             rating_id,
             candidate_id,
