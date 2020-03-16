@@ -113,7 +113,7 @@ get_election <- function(req, query) {
 get <- function(req, query, level_one, level_two) {
   url <- construct_url(req, query)
 
-  raw <- request(url)
+  raw <- try_request(url)
 
   if (is.na(level_two)) {
     lst <-
