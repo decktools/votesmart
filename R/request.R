@@ -31,11 +31,23 @@ request <- function(url, verbose = FALSE) {
   httr::content(resp)
 }
 
+try_request <-
+  purrr::possibly(
+    request,
+    otherwise = NA,
+    quiet = FALSE
+  )
+
 # Special treatment for election_get_election_by_year_state
 get_election <- function(req, query) {
   url <- construct_url(req, query)
 
-  raw <- request(url)
+  raw <- try_request(url)
+
+  if (is.na(raw)) {
+    message("Error requesting data.")
+    return(NA)
+  }
 
   lst <-
     raw$elections$election

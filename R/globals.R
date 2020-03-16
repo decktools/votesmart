@@ -6,6 +6,8 @@ globalVariables(
     "bill_number",
     "candidate_id",
     "categories",
+    "chunk",
+    "data",
     "description",
     "election_electionstage_id",
     "election_id",
@@ -25,6 +27,7 @@ globalVariables(
     "query",
     "rating",
     "rating_id",
+    "rating_id_nester",
     "rating_name",
     "rating_text",
     "sig_id",
@@ -34,6 +37,7 @@ globalVariables(
     "suffix",
     "timespan",
     "title",
+    "type",
     "value",
     "vote"
   )

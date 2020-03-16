@@ -60,7 +60,9 @@ VoteSmart collects ratings on various issues that Special Interest Groups (SIGs)
 
 ```{r, include=FALSE}
 if ("bonanza" %in% installed.packages()) {
-  Sys.setenv(VOTESMART_API_KEY = bonanza::secrets.get("VOTESMART_API_KEY"))
+  Sys.setenv(
+    VOTESMART_API_KEY = bonanza::secrets.get("VOTESMART_API_KEY")
+  )
 }
 ```
 
