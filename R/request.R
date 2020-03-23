@@ -115,6 +115,11 @@ get <- function(req, query, level_one, level_two) {
 
   raw <- try_request(url)
 
+  if (is.na(raw)) {
+    message("Error requesting data.")
+    return(NA)
+  }
+
   if (is.na(level_two)) {
     lst <-
       raw[[level_one]]
