@@ -1,6 +1,0 @@
-destination: docs
-
-development:
-  mode: auto
-
-url: http://pkgdown.r-lib.org
