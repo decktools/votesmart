@@ -60,6 +60,8 @@ request <- function(url, verbose = FALSE) {
     if (identical(parsed, tibble())) {
       message("Unable to fix up raw.")
       return(tibble())
+    } else {
+      message("Successfully fixed raw.")
     }
   }
   parsed
