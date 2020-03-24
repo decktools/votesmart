@@ -88,63 +88,82 @@ rating_get_candidate_ratings <- function(candidate_ids,
         na_if("")
     } else {
       suppressWarnings({
-        this %<>%
-          mutate(
-            candidate_id = candidate_id
-          ) %>%
-          rename_all(
-            stringr::str_remove,
-            "categories_"
-          ) %>%
-          rename_all(
-            stringr::str_remove,
-            "_category"
-          )
+        # For the case where we fixed up the JSON which didn't end with `}}`
+        if ("categories" %in% names(this) && nrow(this) > 1) {
+          this$categories %<>%
+            purrr::map(as_tibble) %>%
+            purrr::map(distinct) %>%
+            purrr::map(mutate, rn = row_number()) %>%
+            purrr::map(
+              tidyr::pivot_wider,
+              values_from = c(categoryId, name),
+              names_from = rn
+            )
 
-        this %<>%
-          # Distinct all the category values which are sometimes doubled up
-          tidyr::pivot_longer(contains("category")) %>%
-          group_by(rating_id) %>%
-          distinct(value, .keep_all = TRUE) %>%
-          ungroup() %>%
-          tidyr::drop_na(value) %>%
-          mutate(
-            rating_id_nester = rating_id
-          ) %>%
-          # Split into individual tibbles by rating_id, apply chunk_it to each, and then recombine
-          tidyr::nest(-rating_id_nester) %>%
-          pull(data) %>%
-          purrr::map(chunk_it, n_per_chunk = 2) %>%
-          bind_rows() %>%
-          rowwise() %>%
-          # Rename categories now that we've deduped
-          mutate(
-            type =
-              case_when(
-                stringr::str_detect(value, "[0-9]") ~ "id",
-                TRUE ~ "name"
-              ),
-            name = elmers("category_{type}_{chunk}")
-          ) %>%
-          select(-chunk, -type) %>%
-          # Back to wide format
-          tidyr::pivot_wider() %>%
-          ungroup() %>%
-          tidyr::unnest() %>%
-          select(
-            rating_id,
-            candidate_id,
-            sig_id,
-            rating,
-            rating_name,
-            timespan,
-            rating_text,
-            everything()
-          )
+          this %<>%
+            tidyr::unnest(categories) %>%
+            clean_df()
+        } else {
+          this %<>%
+            rename_all(
+              stringr::str_remove,
+              "categories_"
+            ) %>%
+            rename_all(
+              stringr::str_remove,
+              "_category"
+            )
 
-        out %<>%
-          bind_rows(this)
+          this %<>%
+            # Distinct all the category values which are sometimes doubled up
+            tidyr::pivot_longer(contains("category")) %>%
+            group_by(rating_id) %>%
+            distinct(value, .keep_all = TRUE) %>%
+            ungroup() %>%
+            tidyr::drop_na(value) %>%
+            mutate(
+              rating_id_nester = rating_id
+            ) %>%
+            # Split into individual tibbles by rating_id, apply chunk_it to each, and then recombine
+            tidyr::nest(-rating_id_nester) %>%
+            pull(data) %>%
+            purrr::map(chunk_it, n_per_chunk = 2) %>%
+            bind_rows() %>%
+            rowwise() %>%
+            # Rename categories now that we've deduped
+            mutate(
+              type =
+                case_when(
+                  stringr::str_detect(value, "[0-9]") ~ "id",
+                  TRUE ~ "name"
+                ),
+              name = elmers("category_{type}_{chunk}")
+            ) %>%
+            select(-chunk, -type) %>%
+            # Back to wide format
+            tidyr::pivot_wider() %>%
+            ungroup() %>%
+            tidyr::unnest()
+        }
       })
+
+      this %<>%
+        mutate(
+          candidate_id = candidate_id
+        ) %>%
+        select(
+          rating_id,
+          candidate_id,
+          sig_id,
+          rating,
+          rating_name,
+          timespan,
+          rating_text,
+          everything()
+        )
+
+      out %<>%
+        bind_rows(this)
     }
   }
 

@@ -15,6 +15,30 @@ construct_url <- function(req, query = "") {
   elmers("{BASE_URL}{req}key={key}{query}&o=JSON")
 }
 
+try_parse_content <-
+  purrr::possibly(
+    httr::content,
+    otherwise = tibble(),
+    quiet = FALSE
+  )
+
+fixup_content <- function(resp) {
+  httr::content(
+    resp,
+    as = "text",
+    encoding = "UTF-8"
+  ) %>%
+    stringr::str_c("}}", collapse = TRUE) %>%
+    jsonlite::fromJSON()
+}
+
+try_fixup_content <-
+  purrr::possibly(
+    fixup_content,
+    otherwise = tibble(),
+    quiet = FALSE
+  )
+
 request <- function(url, verbose = FALSE) {
   if (verbose) {
     elmers_message(
@@ -26,15 +50,25 @@ request <- function(url, verbose = FALSE) {
     httr::GET(url) %>%
     httr::stop_for_status()
 
-  status <- httr::http_status(resp)
+  parsed <- try_parse_content(resp)
 
-  httr::content(resp)
+  if (identical(parsed, tibble())) {
+    message("Error parsing JSON. Attempting to fix up raw.")
+
+    parsed <- try_fixup_content(resp)
+
+    if (identical(parsed, tibble())) {
+      message("Unable to fix up raw.")
+      return(tibble())
+    }
+  }
+  parsed
 }
 
 try_request <-
   purrr::possibly(
     request,
-    otherwise = NA,
+    otherwise = tibble(),
     quiet = FALSE
   )
 
@@ -44,9 +78,9 @@ get_election <- function(req, query) {
 
   raw <- try_request(url)
 
-  if (is.na(raw)) {
+  if (identical(raw, tibble())) {
     message("Error requesting data.")
-    return(NA)
+    return(tibble())
   }
 
   lst <-
@@ -54,7 +88,7 @@ get_election <- function(req, query) {
 
   # We've gotten an error that there's no data
   if (is.null(lst)) {
-    return(NA)
+    return(tibble())
   }
 
   # Extra nested when state is NA
@@ -115,9 +149,9 @@ get <- function(req, query, level_one, level_two) {
 
   raw <- try_request(url)
 
-  if (is.na(raw)) {
+  if (identical(raw, tibble())) {
     message("Error requesting data.")
-    return(NA)
+    return(tibble())
   }
 
   if (is.na(level_two)) {
@@ -136,7 +170,17 @@ get <- function(req, query, level_one, level_two) {
 
   # We've gotten an error that there's no data
   if (is.null(lst)) {
-    return(NA)
+    return(tibble())
+  }
+
+  # We've fixed up the request and already used jsonlite::toJSON to end up with a dataframe here
+  if (inherits(lst, "data.frame")) {
+    out <-
+      lst %>% as_tibble()
+
+    out$categories <- out$categories$category
+
+    return(out)
   }
 
   # Case where there will only be one row once we make into a tibble
@@ -163,8 +207,5 @@ get <- function(req, query, level_one, level_two) {
   }
 
   out %>%
-    clean_df() %>%
-    purrr::map_dfc(as.character) %>%
-    purrr::map_dfc(stringr::str_squish) %>%
-    na_if("")
+    clean_df()
 }
