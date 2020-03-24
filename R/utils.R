@@ -10,7 +10,9 @@ clean_df <- function(df) {
     purrr::map_dfc(
       stringr::str_remove_all,
       '\\\"'
-    )
+    ) %>%
+    purrr::map_dfc(as.character) %>%
+    purrr::map_dfc(stringr::str_squish)
 }
 
 clean_html <- function(x,

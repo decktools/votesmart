@@ -4,6 +4,7 @@ pelosi_id <- 26732
 obama_id <- 9490
 pete_id <- 127151
 warren_id <- 141272
+fixup_id <- 21706 # Response doesn't end with `}}`
 
 test_that("rating_get_candidate_ratings", {
   sig_ids <- c(2167, 2880)
