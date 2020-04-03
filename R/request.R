@@ -191,9 +191,35 @@ get <- function(req, query, level_one, level_two) {
       lst %>%
       as_tibble()
 
+    browser()
+
+    pluck_it <- function(x, to_pluck) {
+      x %>%
+        purrr::modify_depth(2, purrr::pluck, to_pluck) %>%
+        purrr::flatten() %>% purrr::flatten() %>%
+        purrr::as_vector() %>% unique()
+    }
+
     if ("categories" %in% names(out)) {
-      out$category_id <- out$categories$category$categoryId
-      out$category_name <- out$categories$category$name
+
+      if (purrr::vec_depth(out$categories) == 3) {
+        out$category_id <- out$categories$category$categoryId
+        out$category_name <- out$categories$category$categoryId
+      } else {
+        out$category_id <-
+          out$categories %>%
+          pluck_it("categoryId") %>%
+          list()
+
+        out$category_name <-
+          out$categories %>%
+          pluck_it("name") %>%
+          list()
+      }
+
+      out %<>%
+        select(-categories) %>%
+        tidyr::unnest()
     }
 
     # Otherwise there are multiple rows
