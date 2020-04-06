@@ -5,6 +5,7 @@ obama_id <- 9490
 pete_id <- 127151
 warren_id <- 141272
 fixup_id <- 21706 # Response doesn't end with `}}`
+weird_id <- 19241
 
 test_that("rating_get_candidate_ratings", {
   sig_ids <- c(2167, 2880)
@@ -18,6 +19,12 @@ test_that("rating_get_candidate_ratings", {
 
   expect_true(
     "rating_id" %in% names(res)
+  )
+
+  weird_res <- rating_get_candidate_ratings(weird_id)
+
+  expect_true(
+    "rating_id" %in% names(weird_res)
   )
 
   expect_error(

@@ -191,8 +191,6 @@ get <- function(req, query, level_one, level_two) {
       lst %>%
       as_tibble()
 
-    browser()
-
     pluck_it <- function(x, to_pluck) {
       x %>%
         purrr::modify_depth(2, purrr::pluck, to_pluck) %>%
