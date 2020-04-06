@@ -4,11 +4,13 @@
 \name{endpoint_input_mapping_nested}
 \alias{endpoint_input_mapping_nested}
 \title{Nested Endpoint-Input Mapping}
-\format{A tibble with 70 rows and 2 variables:
+\format{
+A tibble with 70 rows and 2 variables:
 \describe{
   \item{endpoint}{name of the API endpoint}
   \item{inputs}{a list column containing one or more inputs and a boolean indicating whether they are required for that endpoint. Can be unnested with \code{tidyr::unnest}}
-}}
+}
+}
 \source{
 \url{http://api.votesmart.org/docs/}
 }

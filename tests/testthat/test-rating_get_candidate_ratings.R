@@ -27,6 +27,11 @@ test_that("rating_get_candidate_ratings", {
     "rating_id" %in% names(weird_res)
   )
 
+  expect_gte(
+    ncol(rating_get_candidate_ratings("180416", sig_ids = "2880")),
+    3
+  )
+
   expect_error(
     rating_get_candidate_ratings(
       candidate_ids %>% c(pete_id),

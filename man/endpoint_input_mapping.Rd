@@ -4,12 +4,14 @@
 \name{endpoint_input_mapping}
 \alias{endpoint_input_mapping}
 \title{Endpoint-Input Mapping}
-\format{A tibble with 108 rows and 3 variables:
+\format{
+A tibble with 108 rows and 3 variables:
 \describe{
   \item{endpoint}{name of the API endpoint}
   \item{input}{one or multiple inputs that can be used in the request to that endpoint}
   \item{required}{boolean: whether that input is required for that endpoint}
-}}
+}
+}
 \source{
 \url{http://api.votesmart.org/docs/}
 }

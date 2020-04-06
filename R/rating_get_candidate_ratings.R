@@ -67,13 +67,15 @@ rating_get_candidate_ratings <- function(candidate_ids,
       "Requesting data for {{candidate_id: {candidate_id}, sig_id: {sig_id}}}."
     )
 
-    this <-
-      get(
-        req = r,
-        query = q,
-        level_one = "candidateRating",
-        level_two = "rating"
-      )
+    suppressWarnings(
+      this <-
+        get(
+          req = r,
+          query = q,
+          level_one = "candidateRating",
+          level_two = "rating"
+        )
+    )
 
     if (all(is.na(this))) {
       if (verbose) {
