@@ -170,67 +170,43 @@ get <- function(req, query, level_one, level_two) {
       raw[[level_one]][[level_two]]
   }
 
+  browser()
+
   # We've gotten an error that there's no data
   if (is.null(lst)) {
     return(tibble())
   }
 
-  # We've fixed up the request and already used jsonlite::toJSON to end up with a dataframe here
-  if (inherits(lst, "data.frame")) {
-    out <-
-      lst %>% as_tibble()
+  categories <-
+    lst %>%
+    roomba::roomba(c("categoryId", "name")) %>%
+    distinct() %>%
+    mutate(rn = row_number()) %>%
+    rename(
+      category_id = categoryId,
+      category_name = name
+    ) %>%
+    tidyr::pivot_wider(names_from = "rn",
+                       values_from = c("category_name", "category_id")
+                      )
 
-    out$categories <- out$categories$category
+  previous_category_colnames <-
+    c("categories", "categoryId", "name")
 
-    return(out)
-  }
-
-  # Case where there will only be one row once we make into a tibble
-  if (length(lst[[1]]) == 1) {
-    out <-
-      lst %>%
-      as_tibble()
-
-    pluck_it <- function(x, to_pluck) {
-      x %>%
-        purrr::modify_depth(2, purrr::pluck, to_pluck) %>%
-        purrr::flatten() %>% purrr::flatten() %>%
-        purrr::as_vector() %>% unique()
-    }
-
-    if ("categories" %in% names(out)) {
-
-      if (purrr::vec_depth(out$categories) == 3) {
-        out$category_id <- out$categories$category$categoryId
-        out$category_name <- out$categories$category$categoryId
-      } else {
-        out$category_id <-
-          out$categories %>%
-          pluck_it("categoryId") %>%
-          list()
-
-        out$category_name <-
-          out$categories %>%
-          pluck_it("name") %>%
-          list()
-      }
-
-      out %<>%
-        select(-categories) %>%
-        tidyr::unnest()
-    }
-
-    # Otherwise there are multiple rows
-  } else {
-    out <-
-      lst %>%
-      # Not tibble because that will give us a list-col we have to explode
-      purrr::map(as.data.frame) %>%
-      # So that we don't end up combining factor and character in bind_rows
-      purrr::modify_depth(2, as.character) %>%
-      bind_rows() %>%
-      as_tibble()
-  }
+  out <-
+    lst %>%
+    select(-any_of(previous_category_colnames)) %>%
+    bind_cols(categories)
+#
+#   # We've fixed up the request and already used jsonlite::toJSON to end up with a dataframe here
+#   if (inherits(lst, "data.frame")) {
+#     out <-
+#       lst %>% as_tibble()
+#
+#     out$categories <- out$categories$category
+#
+#     return(out)
+#   }
 
   out %>%
     clean_df()
