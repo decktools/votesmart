@@ -10,7 +10,7 @@ test_that("candidates_get_by_office_state", {
 
   no_data <-
     candidates_get_by_office_state(
-      "NY", 5, 2020,
+      "NY", 5, 2030,
       all = !do_all
     )
 
