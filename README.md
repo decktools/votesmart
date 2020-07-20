@@ -104,11 +104,11 @@ ratings <-
 knitr::kable(ratings %>% sample_n(3))
 ```
 
-| rating\_id | candidate\_id | sig\_id | rating | rating\_name            | timespan  | rating\_text                                                                                                      | category\_id\_1 | category\_name\_1    | category\_id\_2 | category\_name\_2 | category\_id\_3 | category\_name\_3 | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 |
-| :--------- | :------------ | :------ | :----- | :---------------------- | :-------- | :---------------------------------------------------------------------------------------------------------------- | :-------------- | :------------------- | :-------------- | :---------------- | :-------------- | :---------------- | :-------------- | :---------------- | :-------------- | :---------------- |
-| 9765       | 141272        | 674     | 100    | Positions               | 2015-2016 | Senator Elizabeth Warren supported the interests of the Humane Society Legislative Fund 100 percent in 2015-2016. | 5               | Animals and Wildlife | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                |
-| 10248      | 141272        | 1120    | 100    | Congressional Scorecard | 2016      | Senator Elizabeth Warren supported the interests of the National Farmers Union 100 percent in 2016.               | 4               | Agriculture and Food | 43              | Labor Unions      | NA              | NA                | NA              | NA                | NA              | NA                |
-| 10258      | 141272        | 978     | 100    | Positions               | 2016      | Senator Elizabeth Warren supported the interests of the Americans for Democratic Action 100 percent in 2016.      | 45              | Liberal              | 110             | Socially Liberal  | NA              | NA                | NA              | NA                | NA              | NA                |
+| rating\_id | candidate\_id | sig\_id | rating | rating\_name                        | timespan  | rating\_text                                                                                                                             | category\_id\_1 | category\_name\_1                | category\_id\_2 | category\_name\_2 | category\_id\_3 | category\_name\_3     | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 |
+| :--------- | :------------ | :------ | :----- | :---------------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :-------------- | :------------------------------- | :-------------- | :---------------- | :-------------- | :-------------------- | :-------------- | :---------------- | :-------------- | :---------------- |
+| 10991      | 141272        | 2859    | 89     | Positions on Endangered Species Act | 2018      | Senator Elizabeth Warren supported the interests of the Center For Biological Diversity Action Fund 89 percent in 2018.                  | 5               | Animals and Wildlife             | 30              | Environment       | NA              | NA                    | NA              | NA                | NA              | NA                |
+| 10580      | 141272        | 2562    | 75     | Positions                           | 2017-2018 | Senator Elizabeth Warren supported the interests of the Outdoor Industry Association Political Action Committee 75 percent in 2017-2018. | 7               | Arts, Entertainment, and History | 30              | Environment       | NA              | NA                    | NA              | NA                | NA              | NA                |
+| 7154       | 141272        | 134     | 0      | Positions                           | 2013      | Senator Elizabeth Warren supported the interests of the Concerned Women for America 0 percent in 2013.                                   | 17              | Conservative                     | 107             | Religion          | 109             | Socially Conservative | 68              | Women             | NA              | NA                |
 
 And compute on them:
 
@@ -127,13 +127,14 @@ ratings %>%
     avg_rating = mean(as.numeric(rating), na.rm = TRUE)
   ) %>% 
   arrange(category_name_1)
+#> `summarise()` ungrouping output (override with `.groups` argument)
 #> # A tibble: 5 x 2
 #>   category_name_1                  avg_rating
 #>   <chr>                                 <dbl>
 #> 1 Campaign Finance                     100   
-#> 2 Civil Liberties and Civil Rights      84.5 
-#> 3 Education                             88.3 
-#> 4 Environment                           91.1 
+#> 2 Civil Liberties and Civil Rights      84.9 
+#> 3 Education                             91.2 
+#> 4 Environment                           90.8 
 #> 5 Fiscally Conservative                  9.58
 ```
 
@@ -174,7 +175,16 @@ given a vector of `state_id`s (optional), `office_id`s, and
 **`election_get_election_by_year_state`**
 
 Get a dataframe of election ids and their attributes given a vector of
-`year`s and `state_id`s (optional).
+`year`s and `state_id`s (optional)
+
+**`measure_get_measures`**
+
+Get a dataframe of ballot measure attributes given a `measure_id`
+
+**`measure_get_measures_by_year_state`**
+
+Get a dataframe of ballot measure ids and their attributes given a
+vector of `year`s and `state_id`s (optional)
 
 **`office_get_levels`**
 
@@ -183,7 +193,7 @@ Get the VoteSmart `office_level_id`s and their associated names
 
 **`office_get_offices_by_level`**
 
-Get `office_id`s and their associated names (e.g. `"President"`) for a
+Get `office_id`s and their associated names (e.g. `"President"`) for a
 given `office_level_id`
 
 **`rating_get_candidate_ratings`**
@@ -193,8 +203,9 @@ Get SIG (Special Interest Group) ratings for candidates given a
 
 **`rating_get_categories`**
 
-Get rating `category_id`s and their associated `name`s (e.g.
-`"Abortion"`, `"Environment"`) given a vector of `state_id`s (optional)
+Get rating `category_id`s and their associated `name`s
+(e.g. `"Abortion"`, `"Environment"`) given a vector of `state_id`s
+(optional)
 
 **`rating_get_sig`**
 

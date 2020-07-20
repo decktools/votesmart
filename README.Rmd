@@ -150,7 +150,15 @@ Get a dataframe of candidates by the state in which they ran for office given a 
 
 **`election_get_election_by_year_state`**
 
-Get a dataframe of election ids and their attributes given a vector of `year`s and `state_id`s (optional).
+Get a dataframe of election ids and their attributes given a vector of `year`s and `state_id`s (optional)
+
+**`measure_get_measures`**
+
+Get a dataframe of ballot measure attributes given a `measure_id`
+
+**`measure_get_measures_by_year_state`**
+
+Get a dataframe of ballot measure ids and their attributes given a vector of `year`s and `state_id`s (optional)
 
 **`office_get_levels`**
 
