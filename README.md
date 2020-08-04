@@ -8,7 +8,7 @@
 <!-- badges: start -->
 
 [![Travis build
-status](https://travis-ci.com/decktools/votesmart.svg?token=G3ZELzKsL1syAMRqs54K&branch=master)](https://travis-ci.com/decktools/votesmart)
+status](https://travis-ci.com/decktools/votesmart.svg?token=G3ZELzKsL1syAMRqs54K&branch=main)](https://travis-ci.com/decktools/votesmart)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.org/package=votesmart)
 <!-- badges: end -->
