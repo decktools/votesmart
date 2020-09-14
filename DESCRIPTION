@@ -43,8 +43,6 @@ Suggests:
     testthat (>= 2.1.0)
 VignetteBuilder: 
     knitr
-Remotes:
-    hadley/emo
 Encoding: UTF-8
 Language: en-US
 LazyData: true
