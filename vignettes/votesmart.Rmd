@@ -14,12 +14,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r, include = FALSE}
-if ("bonanza" %in% installed.packages() && nchar(Sys.getenv("VOTESMART_API_KEY")) == 0) {
-  Sys.setenv(VOTESMART_API_KEY = bonanza::secrets.get("VOTESMART_API_KEY"))
-}
-```
-
 
 ```{r setup}
 library(votesmart)
