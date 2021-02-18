@@ -5,6 +5,19 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 3 notes
 
-* This is a new release.
+This is a new release.
+
+Possibly mis-spelled words in DESCRIPTION:
+  VoteSmart (3:32, 19:44)
+  
+* "VoteSmart" is the name of the API
+
+Found the following (possibly) invalid URLs:
+  URL: https://www.deck.tools/
+    From: README.md
+    Status: 503
+    Message: Service Unavailable
+
+* This URL resolves in a browser and returns a 200 response with httr::GET("https://www.deck.tools/")
