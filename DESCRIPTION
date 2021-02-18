@@ -40,8 +40,7 @@ Suggests:
     knitr (>= 1.27),
     rmarkdown (>= 2.1),
     spelling (>= 2.1),
-    testthat (>= 2.1.0),
-    utf8 (>= 1.1.4)
+    testthat (>= 2.1.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

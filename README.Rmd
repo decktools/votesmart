@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 votesmart <img src="./man/img/deck_logo.png" alt="deck" height="35px" align="right" />
 ====================================================================================
 
-This package is a wrapper around the [VoteSmart](https://justfacts.votesmart.org/) [API](http://api.votesmart.org/docs/) written by your friendly neighborhood progressive tech organization, `r emo::ji("star2")` [*Deck Technologies*](https://www.deck.tools/) `r emo::ji("star2")`. Feel free to use this package in any way you like.
+This package is a wrapper around the [VoteSmart](https://justfacts.votesmart.org/) [API](http://api.votesmart.org/docs/) written by your friendly neighborhood progressive tech organization, `r emo::ji("star2")` [*Deck Technologies*](https://www.deck.tools) `r emo::ji("star2")`. Feel free to use this package in any way you like.
 
 VoteSmart provides information on US political candidates' positions on issues, votes on bills, and ratings by third party organizations, among other data.
 
