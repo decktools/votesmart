@@ -3,8 +3,8 @@ test_that("measure_get_measures_by_year_state", {
 
   res <-
     measure_get_measures_by_year_state(
-      years = sample(2015:2017),
-      state_ids = c(NA, sample(state.abb, 2)),
+      years = sample(2015:2020),
+      state_ids = c(NA, sample(state.abb, 5)),
       all = do_all
     )
 

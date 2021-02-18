@@ -5,6 +5,7 @@ test_that("candidates_get_by_office_state", {
     candidates_get_by_office_state(
       state_ids = c(NA, "NY", "CA"),
       office_ids = c(1, 6, 10),
+      election_years = 2020,
       all = do_all
     )
 

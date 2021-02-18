@@ -194,12 +194,13 @@ get <- function(req, query, level_one, level_two) {
     pluck_it <- function(x, to_pluck) {
       x %>%
         purrr::modify_depth(2, purrr::pluck, to_pluck) %>%
-        purrr::flatten() %>% purrr::flatten() %>%
-        purrr::as_vector() %>% unique()
+        purrr::flatten() %>%
+        purrr::flatten() %>%
+        purrr::as_vector() %>%
+        unique()
     }
 
     if ("categories" %in% names(out)) {
-
       if (purrr::vec_depth(out$categories) == 3) {
         out$category_id <- out$categories$category$categoryId
         out$category_name <- out$categories$category$categoryId
@@ -215,9 +216,11 @@ get <- function(req, query, level_one, level_two) {
           list()
       }
 
-      out %<>%
-        select(-categories) %>%
-        tidyr::unnest()
+      suppressWarnings({
+        out %<>%
+          select(-categories) %>%
+          tidyr::unnest()
+      })
     }
 
     # Otherwise there are multiple rows
