@@ -1,3 +1,5 @@
+skip_if_no_auth()
+
 abrams_id <- 67385
 aoc_id <- 180416
 pelosi_id <- 26732

@@ -1,3 +1,5 @@
+skip_if_no_auth()
+
 test_that("election_get_election_by_year_state", {
   do_all <- sample(c(TRUE, FALSE), 1)
 

@@ -1,3 +1,5 @@
+skip_if_no_auth()
+
 test_that("candidates_get_by_lastname", {
   do_all <- sample(c(TRUE, FALSE), 1)
 

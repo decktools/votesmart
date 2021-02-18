@@ -1,3 +1,5 @@
+skip_if_no_auth()
+
 test_that("rating_get_sig_list", {
   do_all <- sample(c(TRUE, FALSE), 1)
 

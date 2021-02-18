@@ -1,3 +1,5 @@
+skip_if_no_auth()
+
 test_that("candidates_get_by_office_state", {
   do_all <- sample(c(TRUE, FALSE), 1)
 
