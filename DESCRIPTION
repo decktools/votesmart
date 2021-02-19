@@ -1,9 +1,12 @@
 Type: Package
 Package: votesmart
-Title: Wrapper for the Project VoteSmart API
+Title: Wrapper for the Project 'VoteSmart' API
 Version: 0.1.0
 Authors@R: 
-    c(person(given = "Amanda",
+    c(person(given = "Deck Technologies",
+             role = c("cph", "fnd"),
+             email = "info@deck.tools"),
+      person(given = "Amanda",
              family = "Dobbyn",
              role = c("aut", "cre"),
              email = "amanda@deck.tools"),
@@ -16,7 +19,7 @@ Authors@R:
              role = "aut",
              email = "alyssa@deck.tools"))
 Maintainer: Amanda Dobbyn <amanda@deck.tools>
-Description: An R interface to the Project VoteSmart API.
+Description: An R interface to the Project 'VoteSmart'<https://justfacts.votesmart.org/> API.
 License: MIT + file LICENSE
 URL: https://github.com/decktools/votesmart/
 BugReports: https://github.com/decktools/votesmart/issues/

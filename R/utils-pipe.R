@@ -5,6 +5,7 @@
 #' @name %>%
 #' @rdname pipe
 #' @keywords internal
+#' @return The left hand side object with the right hand side applied to it. Does not reassign this value to the left hand side.
 #' @export
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
@@ -17,6 +18,7 @@ NULL
 #' @name %<>%
 #' @rdname assignment_pipe
 #' @keywords internal
+#' @return The left hand side object with the right hand side applied to it. Does  reassign this value to the left hand side.
 #' @export
 #' @importFrom magrittr %<>%
 #' @usage lhs \%<>\% rhs

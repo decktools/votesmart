@@ -4,9 +4,9 @@
 \name{votesmart-package}
 \alias{votesmart}
 \alias{votesmart-package}
-\title{votesmart: Wrapper for the Project VoteSmart API}
+\title{votesmart: Wrapper for the Project 'VoteSmart' API}
 \description{
-An R interface to the Project VoteSmart API.
+An R interface to the Project 'VoteSmart'<https://justfacts.votesmart.org/> API.
 }
 \seealso{
 Useful links:
@@ -23,6 +23,11 @@ Authors:
 \itemize{
   \item Max Wood \email{max@deck.tools}
   \item Alyssa Frazee \email{alyssa@deck.tools}
+}
+
+Other contributors:
+\itemize{
+  \item Deck Technologies \email{info@deck.tools} [copyright holder, funder]
 }
 
 }
