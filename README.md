@@ -1,10 +1,7 @@
 
 <p align="center">
-
 <img src="https://media.giphy.com/media/pD4mUFQR0ovmg/giphy.gif" alt="galaxy_gif">
-
 </p>
-
 <!-- badges: start -->
 
 [![Travis build
@@ -19,7 +16,7 @@ This package is a wrapper around the
 [VoteSmart](https://justfacts.votesmart.org/)
 [API](http://api.votesmart.org/docs/) written by your friendly
 neighborhood progressive tech organization, 🌟 [*Deck
-Technologies*](https://www.deck.tools/) 🌟. Feel free to use this package
+Technologies*](https://www.deck.tools) 🌟. Feel free to use this package
 in any way you like.
 
 VoteSmart provides information on US political candidates’ positions on
@@ -28,9 +25,11 @@ other data.
 
 ### Installation
 
-``` r
-devtools::install_github("decktools/votesmart", build_vignettes = TRUE)
-```
+    install.packages("votesmart")
+
+Or the development version:
+
+    devtools::install_github("decktools/votesmart", build_vignettes = TRUE)
 
 ### API Keys
 
@@ -45,7 +44,8 @@ You can check that it’s there with
 
     Sys.getenv("VOTESMART_API_KEY")
 
-This key is never stored in your R session’s global environment.
+This package never stores your key in your R session’s global
+environment.
 
 ### An Example
 
@@ -55,26 +55,26 @@ Groups (SIGs) give to political candidates.
 Let’s say we want to know how Elizabeth Warren tends to be rated on a
 few issues.
 
-``` r
-library(votesmart)
-```
+    library(votesmart)
+    suppressPackageStartupMessages(library(dplyr))
+    #> Warning: package 'dplyr' was built under R version 4.0.2
+    conflicted::conflict_prefer("filter", "dplyr")
+    #> [conflicted] Will prefer dplyr::filter over any other package
 
 We’ll first want to know what her VoteSmart `candidate_id` is. We can
 search for her using `candidates_get_by_lastname`:
 
-``` r
-warrens <- 
-  candidates_get_by_lastname(
-    "warren", 
-    election_years = 2012
-  )
-#> Requesting data for {last_name: warren, election_year: 2012, stage_id: }.
+    warrens <- 
+      candidates_get_by_lastname(
+        "warren", 
+        election_years = 2012
+      )
+    #> Requesting data for {last_name: warren, election_year: 2012, stage_id: }.
 
-knitr::kable(warrens)
-```
+    knitr::kable(warrens)
 
 | candidate\_id | first\_name | nick\_name | middle\_name | last\_name | suffix | title          | ballot\_name        | stage\_id | election\_year | preferred\_name | election\_parties | election\_status | election\_stage | election\_district\_id | election\_district\_name | election\_office | election\_office\_id | election\_state\_id | election\_office\_type\_id | election\_special | election\_date | office\_parties | office\_status | office\_district\_id | office\_district\_name | office\_state\_id | office\_id | office\_name | office\_type\_id | running\_mate\_id | running\_mate\_name |
-| :------------ | :---------- | :--------- | :----------- | :--------- | :----- | :------------- | :------------------ | :-------- | :------------- | :-------------- | :---------------- | :--------------- | :-------------- | :--------------------- | :----------------------- | :--------------- | :------------------- | :------------------ | :------------------------- | :---------------- | :------------- | :-------------- | :------------- | :------------------- | :--------------------- | :---------------- | :--------- | :----------- | :--------------- | :---------------- | :------------------ |
+|:--------------|:------------|:-----------|:-------------|:-----------|:-------|:---------------|:--------------------|:----------|:---------------|:----------------|:------------------|:-----------------|:----------------|:-----------------------|:-------------------------|:-----------------|:---------------------|:--------------------|:---------------------------|:------------------|:---------------|:----------------|:---------------|:---------------------|:-----------------------|:------------------|:-----------|:-------------|:-----------------|:------------------|:--------------------|
 | 139104        | Adam        | NA         | Lee          | Warren     | NA     | NA             | Adam Lee Warren     |           | 2012           | Adam            | Republican        | Lost             | Primary         | NA                     | NA                       | Attorney General | 12                   | MO                  | S                          | FALSE             | 08/07/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
 | 103860        | Dennis      | NA         | NA           | Warren     | NA     | NA             | Dennis C. Warren    |           | 2012           | Dennis          | Republican        | Withdrawn        | General         | 28446                  | 16                       | State Senate     | 9                    | ID                  | L                          | FALSE             | 11/06/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
 | 141272        | Elizabeth   | NA         | Ann          | Warren     | NA     | Senator        | Elizabeth A. Warren |           | 2012           | Elizabeth       | Democratic        | Won              | General         | NA                     | NA                       | U.S. Senate      | 6                    | MA                  | C                          | FALSE             | 11/06/2012     | Democratic      | active         | 20512                | Sr                     | MA                | 6          | U.S. Senate  | C                | NA                | NA                  |
@@ -87,56 +87,52 @@ knitr::kable(warrens)
 Filtering to her first name and taking her `candidate_id`, we can now
 grab Warren’s ratings by all SIGs with `rating_get_candidate_ratings`.
 
-``` r
-(id <- 
-  warrens %>% 
-  filter(first_name == "Elizabeth") %>% 
-  pull(candidate_id)
-)
-#> [1] "141272"
+    (id <- 
+      warrens %>% 
+      filter(first_name == "Elizabeth") %>% 
+      pull(candidate_id)
+    )
+    #> [1] "141272"
 
-ratings <- 
-  rating_get_candidate_ratings(
-    candidate_ids = id,
-  )
-#> Requesting data for {candidate_id: 141272, sig_id: }.
+    ratings <- 
+      rating_get_candidate_ratings(
+        candidate_ids = id,
+      )
+    #> Requesting data for {candidate_id: 141272, sig_id: }.
 
-knitr::kable(ratings %>% sample_n(3))
-```
+    knitr::kable(ratings %>% sample_n(3))
 
-| rating\_id | candidate\_id | sig\_id | rating | rating\_name                        | timespan  | rating\_text                                                                                                                             | category\_id\_1 | category\_name\_1                | category\_id\_2 | category\_name\_2 | category\_id\_3 | category\_name\_3     | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 |
-| :--------- | :------------ | :------ | :----- | :---------------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :-------------- | :------------------------------- | :-------------- | :---------------- | :-------------- | :-------------------- | :-------------- | :---------------- | :-------------- | :---------------- |
-| 10991      | 141272        | 2859    | 89     | Positions on Endangered Species Act | 2018      | Senator Elizabeth Warren supported the interests of the Center For Biological Diversity Action Fund 89 percent in 2018.                  | 5               | Animals and Wildlife             | 30              | Environment       | NA              | NA                    | NA              | NA                | NA              | NA                |
-| 10580      | 141272        | 2562    | 75     | Positions                           | 2017-2018 | Senator Elizabeth Warren supported the interests of the Outdoor Industry Association Political Action Committee 75 percent in 2017-2018. | 7               | Arts, Entertainment, and History | 30              | Environment       | NA              | NA                    | NA              | NA                | NA              | NA                |
-| 7154       | 141272        | 134     | 0      | Positions                           | 2013      | Senator Elizabeth Warren supported the interests of the Concerned Women for America 0 percent in 2013.                                   | 17              | Conservative                     | 107             | Religion          | 109             | Socially Conservative | 68              | Women             | NA              | NA                |
+| rating\_id | candidate\_id | sig\_id | rating | rating\_name              | timespan | rating\_text                                                                                                                                                                                                                                                     | category\_id\_1 | category\_name\_1 | category\_id\_2 | category\_name\_2     | category\_id\_3 | category\_name\_3 | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 | category\_id\_6 | category\_name\_6 | category\_id\_7 | category\_name\_7 | category\_id\_8 | category\_name\_8 |
+|:-----------|:--------------|:--------|:-------|:--------------------------|:---------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|:------------------|:----------------|:----------------------|:----------------|:------------------|:----------------|:------------------|:----------------|:------------------|:----------------|:------------------|:----------------|:------------------|:----------------|:------------------|
+| 9993       | 141272        | 1420    | 93     | Positions                 | 2016     | Based on the votes, committee votes, co-sponsorships and other leadership actions that took place between 2016 the Armenian National Committee of America assigned Senator Elizabeth Warren a grade of 93. With grades ranging from a high of A+ to a low of F-. | 32              | Foreign Affairs   | NA              | NA                    | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                |
+| 7237       | 141272        | 310     | 6      | Positions (June 23, 2014) | 2014     | Senator Elizabeth Warren supported the interests of the Americans for Prosperity 6 percent in 2014.                                                                                                                                                              | 17              | Conservative      | 86              | Fiscally Conservative | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                |
+| 8920       | 141272        | 2486    | 39     | Positions                 | 2016     | Senator Elizabeth Warren supported the interests of the The Leadership Project for America 39 percent in 2016.                                                                                                                                                   | 17              | Conservative      | NA              | NA                    | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                |
 
 And compute on them:
 
-``` r
-ratings %>% 
-  filter(
-    category_name_1 %in% 
-      c("Environment", 
-        "Fiscally Conservative",
-        "Education", 
-        "Civil Liberties and Civil Rights", 
-        "Campaign Finance") 
-  ) %>% 
-  group_by(category_name_1) %>% 
-  summarise(
-    avg_rating = mean(as.numeric(rating), na.rm = TRUE)
-  ) %>% 
-  arrange(category_name_1)
-#> `summarise()` ungrouping output (override with `.groups` argument)
-#> # A tibble: 5 x 2
-#>   category_name_1                  avg_rating
-#>   <chr>                                 <dbl>
-#> 1 Campaign Finance                     100   
-#> 2 Civil Liberties and Civil Rights      84.9 
-#> 3 Education                             91.2 
-#> 4 Environment                           90.8 
-#> 5 Fiscally Conservative                  9.58
-```
+    ratings %>% 
+      filter(
+        category_name_1 %in% 
+          c("Environment", 
+            "Fiscally Conservative",
+            "Education", 
+            "Civil Liberties and Civil Rights", 
+            "Campaign Finance") 
+      ) %>% 
+      group_by(category_name_1) %>% 
+      summarise(
+        avg_rating = mean(as.numeric(rating), na.rm = TRUE)
+      ) %>% 
+      arrange(category_name_1)
+    #> `summarise()` ungrouping output (override with `.groups` argument)
+    #> # A tibble: 5 x 2
+    #>   category_name_1                  avg_rating
+    #>   <chr>                                 <dbl>
+    #> 1 Campaign Finance                      100  
+    #> 2 Civil Liberties and Civil Rights       84.8
+    #> 3 Education                              91.2
+    #> 4 Environment                            86.3
+    #> 5 Fiscally Conservative                   9.7
 
 For more in-depth examples of how these all fit together, check out the
 vignette with:
@@ -151,7 +147,7 @@ vignette with:
 **If you see an endpoint you want to be made available in this package
 that isn’t yet, feel free to submit an
 [issue](https://github.com/decktools/votesmart/issues) or a [pull
-request](https://github.com/decktools/votesmart/pulls)\!**
+request](https://github.com/decktools/votesmart/pulls)!**
 
 #### Summary of Functions
 
@@ -239,14 +235,14 @@ or
 
 ### Other Details
 
-  - This package currently contains no rate limiting infrastructure as
+-   This package currently contains no rate limiting infrastructure as
     there is very little information about what rate limits VoteSmart
     imposes, if any
 
-  - The VoteSmart API does not allow for bulk requests, i.e. a single
+-   The VoteSmart API does not allow for bulk requests, i.e. a single
     request can only contain one value for each parameter
-    
-      - The functions in this package allow multiple inputs to be
+
+    -   The functions in this package allow multiple inputs to be
         specified for each argument, but requests are sent one at a time
         for each combination of inputs
 
@@ -254,4 +250,4 @@ or
 
 Feel free to reach out in the
 [Issues](https://github.com/decktools/votesmart/issues) with any bugs or
-feature requests\! 💫
+feature requests! 💫

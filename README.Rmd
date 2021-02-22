@@ -33,6 +33,12 @@ VoteSmart provides information on US political candidates' positions on issues, 
 ### Installation
 
 ``` r
+install.packages("votesmart")
+```
+
+Or the development version:
+
+``` r
 devtools::install_github("decktools/votesmart", build_vignettes = TRUE)
 ```
 
@@ -52,7 +58,7 @@ You can check that it's there with
 Sys.getenv("VOTESMART_API_KEY")
 ```
 
-This key is never stored in your R session's global environment.
+This package never stores your key in your R session's global environment.
 
 ### An Example
 
@@ -62,8 +68,9 @@ Let's say we want to know how Elizabeth Warren tends to be rated on a few issues
 
 ```{r}
 library(votesmart)
+suppressPackageStartupMessages(library(dplyr))
+conflicted::conflict_prefer("filter", "dplyr")
 ```
-
 
 We'll first want to know what her VoteSmart `candidate_id` is. We can search for her using `candidates_get_by_lastname`:
 
