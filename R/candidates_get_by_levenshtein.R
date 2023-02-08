@@ -101,7 +101,7 @@ candidates_get_by_levenshtein <- function(last_names,
       this <-
         query_df %>%
         select(-query) %>%
-        na_if("")
+        vs_na_if("")
     } else {
       this %<>%
         mutate(

@@ -60,7 +60,7 @@ rating_get_sig <- function(sig_ids,
       this <-
         query_df %>%
         select(-query) %>%
-        na_if("")
+        vs_na_if("")
     } else {
       this %<>%
         select(-parent_id) %>%

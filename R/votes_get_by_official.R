@@ -112,7 +112,7 @@ votes_get_by_official <- function(candidate_ids,
         rename(
           category_id_1 = category_id
         ) %>%
-        na_if("")
+        vs_na_if("")
     } else {
       # Turn each element into a tibble and rowbind them
       this %<>%
