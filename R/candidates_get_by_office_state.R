@@ -104,7 +104,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
         rename(
           office_state_id = state_id
         ) %>%
-        na_if("")
+        vs_na_if("")
     } else {
       # Turn each element into a tibble and rowbind them
       this %<>%

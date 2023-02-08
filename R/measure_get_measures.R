@@ -60,7 +60,7 @@ measure_get_measures <- function(measure_ids,
       this <-
         query_df %>%
         select(-query) %>%
-        na_if("")
+        vs_na_if("")
     } else {
       this %<>%
         transmute(

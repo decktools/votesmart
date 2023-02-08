@@ -90,7 +90,7 @@ election_get_election_by_year_state <- function(years =
         rename(
           election_year = year
         ) %>%
-        na_if("")
+        vs_na_if("")
     } else {
       this %<>%
         mutate(
