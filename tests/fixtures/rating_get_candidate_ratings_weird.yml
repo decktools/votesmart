@@ -1,0 +1,38 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getCandidateRating?key=<<votesmart_key>>&candidateId=19241&sigId=&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:45 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '576'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJjYW5kaWRhdGVSYXRpbmciOnsiZ2VuZXJhbEluZm8iOnsidGl0bGUiOiJQcm9qZWN0IFZvdGUgU21h
+        cnQgLSBJbnRlcmVzdCBHcm91cCBSYXRpbmdzIiwibGlua0JhY2siOiJodHRwOlwvXC92b3Rlc21hcnQu
+        b3JnXC9pc3N1ZV9yYXRpbmdfY2F0ZWdvcnkucGhwP2Nhbl9pZD0xOTI0MSJ9LCJjYW5kaWRhdGUiOnsi
+        dGl0bGUiOiIiLCJmaXJzdE5hbWUiOiJKb2huIiwibWlkZGxlTmFtZSI6Ik0uIiwibGFzdE5hbWUiOiJS
+        ZWEiLCJzdWZmaXgiOiIiLCJvZmZpY2UiOiIifSwicmF0aW5nIjp7InNpZ0lkIjoiNDUzIiwicmF0aW5n
+        SWQiOiI5MDg4IiwiY2F0ZWdvcmllcyI6eyJjYXRlZ29yeSI6W3siY2F0ZWdvcnlJZCI6IjE3IiwibmFt
+        ZSI6IkNvbnNlcnZhdGl2ZSJ9LHsiY2F0ZWdvcnlJZCI6IjE3IiwibmFtZSI6IkNvbnNlcnZhdGl2ZSJ9
+        LHsiY2F0ZWdvcnlJZCI6IjEwNyIsIm5hbWUiOiJSZWxpZ2lvbiJ9LHsiY2F0ZWdvcnlJZCI6IjEwNyIs
+        Im5hbWUiOiJSZWxpZ2lvbiJ9XX0sInRpbWVzcGFuIjoiMjAxNiIsInJhdGluZyI6IjgwIiwicmF0aW5n
+        TmFtZSI6IlBvc2l0aW9ucyIsInJhdGluZ1RleHQiOiIifX19
+  recorded_at: 2023-03-06 17:18:45 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

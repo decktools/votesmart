@@ -1,0 +1,130 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getCategories?key=<<votesmart_key>>&stateId=IN&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:48 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '749'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJjYXRlZ29yaWVzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0g
+        SW50ZXJlc3QgR3JvdXAgUmF0aW5nIENhdGVnb3JpZXMiLCJsaW5rQmFjayI6Imh0dHA6XC9cL3ZvdGVz
+        bWFydC5vcmdcL2lzc3VlX3JhdGluZy5waHAifSwiY2F0ZWdvcnkiOlt7ImNhdGVnb3J5SWQiOiIyIiwi
+        bmFtZSI6IkFib3J0aW9uIn0seyJjYXRlZ29yeUlkIjoiNCIsIm5hbWUiOiJBZ3JpY3VsdHVyZSBhbmQg
+        Rm9vZCJ9LHsiY2F0ZWdvcnlJZCI6IjUiLCJuYW1lIjoiQW5pbWFscyBhbmQgV2lsZGxpZmUifSx7ImNh
+        dGVnb3J5SWQiOiIxMSIsIm5hbWUiOiJCdXNpbmVzcyBhbmQgQ29uc3VtZXJzIn0seyJjYXRlZ29yeUlk
+        IjoiMTMiLCJuYW1lIjoiQ2l2aWwgTGliZXJ0aWVzIGFuZCBDaXZpbCBSaWdodHMifSx7ImNhdGVnb3J5
+        SWQiOiIyNyIsIm5hbWUiOiJFZHVjYXRpb24ifSx7ImNhdGVnb3J5SWQiOiIyOSIsIm5hbWUiOiJFbmVy
+        Z3kifSx7ImNhdGVnb3J5SWQiOiIzMCIsIm5hbWUiOiJFbnZpcm9ubWVudCJ9LHsiY2F0ZWdvcnlJZCI6
+        IjM2IiwibmFtZSI6IkdvdmVybm1lbnQgT3BlcmF0aW9ucyJ9LHsiY2F0ZWdvcnlJZCI6IjM3IiwibmFt
+        ZSI6Ikd1bnMifSx7ImNhdGVnb3J5SWQiOiIzOCIsIm5hbWUiOiJIZWFsdGggYW5kIEhlYWx0aCBDYXJl
+        In0seyJjYXRlZ29yeUlkIjoiNDMiLCJuYW1lIjoiTGFib3IgVW5pb25zIn0seyJjYXRlZ29yeUlkIjoi
+        NzUiLCJuYW1lIjoiUmVwcm9kdWN0aW9uIn1dfX0=
+  recorded_at: 2023-03-06 17:18:48 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getCategories?key=<<votesmart_key>>&stateId=FL&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:48 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '1067'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJjYXRlZ29yaWVzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0g
+        SW50ZXJlc3QgR3JvdXAgUmF0aW5nIENhdGVnb3JpZXMiLCJsaW5rQmFjayI6Imh0dHA6XC9cL3ZvdGVz
+        bWFydC5vcmdcL2lzc3VlX3JhdGluZy5waHAifSwiY2F0ZWdvcnkiOlt7ImNhdGVnb3J5SWQiOiIyIiwi
+        bmFtZSI6IkFib3J0aW9uIn0seyJjYXRlZ29yeUlkIjoiNSIsIm5hbWUiOiJBbmltYWxzIGFuZCBXaWxk
+        bGlmZSJ9LHsiY2F0ZWdvcnlJZCI6IjciLCJuYW1lIjoiQXJ0cywgRW50ZXJ0YWlubWVudCwgYW5kIEhp
+        c3RvcnkifSx7ImNhdGVnb3J5SWQiOiIxMSIsIm5hbWUiOiJCdXNpbmVzcyBhbmQgQ29uc3VtZXJzIn0s
+        eyJjYXRlZ29yeUlkIjoiMTMiLCJuYW1lIjoiQ2l2aWwgTGliZXJ0aWVzIGFuZCBDaXZpbCBSaWdodHMi
+        fSx7ImNhdGVnb3J5SWQiOiIyMCIsIm5hbWUiOiJDcmltaW5hbCBKdXN0aWNlIn0seyJjYXRlZ29yeUlk
+        IjoiMjciLCJuYW1lIjoiRWR1Y2F0aW9uIn0seyJjYXRlZ29yeUlkIjoiMTIiLCJuYW1lIjoiRWxlY3Rp
+        b25zIn0seyJjYXRlZ29yeUlkIjoiMzAiLCJuYW1lIjoiRW52aXJvbm1lbnQifSx7ImNhdGVnb3J5SWQi
+        OiIzMSIsIm5hbWUiOiJGYW1pbHkifSx7ImNhdGVnb3J5SWQiOiIzNyIsIm5hbWUiOiJHdW5zIn0seyJj
+        YXRlZ29yeUlkIjoiMzgiLCJuYW1lIjoiSGVhbHRoIGFuZCBIZWFsdGggQ2FyZSJ9LHsiY2F0ZWdvcnlJ
+        ZCI6IjM5IiwibmFtZSI6IkhvdXNpbmcgYW5kIFByb3BlcnR5In0seyJjYXRlZ29yeUlkIjoiNDMiLCJu
+        YW1lIjoiTGFib3IgVW5pb25zIn0seyJjYXRlZ29yeUlkIjoiNzUiLCJuYW1lIjoiUmVwcm9kdWN0aW9u
+        In0seyJjYXRlZ29yeUlkIjoiNTIiLCJuYW1lIjoiU2NpZW5jZSJ9LHsiY2F0ZWdvcnlJZCI6Ijc2Iiwi
+        bmFtZSI6IlNleHVhbCBPcmllbnRhdGlvbiBhbmQgR2VuZGVyIElkZW50aXR5In0seyJjYXRlZ29yeUlk
+        IjoiNjQiLCJuYW1lIjoiVHJhbnNwb3J0YXRpb24ifSx7ImNhdGVnb3J5SWQiOiI2NiIsIm5hbWUiOiJW
+        ZXRlcmFucyJ9LHsiY2F0ZWdvcnlJZCI6IjY4IiwibmFtZSI6IldvbWVuIn1dfX0=
+  recorded_at: 2023-03-06 17:18:48 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getCategories?key=<<votesmart_key>>&stateId=PA&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:48 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '1018'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: 'eyJjYXRlZ29yaWVzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0g
+        SW50ZXJlc3QgR3JvdXAgUmF0aW5nIENhdGVnb3JpZXMiLCJsaW5rQmFjayI6Imh0dHA6XC9cL3ZvdGVz
+        bWFydC5vcmdcL2lzc3VlX3JhdGluZy5waHAifSwiY2F0ZWdvcnkiOlt7ImNhdGVnb3J5SWQiOiIyIiwi
+        bmFtZSI6IkFib3J0aW9uIn0seyJjYXRlZ29yeUlkIjoiNCIsIm5hbWUiOiJBZ3JpY3VsdHVyZSBhbmQg
+        Rm9vZCJ9LHsiY2F0ZWdvcnlJZCI6IjUiLCJuYW1lIjoiQW5pbWFscyBhbmQgV2lsZGxpZmUifSx7ImNh
+        dGVnb3J5SWQiOiIxMSIsIm5hbWUiOiJCdXNpbmVzcyBhbmQgQ29uc3VtZXJzIn0seyJjYXRlZ29yeUlk
+        IjoiMTMiLCJuYW1lIjoiQ2l2aWwgTGliZXJ0aWVzIGFuZCBDaXZpbCBSaWdodHMifSx7ImNhdGVnb3J5
+        SWQiOiIyNyIsIm5hbWUiOiJFZHVjYXRpb24ifSx7ImNhdGVnb3J5SWQiOiIxMiIsIm5hbWUiOiJFbGVj
+        dGlvbnMifSx7ImNhdGVnb3J5SWQiOiIzIiwibmFtZSI6IkVtcGxveW1lbnQgYW5kIEFmZmlybWF0aXZl
+        IEFjdGlvbiJ9LHsiY2F0ZWdvcnlJZCI6IjMwIiwibmFtZSI6IkVudmlyb25tZW50In0seyJjYXRlZ29y
+        eUlkIjoiMzciLCJuYW1lIjoiR3VucyJ9LHsiY2F0ZWdvcnlJZCI6IjM4IiwibmFtZSI6IkhlYWx0aCBh
+        bmQgSGVhbHRoIENhcmUifSx7ImNhdGVnb3J5SWQiOiIzOSIsIm5hbWUiOiJIb3VzaW5nIGFuZCBQcm9w
+        ZXJ0eSJ9LHsiY2F0ZWdvcnlJZCI6IjQzIiwibmFtZSI6IkxhYm9yIFVuaW9ucyJ9LHsiY2F0ZWdvcnlJ
+        ZCI6Ijc1IiwibmFtZSI6IlJlcHJvZHVjdGlvbiJ9LHsiY2F0ZWdvcnlJZCI6Ijc2IiwibmFtZSI6IlNl
+        eHVhbCBPcmllbnRhdGlvbiBhbmQgR2VuZGVyIElkZW50aXR5In0seyJjYXRlZ29yeUlkIjoiNDEiLCJu
+        YW1lIjoiVGVjaG5vbG9neSBhbmQgQ29tbXVuaWNhdGlvbiJ9LHsiY2F0ZWdvcnlJZCI6IjY0IiwibmFt
+        ZSI6IlRyYW5zcG9ydGF0aW9uIn0seyJjYXRlZ29yeUlkIjoiNjgiLCJuYW1lIjoiV29tZW4ifV19fQ== '
+  recorded_at: 2023-03-06 17:18:48 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
