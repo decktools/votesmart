@@ -14,25 +14,31 @@ test_that("rating_get_candidate_ratings", {
 
   candidate_ids <- c(pelosi_id, aoc_id)
 
-  res <- rating_get_candidate_ratings(
-    candidate_ids,
-    sig_ids
-  )
+  vcr::use_cassette("rating_get_candidate_ratings", {
+    res <- rating_get_candidate_ratings(
+      candidate_ids,
+      sig_ids
+    )
+  })
 
   expect_true(
     "rating_id" %in% names(res)
   )
 
-  weird_res <- rating_get_candidate_ratings(weird_id)
+  vcr::use_cassette("rating_get_candidate_ratings_weird", {
+    weird_res <- rating_get_candidate_ratings(weird_id)
+  })
 
   expect_true(
     "rating_id" %in% names(weird_res)
   )
 
-  expect_gte(
-    ncol(rating_get_candidate_ratings("180416", sig_ids = "2880")),
-    3
-  )
+  vcr::use_cassette("rating_get_candidate_ratings_dimensions", {
+    expect_gte(
+      ncol(rating_get_candidate_ratings("180416", sig_ids = "2880")),
+      3
+    )
+  })
 
   expect_error(
     rating_get_candidate_ratings(

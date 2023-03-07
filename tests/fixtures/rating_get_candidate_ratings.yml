@@ -1,0 +1,228 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getCandidateRating?key=<<votesmart_key>>&candidateId=26732&sigId=2167&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:45 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '3703'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJjYW5kaWRhdGVSYXRpbmciOnsiZ2VuZXJhbEluZm8iOnsidGl0bGUiOiJQcm9qZWN0IFZvdGUgU21h
+        cnQgLSBJbnRlcmVzdCBHcm91cCBSYXRpbmdzIiwibGlua0JhY2siOiJodHRwOlwvXC92b3Rlc21hcnQu
+        b3JnXC9pc3N1ZV9yYXRpbmdfY2F0ZWdvcnkucGhwP2Nhbl9pZD0yNjczMiJ9LCJjYW5kaWRhdGUiOnsi
+        dGl0bGUiOiJSZXByZXNlbnRhdGl2ZSIsImZpcnN0TmFtZSI6Ik5hbmN5IiwibWlkZGxlTmFtZSI6IiIs
+        Imxhc3ROYW1lIjoiUGVsb3NpIiwic3VmZml4IjoiIiwib2ZmaWNlIjoiVS5TLiBIb3VzZSJ9LCJyYXRp
+        bmciOlt7InNpZ0lkIjoiMjE2NyIsInJhdGluZ0lkIjoiMTM1MzIiLCJjYXRlZ29yaWVzIjp7ImNhdGVn
+        b3J5IjpbeyJjYXRlZ29yeUlkIjoiODIiLCJuYW1lIjoiRWNvbm9teSBhbmQgRmlzY2FsIn0seyJjYXRl
+        Z29yeUlkIjoiODIiLCJuYW1lIjoiRWNvbm9teSBhbmQgRmlzY2FsIn0seyJjYXRlZ29yeUlkIjoiNDUi
+        LCJuYW1lIjoiTGliZXJhbCJ9LHsiY2F0ZWdvcnlJZCI6IjQ1IiwibmFtZSI6IkxpYmVyYWwifV19LCJ0
+        aW1lc3BhbiI6IjIwMjEtMjAyMiIsInJhdGluZyI6Ijk5IiwicmF0aW5nTmFtZSI6IlBvc2l0aW9ucyBb
+        MjAyMi0xMS0xMF0iLCJyYXRpbmdUZXh0IjoiUmVwcmVzZW50YXRpdmUgTmFuY3kgUGVsb3NpIHN1cHBv
+        cnRlZCB0aGUgaW50ZXJlc3RzIG9mIHRoZSBQcm9ncmVzc2l2ZSBQdW5jaCA5OSBwZXJjZW50IGluIDIw
+        MjEtMjAyMi4ifSx7InNpZ0lkIjoiMjE2NyIsInJhdGluZ0lkIjoiMTM1MzMiLCJjYXRlZ29yaWVzIjp7
+        ImNhdGVnb3J5IjpbeyJjYXRlZ29yeUlkIjoiODIiLCJuYW1lIjoiRWNvbm9teSBhbmQgRmlzY2FsIn0s
+        eyJjYXRlZ29yeUlkIjoiODIiLCJuYW1lIjoiRWNvbm9teSBhbmQgRmlzY2FsIn0seyJjYXRlZ29yeUlk
+        IjoiNDUiLCJuYW1lIjoiTGliZXJhbCJ9LHsiY2F0ZWdvcnlJZCI6IjQ1IiwibmFtZSI6IkxpYmVyYWwi
+        fV19LCJ0aW1lc3BhbiI6IjIwMjEtMjAyMiIsInJhdGluZyI6Ijk1IiwicmF0aW5nTmFtZSI6IkxpZmV0
+        aW1lIFBvc2l0aW9ucyBbMjAyMi0xMS0xMF0iLCJyYXRpbmdUZXh0IjoiUmVwcmVzZW50YXRpdmUgTmFu
+        Y3kgUGVsb3NpIHN1cHBvcnRlZCB0aGUgaW50ZXJlc3RzIG9mIHRoZSBQcm9ncmVzc2l2ZSBQdW5jaCA5
+        NSBwZXJjZW50IGluIDIwMjEtMjAyMi4ifSx7InNpZ0lkIjoiMjE2NyIsInJhdGluZ0lkIjoiMTI2MDci
+        LCJjYXRlZ29yaWVzIjp7ImNhdGVnb3J5IjpbeyJjYXRlZ29yeUlkIjoiODciLCJuYW1lIjoiRmlzY2Fs
+        bHkgTGliZXJhbCJ9LHsiY2F0ZWdvcnlJZCI6Ijg3IiwibmFtZSI6IkZpc2NhbGx5IExpYmVyYWwifSx7
+        ImNhdGVnb3J5SWQiOiIxMTAiLCJuYW1lIjoiU29jaWFsbHkgTGliZXJhbCJ9LHsiY2F0ZWdvcnlJZCI6
+        IjExMCIsIm5hbWUiOiJTb2NpYWxseSBMaWJlcmFsIn1dfSwidGltZXNwYW4iOiIyMDE5LTIwMjAiLCJy
+        YXRpbmciOiIxMDAiLCJyYXRpbmdOYW1lIjoiTGlmZXRpbWUgUG9zaXRpb25zIiwicmF0aW5nVGV4dCI6
+        IlJlcHJlc2VudGF0aXZlIE5hbmN5IFBlbG9zaSBzdXBwb3J0ZWQgdGhlIGludGVyZXN0cyBvZiB0aGUg
+        UHJvZ3Jlc3NpdmUgUHVuY2ggMTAwIHBlcmNlbnQgaW4gMjAxOS0yMDIwLiJ9LHsic2lnSWQiOiIyMTY3
+        IiwicmF0aW5nSWQiOiIxMjYxMCIsImNhdGVnb3JpZXMiOnsiY2F0ZWdvcnkiOlt7ImNhdGVnb3J5SWQi
+        OiI4NyIsIm5hbWUiOiJGaXNjYWxseSBMaWJlcmFsIn0seyJjYXRlZ29yeUlkIjoiODciLCJuYW1lIjoi
+        RmlzY2FsbHkgTGliZXJhbCJ9LHsiY2F0ZWdvcnlJZCI6IjExMCIsIm5hbWUiOiJTb2NpYWxseSBMaWJl
+        cmFsIn0seyJjYXRlZ29yeUlkIjoiMTEwIiwibmFtZSI6IlNvY2lhbGx5IExpYmVyYWwifV19LCJ0aW1l
+        c3BhbiI6IjIwMTktMjAyMCIsInJhdGluZyI6Ijk1IiwicmF0aW5nTmFtZSI6IlBvc2l0aW9ucyIsInJh
+        dGluZ1RleHQiOiJSZXByZXNlbnRhdGl2ZSBOYW5jeSBQZWxvc2kgc3VwcG9ydGVkIHRoZSBpbnRlcmVz
+        dHMgb2YgdGhlIFByb2dyZXNzaXZlIFB1bmNoIDk1IHBlcmNlbnQgaW4gMjAxOS0yMDIwLiJ9LHsic2ln
+        SWQiOiIyMTY3IiwicmF0aW5nSWQiOiI4NzY3IiwiY2F0ZWdvcmllcyI6eyJjYXRlZ29yeSI6W3siY2F0
+        ZWdvcnlJZCI6Ijg3IiwibmFtZSI6IkZpc2NhbGx5IExpYmVyYWwifSx7ImNhdGVnb3J5SWQiOiI4NyIs
+        Im5hbWUiOiJGaXNjYWxseSBMaWJlcmFsIn0seyJjYXRlZ29yeUlkIjoiMTEwIiwibmFtZSI6IlNvY2lh
+        bGx5IExpYmVyYWwifSx7ImNhdGVnb3J5SWQiOiIxMTAiLCJuYW1lIjoiU29jaWFsbHkgTGliZXJhbCJ9
+        XX0sInRpbWVzcGFuIjoiMjAxNSIsInJhdGluZyI6Ijk0IiwicmF0aW5nTmFtZSI6IkxpZmV0aW1lIFBv
+        c2l0aW9ucyIsInJhdGluZ1RleHQiOiJJbiAyMDE1IFByb2dyZXNzaXZlIFB1bmNoIGdhdmUgUmVwcmVz
+        ZW50YXRpdmUgTmFuY3kgUGVsb3NpIGEgcmF0aW5nIG9mIDk0LiJ9LHsic2lnSWQiOiIyMTY3IiwicmF0
+        aW5nSWQiOiI4NzY4IiwiY2F0ZWdvcmllcyI6eyJjYXRlZ29yeSI6W3siY2F0ZWdvcnlJZCI6Ijg3Iiwi
+        bmFtZSI6IkZpc2NhbGx5IExpYmVyYWwifSx7ImNhdGVnb3J5SWQiOiI4NyIsIm5hbWUiOiJGaXNjYWxs
+        eSBMaWJlcmFsIn0seyJjYXRlZ29yeUlkIjoiMTEwIiwibmFtZSI6IlNvY2lhbGx5IExpYmVyYWwifSx7
+        ImNhdGVnb3J5SWQiOiIxMTAiLCJuYW1lIjoiU29jaWFsbHkgTGliZXJhbCJ9XX0sInRpbWVzcGFuIjoi
+        MjAxNSIsInJhdGluZyI6Ijk4IiwicmF0aW5nTmFtZSI6IlBvc2l0aW9ucyIsInJhdGluZ1RleHQiOiJJ
+        biAyMDE1IFByb2dyZXNzaXZlIFB1bmNoIGdhdmUgUmVwcmVzZW50YXRpdmUgTmFuY3kgUGVsb3NpIGEg
+        cmF0aW5nIG9mIDk4LiJ9LHsic2lnSWQiOiIyMTY3IiwicmF0aW5nSWQiOiI2NzI3IiwiY2F0ZWdvcmll
+        cyI6eyJjYXRlZ29yeSI6W3siY2F0ZWdvcnlJZCI6Ijg3IiwibmFtZSI6IkZpc2NhbGx5IExpYmVyYWwi
+        fSx7ImNhdGVnb3J5SWQiOiI4NyIsIm5hbWUiOiJGaXNjYWxseSBMaWJlcmFsIn0seyJjYXRlZ29yeUlk
+        IjoiMTEwIiwibmFtZSI6IlNvY2lhbGx5IExpYmVyYWwifSx7ImNhdGVnb3J5SWQiOiIxMTAiLCJuYW1l
+        IjoiU29jaWFsbHkgTGliZXJhbCJ9XX0sInRpbWVzcGFuIjoiMjAxMy0yMDE0IiwicmF0aW5nIjoiOTQi
+        LCJyYXRpbmdOYW1lIjoiUG9zaXRpb25zIiwicmF0aW5nVGV4dCI6IlJlcHJlc2VudGF0aXZlIE5hbmN5
+        IFBlbG9zaSBzdXBwb3J0ZWQgdGhlIGludGVyZXN0cyBvZiB0aGUgUHJvZ3Jlc3NpdmUgUHVuY2ggOTQg
+        cGVyY2VudCBpbiAyMDEzLTIwMTQuIn0seyJzaWdJZCI6IjIxNjciLCJyYXRpbmdJZCI6IjY3MjgiLCJj
+        YXRlZ29yaWVzIjp7ImNhdGVnb3J5IjpbeyJjYXRlZ29yeUlkIjoiODciLCJuYW1lIjoiRmlzY2FsbHkg
+        TGliZXJhbCJ9LHsiY2F0ZWdvcnlJZCI6Ijg3IiwibmFtZSI6IkZpc2NhbGx5IExpYmVyYWwifSx7ImNh
+        dGVnb3J5SWQiOiIxMTAiLCJuYW1lIjoiU29jaWFsbHkgTGliZXJhbCJ9LHsiY2F0ZWdvcnlJZCI6IjEx
+        MCIsIm5hbWUiOiJTb2NpYWxseSBMaWJlcmFsIn1dfSwidGltZXNwYW4iOiIyMDEzLTIwMTQiLCJyYXRp
+        bmciOiI5NCIsInJhdGluZ05hbWUiOiJMaWZldGltZSBQb3NpdGlvbnMiLCJyYXRpbmdUZXh0IjoiUmVw
+        cmVzZW50YXRpdmUgTmFuY3kgUGVsb3NpIHN1cHBvcnRlZCB0aGUgaW50ZXJlc3RzIG9mIHRoZSBQcm9n
+        cmVzc2l2ZSBQdW5jaCA5NCBwZXJjZW50IGluIDIwMTMtMjAxNC4ifV19fQ==
+  recorded_at: 2023-03-06 17:18:45 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getCandidateRating?key=<<votesmart_key>>&candidateId=180416&sigId=2167&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:45 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '2096'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJjYW5kaWRhdGVSYXRpbmciOnsiZ2VuZXJhbEluZm8iOnsidGl0bGUiOiJQcm9qZWN0IFZvdGUgU21h
+        cnQgLSBJbnRlcmVzdCBHcm91cCBSYXRpbmdzIiwibGlua0JhY2siOiJodHRwOlwvXC92b3Rlc21hcnQu
+        b3JnXC9pc3N1ZV9yYXRpbmdfY2F0ZWdvcnkucGhwP2Nhbl9pZD0xODA0MTYifSwiY2FuZGlkYXRlIjp7
+        InRpdGxlIjoiUmVwcmVzZW50YXRpdmUiLCJmaXJzdE5hbWUiOiJBbGV4YW5kcmlhIiwibWlkZGxlTmFt
+        ZSI6IiIsImxhc3ROYW1lIjoiT2Nhc2lvLUNvcnRleiIsInN1ZmZpeCI6IiIsIm9mZmljZSI6IlUuUy4g
+        SG91c2UifSwicmF0aW5nIjpbeyJzaWdJZCI6IjIxNjciLCJyYXRpbmdJZCI6IjEzNTMyIiwiY2F0ZWdv
+        cmllcyI6eyJjYXRlZ29yeSI6W3siY2F0ZWdvcnlJZCI6IjgyIiwibmFtZSI6IkVjb25vbXkgYW5kIEZp
+        c2NhbCJ9LHsiY2F0ZWdvcnlJZCI6IjgyIiwibmFtZSI6IkVjb25vbXkgYW5kIEZpc2NhbCJ9LHsiY2F0
+        ZWdvcnlJZCI6IjQ1IiwibmFtZSI6IkxpYmVyYWwifSx7ImNhdGVnb3J5SWQiOiI0NSIsIm5hbWUiOiJM
+        aWJlcmFsIn1dfSwidGltZXNwYW4iOiIyMDIxLTIwMjIiLCJyYXRpbmciOiI5NyIsInJhdGluZ05hbWUi
+        OiJQb3NpdGlvbnMgWzIwMjItMTEtMTBdIiwicmF0aW5nVGV4dCI6IlJlcHJlc2VudGF0aXZlIEFsZXhh
+        bmRyaWEgT2Nhc2lvLUNvcnRleiBzdXBwb3J0ZWQgdGhlIGludGVyZXN0cyBvZiB0aGUgUHJvZ3Jlc3Np
+        dmUgUHVuY2ggOTcgcGVyY2VudCBpbiAyMDIxLTIwMjIuIn0seyJzaWdJZCI6IjIxNjciLCJyYXRpbmdJ
+        ZCI6IjEzNTMzIiwiY2F0ZWdvcmllcyI6eyJjYXRlZ29yeSI6W3siY2F0ZWdvcnlJZCI6IjgyIiwibmFt
+        ZSI6IkVjb25vbXkgYW5kIEZpc2NhbCJ9LHsiY2F0ZWdvcnlJZCI6IjgyIiwibmFtZSI6IkVjb25vbXkg
+        YW5kIEZpc2NhbCJ9LHsiY2F0ZWdvcnlJZCI6IjQ1IiwibmFtZSI6IkxpYmVyYWwifSx7ImNhdGVnb3J5
+        SWQiOiI0NSIsIm5hbWUiOiJMaWJlcmFsIn1dfSwidGltZXNwYW4iOiIyMDIxLTIwMjIiLCJyYXRpbmci
+        OiI5NyIsInJhdGluZ05hbWUiOiJMaWZldGltZSBQb3NpdGlvbnMgWzIwMjItMTEtMTBdIiwicmF0aW5n
+        VGV4dCI6IlJlcHJlc2VudGF0aXZlIEFsZXhhbmRyaWEgT2Nhc2lvLUNvcnRleiBzdXBwb3J0ZWQgdGhl
+        IGludGVyZXN0cyBvZiB0aGUgUHJvZ3Jlc3NpdmUgUHVuY2ggOTcgcGVyY2VudCBpbiAyMDIxLTIwMjIu
+        In0seyJzaWdJZCI6IjIxNjciLCJyYXRpbmdJZCI6IjEyNjA3IiwiY2F0ZWdvcmllcyI6eyJjYXRlZ29y
+        eSI6W3siY2F0ZWdvcnlJZCI6Ijg3IiwibmFtZSI6IkZpc2NhbGx5IExpYmVyYWwifSx7ImNhdGVnb3J5
+        SWQiOiI4NyIsIm5hbWUiOiJGaXNjYWxseSBMaWJlcmFsIn0seyJjYXRlZ29yeUlkIjoiMTEwIiwibmFt
+        ZSI6IlNvY2lhbGx5IExpYmVyYWwifSx7ImNhdGVnb3J5SWQiOiIxMTAiLCJuYW1lIjoiU29jaWFsbHkg
+        TGliZXJhbCJ9XX0sInRpbWVzcGFuIjoiMjAxOS0yMDIwIiwicmF0aW5nIjoiOTYiLCJyYXRpbmdOYW1l
+        IjoiTGlmZXRpbWUgUG9zaXRpb25zIiwicmF0aW5nVGV4dCI6IlJlcHJlc2VudGF0aXZlIEFsZXhhbmRy
+        aWEgT2Nhc2lvLUNvcnRleiBzdXBwb3J0ZWQgdGhlIGludGVyZXN0cyBvZiB0aGUgUHJvZ3Jlc3NpdmUg
+        UHVuY2ggOTYgcGVyY2VudCBpbiAyMDE5LTIwMjAuIn0seyJzaWdJZCI6IjIxNjciLCJyYXRpbmdJZCI6
+        IjEyNjEwIiwiY2F0ZWdvcmllcyI6eyJjYXRlZ29yeSI6W3siY2F0ZWdvcnlJZCI6Ijg3IiwibmFtZSI6
+        IkZpc2NhbGx5IExpYmVyYWwifSx7ImNhdGVnb3J5SWQiOiI4NyIsIm5hbWUiOiJGaXNjYWxseSBMaWJl
+        cmFsIn0seyJjYXRlZ29yeUlkIjoiMTEwIiwibmFtZSI6IlNvY2lhbGx5IExpYmVyYWwifSx7ImNhdGVn
+        b3J5SWQiOiIxMTAiLCJuYW1lIjoiU29jaWFsbHkgTGliZXJhbCJ9XX0sInRpbWVzcGFuIjoiMjAxOS0y
+        MDIwIiwicmF0aW5nIjoiOTYiLCJyYXRpbmdOYW1lIjoiUG9zaXRpb25zIiwicmF0aW5nVGV4dCI6IlJl
+        cHJlc2VudGF0aXZlIEFsZXhhbmRyaWEgT2Nhc2lvLUNvcnRleiBzdXBwb3J0ZWQgdGhlIGludGVyZXN0
+        cyBvZiB0aGUgUHJvZ3Jlc3NpdmUgUHVuY2ggOTYgcGVyY2VudCBpbiAyMDE5LTIwMjAuIn1dfX0=
+  recorded_at: 2023-03-06 17:18:45 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getCandidateRating?key=<<votesmart_key>>&candidateId=26732&sigId=2880&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:45 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '611'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJjYW5kaWRhdGVSYXRpbmciOnsiZ2VuZXJhbEluZm8iOnsidGl0bGUiOiJQcm9qZWN0IFZvdGUgU21h
+        cnQgLSBJbnRlcmVzdCBHcm91cCBSYXRpbmdzIiwibGlua0JhY2siOiJodHRwOlwvXC92b3Rlc21hcnQu
+        b3JnXC9pc3N1ZV9yYXRpbmdfY2F0ZWdvcnkucGhwP2Nhbl9pZD0yNjczMiJ9LCJjYW5kaWRhdGUiOnsi
+        dGl0bGUiOiJSZXByZXNlbnRhdGl2ZSIsImZpcnN0TmFtZSI6Ik5hbmN5IiwibWlkZGxlTmFtZSI6IiIs
+        Imxhc3ROYW1lIjoiUGVsb3NpIiwic3VmZml4IjoiIiwib2ZmaWNlIjoiVS5TLiBIb3VzZSJ9LCJyYXRp
+        bmciOnsic2lnSWQiOiIyODgwIiwicmF0aW5nSWQiOiIxMTA5NyIsImNhdGVnb3JpZXMiOnsiY2F0ZWdv
+        cnkiOnsiY2F0ZWdvcnlJZCI6IjQxIiwibmFtZSI6IlRlY2hub2xvZ3kgYW5kIENvbW11bmljYXRpb24i
+        fX0sInRpbWVzcGFuIjoiMjAxOSIsInJhdGluZyI6IjEwMCIsInJhdGluZ05hbWUiOiJDb25ncmVzc2lv
+        bmFsIFNjb3JlY2FyZCIsInJhdGluZ1RleHQiOiJSZXByZXNlbnRhdGl2ZSBOYW5jeSBQZWxvc2kgc3Vw
+        cG9ydGVkIHRoZSBpbnRlcmVzdHMgb2YgdGhlIEJhdHRsZSBGb3IgVGhlIE5ldCAxMDAgcGVyY2VudCBp
+        biAyMDE5LiJ9fX0=
+  recorded_at: 2023-03-06 17:18:45 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getCandidateRating?key=<<votesmart_key>>&candidateId=180416&sigId=2880&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:45 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '636'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJjYW5kaWRhdGVSYXRpbmciOnsiZ2VuZXJhbEluZm8iOnsidGl0bGUiOiJQcm9qZWN0IFZvdGUgU21h
+        cnQgLSBJbnRlcmVzdCBHcm91cCBSYXRpbmdzIiwibGlua0JhY2siOiJodHRwOlwvXC92b3Rlc21hcnQu
+        b3JnXC9pc3N1ZV9yYXRpbmdfY2F0ZWdvcnkucGhwP2Nhbl9pZD0xODA0MTYifSwiY2FuZGlkYXRlIjp7
+        InRpdGxlIjoiUmVwcmVzZW50YXRpdmUiLCJmaXJzdE5hbWUiOiJBbGV4YW5kcmlhIiwibWlkZGxlTmFt
+        ZSI6IiIsImxhc3ROYW1lIjoiT2Nhc2lvLUNvcnRleiIsInN1ZmZpeCI6IiIsIm9mZmljZSI6IlUuUy4g
+        SG91c2UifSwicmF0aW5nIjp7InNpZ0lkIjoiMjg4MCIsInJhdGluZ0lkIjoiMTEwOTciLCJjYXRlZ29y
+        aWVzIjp7ImNhdGVnb3J5Ijp7ImNhdGVnb3J5SWQiOiI0MSIsIm5hbWUiOiJUZWNobm9sb2d5IGFuZCBD
+        b21tdW5pY2F0aW9uIn19LCJ0aW1lc3BhbiI6IjIwMTkiLCJyYXRpbmciOiIxMDAiLCJyYXRpbmdOYW1l
+        IjoiQ29uZ3Jlc3Npb25hbCBTY29yZWNhcmQiLCJyYXRpbmdUZXh0IjoiUmVwcmVzZW50YXRpdmUgQWxl
+        eGFuZHJpYSBPY2FzaW8tQ29ydGV6IHN1cHBvcnRlZCB0aGUgaW50ZXJlc3RzIG9mIHRoZSBCYXR0bGUg
+        Rm9yIFRoZSBOZXQgMTAwIHBlcmNlbnQgaW4gMjAxOS4ifX19
+  recorded_at: 2023-03-06 17:18:45 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

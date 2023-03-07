@@ -1,0 +1,327 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=2&stateId=NA&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:51 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '1059'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJzaWdzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0gSW50ZXJl
+        c3QgR3JvdXAgUmF0aW5ncyIsImxpbmtCYWNrIjoiaHR0cDpcL1wvdm90ZXNtYXJ0Lm9yZ1wvaXNzdWVf
+        cmF0aW5nLnBocD90eXBlPXN0YXRlJnNlYXJjaF8xPTImc3RhdGVfaWQ9TkEifSwic2lnIjpbeyJzaWdJ
+        ZCI6IjEwODYiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IkNhbXBhaWduIGZvciBXb3JraW5nIEZhbWls
+        aWVzIn0seyJzaWdJZCI6IjE1NTkiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IkRlbW9jcmF0cyBmb3Ig
+        TGlmZSBvZiBBbWVyaWNhIn0seyJzaWdJZCI6IjExODkiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IkVN
+        SUxZJ3MgTGlzdCJ9LHsic2lnSWQiOiIyMzY4IiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJGYW1pbHkg
+        UG9saWN5IEFsbGlhbmNlIn0seyJzaWdJZCI6IjIxOTkiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6Ikdv
+        dmVybm1lbnQgaXMgTm90IEdvZCBQb2xpdGljYWwgQWN0aW9uIENvbW1pdHRlZSAoR0lORy1QQUMpIn0s
+        eyJzaWdJZCI6IjEwMTYiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6Ik5BUkFMIFByby1DaG9pY2UgQW1l
+        cmljYSJ9LHsic2lnSWQiOiIyODE5IiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJOYXRpb25hbCBJbnN0
+        aXR1dGUgZm9yIFJlcHJvZHVjdGl2ZSBIZWFsdGggQWN0aW9uIEZ1bmQifSx7InNpZ0lkIjoiMjUyIiwi
+        cGFyZW50SWQiOiItMSIsIm5hbWUiOiJOYXRpb25hbCBSaWdodCB0byBMaWZlIENvbW1pdHRlZSJ9LHsi
+        c2lnSWQiOiIxNTc4IiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJQbGFubmVkIFBhcmVudGhvb2QgQWN0
+        aW9uIEZ1bmQifSx7InNpZ0lkIjoiMTk1NCIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoiUmVwdWJsaWNh
+        biBOYXRpb25hbCBDb2FsaXRpb24gZm9yIExpZmUgUEFDIn0seyJzaWdJZCI6IjE5NDYiLCJwYXJlbnRJ
+        ZCI6Ii0xIiwibmFtZSI6IlN1c2FuIEIuIEFudGhvbnkgTGlzdCJ9LHsic2lnSWQiOiIyNjI5IiwicGFy
+        ZW50SWQiOiItMSIsIm5hbWUiOiIjVk9URVBST0NIT0lDRSJ9XX19
+  recorded_at: 2023-03-06 17:18:56 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=61&stateId=NA&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:53 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '799'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJzaWdzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0gSW50ZXJl
+        c3QgR3JvdXAgUmF0aW5ncyIsImxpbmtCYWNrIjoiaHR0cDpcL1wvdm90ZXNtYXJ0Lm9yZ1wvaXNzdWVf
+        cmF0aW5nLnBocD90eXBlPXN0YXRlJnNlYXJjaF8xPTYxJnN0YXRlX2lkPU5BIn0sInNpZyI6W3sic2ln
+        SWQiOiIxODM1IiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJBQ1QhIGZvciBBbWVyaWNhIn0seyJzaWdJ
+        ZCI6IjY2OCIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoiQW1lcmljYW4gU2VjdXJpdHkgQ291bmNpbCBG
+        b3VuZGF0aW9uIn0seyJzaWdJZCI6IjcyNSIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoiQ2VudGVyIGZv
+        ciBTZWN1cml0eSBQb2xpY3kifSx7InNpZ0lkIjoiMTAxIiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJD
+        b3VuY2lsIGZvciBhIExpdmFibGUgV29ybGQifSx7InNpZ0lkIjoiMTk3NCIsInBhcmVudElkIjoiLTEi
+        LCJuYW1lIjoiS2VlcCBBbWVyaWNhIFNhZmUifSx7InNpZ0lkIjoiMjQwNyIsInBhcmVudElkIjoiLTEi
+        LCJuYW1lIjoiTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgUG9saWNlIE9yZ2FuaXphdGlvbnMifSx7InNp
+        Z0lkIjoiMjQwMiIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoiTmF0aW9uYWwgSXJhbmlhbiBBbWVyaWNh
+        biBDb3VuY2lsIn0seyJzaWdJZCI6IjExMTAiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IlBlYWNlIEFj
+        dGlvbiJ9LHsic2lnSWQiOiIzMDAwIiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJSZXB1YmxpY2FuIEpl
+        d2lzaCBDb2FsaXRpb24ifV19fQ==
+  recorded_at: 2023-03-06 17:18:56 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=36&stateId=NA&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:53 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '1992'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJzaWdzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0gSW50ZXJl
+        c3QgR3JvdXAgUmF0aW5ncyIsImxpbmtCYWNrIjoiaHR0cDpcL1wvdm90ZXNtYXJ0Lm9yZ1wvaXNzdWVf
+        cmF0aW5nLnBocD90eXBlPXN0YXRlJnNlYXJjaF8xPTM2JnN0YXRlX2lkPU5BIn0sInNpZyI6W3sic2ln
+        SWQiOiIzMDIzIiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJBbWVyaWNhbnMgZm9yIExpbWl0ZWQgR292
+        ZXJubWVudCJ9LHsic2lnSWQiOiIzMDAxIiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJCcmFuZCBOZXcg
+        Q29uZ3Jlc3MifSx7InNpZ0lkIjoiMzA2NyIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoiQ2hyaXN0aWFu
+        IERlbW9jcmF0cyBvZiBBbWVyaWNhIn0seyJzaWdJZCI6IjMyOSIsInBhcmVudElkIjoiLTEiLCJuYW1l
+        IjoiQ2l0aXplbnMgZm9yIEdsb2JhbCBTb2x1dGlvbnMifSx7InNpZ0lkIjoiOTM1IiwicGFyZW50SWQi
+        OiItMSIsIm5hbWUiOiJDb21tb24gQ2F1c2UifSx7InNpZ0lkIjoiMTMiLCJwYXJlbnRJZCI6Ii0xIiwi
+        bmFtZSI6IkNvdW5jaWwgZm9yIENpdGl6ZW5zIEFnYWluc3QgR292ZXJubWVudCBXYXN0ZSJ9LHsic2ln
+        SWQiOiIzMDUyIiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJEZW1vY3JhdGljIENvbmdyZXNzaW9uYWwg
+        Q2FtcGFpZ24gQ29tbWl0dGVlIn0seyJzaWdJZCI6IjMwNjUiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6
+        IkRlbW9jcmF0cyBXb3JrIGZvciBBbWVyaWNhIn0seyJzaWdJZCI6IjI5MTciLCJwYXJlbnRJZCI6Ii0x
+        IiwibmFtZSI6IkRlc2lzIEZvciBQcm9ncmVzcyJ9LHsic2lnSWQiOiIzMDQ3IiwicGFyZW50SWQiOiIt
+        MSIsIm5hbWUiOiJFbGV2YXRlIFBBQyJ9LHsic2lnSWQiOiIzMDYzIiwicGFyZW50SWQiOiItMSIsIm5h
+        bWUiOiJFbXBvd2VyIEFtZXJpY2EgUHJvamVjdCJ9LHsic2lnSWQiOiIyODY2IiwicGFyZW50SWQiOiIt
+        MSIsIm5hbWUiOiJGcmVlZG9tIEZpcnN0IFNvY2lldHkifSx7InNpZ0lkIjoiMTY1OCIsInBhcmVudElk
+        IjoiLTEiLCJuYW1lIjoiRnJlZWRvbVdvcmtzIn0seyJzaWdJZCI6IjI2NDYiLCJwYXJlbnRJZCI6Ii0x
+        IiwibmFtZSI6IkhvdXNlIEZyZWVkb20gRnVuZCJ9LHsic2lnSWQiOiIyODExIiwicGFyZW50SWQiOiIt
+        MSIsIm5hbWUiOiJJbmRpdmlzaWJsZSJ9LHsic2lnSWQiOiIyMzMyIiwicGFyZW50SWQiOiItMSIsIm5h
+        bWUiOiJKZXdpc2ggV29tZW4gSW50ZXJuYXRpb25hbCJ9LHsic2lnSWQiOiIyNDA5IiwicGFyZW50SWQi
+        OiItMSIsIm5hbWUiOiJMaWJlcnR5IGZvciBBbGwifSx7InNpZ0lkIjoiMjk1OCIsInBhcmVudElkIjoi
+        LTEiLCJuYW1lIjoiTWlqZW50ZSJ9LHsic2lnSWQiOiIzMDY4IiwicGFyZW50SWQiOiItMSIsIm5hbWUi
+        OiJOZXcgSm91cm5leSBQQUMifSx7InNpZ0lkIjoiMjU2MCIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoi
+        T3VyIFJldm9sdXRpb24ifSx7InNpZ0lkIjoiMjM0OSIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoiUmVw
+        dWJsaWNhbiBNYWluIFN0cmVldCBQYXJ0bmVyc2hpcCJ9LHsic2lnSWQiOiIyMzQwIiwicGFyZW50SWQi
+        OiItMSIsIm5hbWUiOiJSaWdodE5PVyBXb21lbiBQQUMifSx7InNpZ0lkIjoiMjk3NiIsInBhcmVudElk
+        IjoiLTEiLCJuYW1lIjoiUm9zZSBDYXVjdXMifSx7InNpZ0lkIjoiMzA0OSIsInBhcmVudElkIjoiLTEi
+        LCJuYW1lIjoiU3R1ZGVudHMgZm9yIFRydW1wIn0seyJzaWdJZCI6IjI1NjYiLCJwYXJlbnRJZCI6Ii0x
+        IiwibmFtZSI6IlRoZSBMdWdhciBDZW50ZXIifSx7InNpZ0lkIjoiMjE1NSIsInBhcmVudElkIjoiLTEi
+        LCJuYW1lIjoiVS5TLiBUZXJtIExpbWl0cyAoVVNUTCkifSx7InNpZ0lkIjoiMzAzMSIsInBhcmVudElk
+        IjoiLTEiLCJuYW1lIjoiV2FycmVuIERlbW9jcmF0cyJ9LHsic2lnSWQiOiIyMzM5IiwicGFyZW50SWQi
+        OiItMSIsIm5hbWUiOiJXb21lbiBVbmRlciBGb3J0eSBQb2xpdGljYWwgQWN0aW9uIENvbW1pdHRlZSAo
+        V1VGUEFDKSJ9XX19
+  recorded_at: 2023-03-06 17:18:56 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=2&stateId=AK&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:53 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '318'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJzaWdzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0gSW50ZXJl
+        c3QgR3JvdXAgUmF0aW5ncyIsImxpbmtCYWNrIjoiaHR0cDpcL1wvdm90ZXNtYXJ0Lm9yZ1wvaXNzdWVf
+        cmF0aW5nLnBocD90eXBlPXN0YXRlJnNlYXJjaF8xPTImc3RhdGVfaWQ9QUsifSwic2lnIjpbeyJzaWdJ
+        ZCI6IjYxOCIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoiQWxhc2thIFJpZ2h0IHRvIExpZmUifSx7InNp
+        Z0lkIjoiMjQ2NyIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoiUGxhbm5lZCBQYXJlbnRob29kIEFsbGlh
+        bmNlIEFkdm9jYXRlcyJ9XX19
+  recorded_at: 2023-03-06 17:18:56 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=61&stateId=AK&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:53 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '55'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJlcnJvciI6eyJlcnJvck1lc3NhZ2UiOiJObyBTSUdzIGZpdCB0aGlzIGNyaXRlcmlhLiJ9fQ==
+  recorded_at: 2023-03-06 17:18:56 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=36&stateId=AK&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:56 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '55'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJlcnJvciI6eyJlcnJvck1lc3NhZ2UiOiJObyBTSUdzIGZpdCB0aGlzIGNyaXRlcmlhLiJ9fQ==
+  recorded_at: 2023-03-06 17:18:56 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=2&stateId=SD&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:56 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '389'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJzaWdzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0gSW50ZXJl
+        c3QgR3JvdXAgUmF0aW5ncyIsImxpbmtCYWNrIjoiaHR0cDpcL1wvdm90ZXNtYXJ0Lm9yZ1wvaXNzdWVf
+        cmF0aW5nLnBocD90eXBlPXN0YXRlJnNlYXJjaF8xPTImc3RhdGVfaWQ9U0QifSwic2lnIjpbeyJzaWdJ
+        ZCI6IjEyNjkiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6Ik5BUkFMIFByby1DaG9pY2UgU291dGggRGFr
+        b3RhIn0seyJzaWdJZCI6IjI0MjUiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IlNvdXRoIERha290YSBI
+        ZWFsdGh5IEZhbWlsaWVzIn0seyJzaWdJZCI6IjE2MDIiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IlNv
+        dXRoIERha290YSBSaWdodCB0byBMaWZlIn1dfX0=
+  recorded_at: 2023-03-06 17:18:56 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=61&stateId=SD&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:56 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '55'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJlcnJvciI6eyJlcnJvck1lc3NhZ2UiOiJObyBTSUdzIGZpdCB0aGlzIGNyaXRlcmlhLiJ9fQ==
+  recorded_at: 2023-03-06 17:18:56 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=36&stateId=SD&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Mon, 06 Mar 2023 17:18:56 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '55'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJlcnJvciI6eyJlcnJvck1lc3NhZ2UiOiJObyBTSUdzIGZpdCB0aGlzIGNyaXRlcmlhLiJ9fQ==
+  recorded_at: 2023-03-06 17:18:56 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
