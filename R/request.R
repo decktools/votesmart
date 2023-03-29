@@ -230,7 +230,7 @@ get <- function(req, query, level_one, level_two) {
       # Not tibble because that will give us a list-col we have to explode
       purrr::map(as.data.frame) %>%
       # So that we don't end up combining factor and character in bind_rows
-      purrr::modify_depth(2, as.character) %>%
+      purrr::map(mutate_all, as.character) %>%
       bind_rows() %>%
       as_tibble()
   }
