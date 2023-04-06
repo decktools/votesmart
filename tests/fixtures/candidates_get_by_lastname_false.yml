@@ -1,0 +1,72 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://api.votesmart.org/Candidates.getByLastname?key=<<votesmart_key>>&lastName=Pelosi&electionYear=2016&stageId=&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Thu, 06 Apr 2023 16:29:54 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '858'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJjYW5kaWRhdGVMaXN0Ijp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0
+        IC0gU2VhcmNoIENhbmRpZGF0ZXMiLCJsaW5rQmFjayI6Imh0dHA6XC9cL3ZvdGVzbWFydC5vcmdcLyJ9
+        LCJjYW5kaWRhdGUiOnsiY2FuZGlkYXRlSWQiOiIyNjczMiIsImZpcnN0TmFtZSI6Ik5hbmN5Iiwibmlj
+        a05hbWUiOiIiLCJtaWRkbGVOYW1lIjoiIiwicHJlZmVycmVkTmFtZSI6Ik5hbmN5IiwibGFzdE5hbWUi
+        OiJQZWxvc2kiLCJzdWZmaXgiOiIiLCJ0aXRsZSI6IlJlcHJlc2VudGF0aXZlIiwiYmFsbG90TmFtZSI6
+        Ik5hbmN5IFBlbG9zaSIsImVsZWN0aW9uUGFydGllcyI6IkRlbW9jcmF0aWMiLCJlbGVjdGlvblN0YXR1
+        cyI6IldvbiIsImVsZWN0aW9uU3RhZ2UiOiJHZW5lcmFsIiwiZWxlY3Rpb25EaXN0cmljdElkIjoiMjEx
+        OTAiLCJlbGVjdGlvbkRpc3RyaWN0TmFtZSI6IjEyIiwiZWxlY3Rpb25PZmZpY2UiOiJVLlMuIEhvdXNl
+        IiwiZWxlY3Rpb25PZmZpY2VJZCI6IjUiLCJlbGVjdGlvblN0YXRlSWQiOiJDQSIsImVsZWN0aW9uT2Zm
+        aWNlVHlwZUlkIjoiQyIsImVsZWN0aW9uWWVhciI6IjIwMTYiLCJlbGVjdGlvblNwZWNpYWwiOiJmIiwi
+        ZWxlY3Rpb25EYXRlIjoiMTFcLzA4XC8yMDE2Iiwib2ZmaWNlUGFydGllcyI6IkRlbW9jcmF0aWMiLCJv
+        ZmZpY2VTdGF0dXMiOiJhY3RpdmUiLCJvZmZpY2VEaXN0cmljdElkIjoiMjExODkiLCJvZmZpY2VEaXN0
+        cmljdE5hbWUiOiIxMSIsIm9mZmljZVN0YXRlSWQiOiJDQSIsIm9mZmljZUlkIjoiNSIsIm9mZmljZU5h
+        bWUiOiJVLlMuIEhvdXNlIiwib2ZmaWNlVHlwZUlkIjoiQyIsInJ1bm5pbmdNYXRlSWQiOiIiLCJydW5u
+        aW5nTWF0ZU5hbWUiOiIifX19
+  recorded_at: 2023-04-06 16:29:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Candidates.getByLastname?key=<<votesmart_key>>&lastName=Jeffries&electionYear=2023&stageId=&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Thu, 06 Apr 2023 16:29:54 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '72'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJlcnJvciI6eyJlcnJvck1lc3NhZ2UiOiJObyBjYW5kaWRhdGVzIGZvdW5kIG1hdGNoaW5nIHRoaXMg
+        Y3JpdGVyaWEuIn19
+  recorded_at: 2023-04-06 16:29:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

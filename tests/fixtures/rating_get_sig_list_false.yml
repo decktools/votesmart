@@ -1,0 +1,105 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=2&stateId=NA&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Thu, 06 Apr 2023 16:47:27 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '1059'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJzaWdzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0gSW50ZXJl
+        c3QgR3JvdXAgUmF0aW5ncyIsImxpbmtCYWNrIjoiaHR0cDpcL1wvdm90ZXNtYXJ0Lm9yZ1wvaXNzdWVf
+        cmF0aW5nLnBocD90eXBlPXN0YXRlJnNlYXJjaF8xPTImc3RhdGVfaWQ9TkEifSwic2lnIjpbeyJzaWdJ
+        ZCI6IjEwODYiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IkNhbXBhaWduIGZvciBXb3JraW5nIEZhbWls
+        aWVzIn0seyJzaWdJZCI6IjE1NTkiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IkRlbW9jcmF0cyBmb3Ig
+        TGlmZSBvZiBBbWVyaWNhIn0seyJzaWdJZCI6IjExODkiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IkVN
+        SUxZJ3MgTGlzdCJ9LHsic2lnSWQiOiIyMzY4IiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJGYW1pbHkg
+        UG9saWN5IEFsbGlhbmNlIn0seyJzaWdJZCI6IjIxOTkiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6Ikdv
+        dmVybm1lbnQgaXMgTm90IEdvZCBQb2xpdGljYWwgQWN0aW9uIENvbW1pdHRlZSAoR0lORy1QQUMpIn0s
+        eyJzaWdJZCI6IjEwMTYiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6Ik5BUkFMIFByby1DaG9pY2UgQW1l
+        cmljYSJ9LHsic2lnSWQiOiIyODE5IiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJOYXRpb25hbCBJbnN0
+        aXR1dGUgZm9yIFJlcHJvZHVjdGl2ZSBIZWFsdGggQWN0aW9uIEZ1bmQifSx7InNpZ0lkIjoiMjUyIiwi
+        cGFyZW50SWQiOiItMSIsIm5hbWUiOiJOYXRpb25hbCBSaWdodCB0byBMaWZlIENvbW1pdHRlZSJ9LHsi
+        c2lnSWQiOiIxNTc4IiwicGFyZW50SWQiOiItMSIsIm5hbWUiOiJQbGFubmVkIFBhcmVudGhvb2QgQWN0
+        aW9uIEZ1bmQifSx7InNpZ0lkIjoiMTk1NCIsInBhcmVudElkIjoiLTEiLCJuYW1lIjoiUmVwdWJsaWNh
+        biBOYXRpb25hbCBDb2FsaXRpb24gZm9yIExpZmUgUEFDIn0seyJzaWdJZCI6IjE5NDYiLCJwYXJlbnRJ
+        ZCI6Ii0xIiwibmFtZSI6IlN1c2FuIEIuIEFudGhvbnkgTGlzdCJ9LHsic2lnSWQiOiIyNjI5IiwicGFy
+        ZW50SWQiOiItMSIsIm5hbWUiOiIjVk9URVBST0NIT0lDRSJ9XX19
+  recorded_at: 2023-04-06 16:47:27 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=40&stateId=AZ&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Thu, 06 Apr 2023 16:47:27 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '239'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: 'eyJzaWdzIjp7ImdlbmVyYWxJbmZvIjp7InRpdGxlIjoiUHJvamVjdCBWb3RlIFNtYXJ0IC0gSW50ZXJl
+        c3QgR3JvdXAgUmF0aW5ncyIsImxpbmtCYWNrIjoiaHR0cDpcL1wvdm90ZXNtYXJ0Lm9yZ1wvaXNzdWVf
+        cmF0aW5nLnBocD90eXBlPXN0YXRlJnNlYXJjaF8xPTQwJnN0YXRlX2lkPUFaIn0sInNpZyI6eyJzaWdJ
+        ZCI6IjE4MzAiLCJwYXJlbnRJZCI6Ii0xIiwibmFtZSI6IkJvcmRlciBBY3Rpb24gTmV0d29yayJ9fX0= '
+  recorded_at: 2023-04-06 16:47:27 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://api.votesmart.org/Rating.getSigList?key=<<votesmart_key>>&categoryId=24&stateId=MS&o=JSON
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-type: application/json
+      date: Thu, 06 Apr 2023 16:47:27 GMT
+      server: lighttpd/1.4.45
+      x-powered-by: PHP/5.4.16
+      content-length: '55'
+      connection: keep-alive
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJlcnJvciI6eyJlcnJvck1lc3NhZ2UiOiJObyBTSUdzIGZpdCB0aGlzIGNyaXRlcmlhLiJ9fQ==
+  recorded_at: 2023-04-06 16:47:27 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

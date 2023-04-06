@@ -1,17 +1,15 @@
 skip_if_no_auth()
 
 test_that("candidates_get_by_lastname", {
-  do_all <- sample(c(TRUE, FALSE), 1)
-
   last_names <- c("Pelosi", "Jeffries")
   election_years <- c(2016, lubridate::year(lubridate::today()))
 
-  vcr::use_cassette("candidates_get_by_lastname", {
+  vcr::use_cassette("candidates_get_by_lastname_true", {
     res <-
       candidates_get_by_lastname(
         last_names,
         election_years,
-        all = do_all
+        all = TRUE
       )
   })
 
@@ -20,12 +18,12 @@ test_that("candidates_get_by_lastname", {
     2
   )
 
-  vcr::use_cassette("candidates_get_by_lastname2", {
+  vcr::use_cassette("candidates_get_by_lastname_false", {
     lev_res <-
       candidates_get_by_lastname(
         last_names,
         election_years,
-        all = do_all
+        all = FALSE
       )
 
     expect_gt(
