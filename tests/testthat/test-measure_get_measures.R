@@ -2,7 +2,7 @@ skip_if_no_auth()
 
 test_that("measure_get_measures", {
   vcr::use_cassette("measure_get_measures", {
-    res <- measure_get_measures(sample(1000:9999, 1))
+    res <- measure_get_measures(1227)
   })
 
   n_cols <- length(names(res))
