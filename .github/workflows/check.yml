@@ -19,6 +19,7 @@ jobs:
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      VOTESMART_API_KEY: ${{ secrets.VOTESMART_API_KEY }}
 
     steps:
       - uses: actions/checkout@v3
@@ -45,4 +46,4 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
-          args: 'c("--no-manual", "--no-examples", "--no-tests", "--no-vignettes")'
+          args: 'c("--no-manual", "--no-examples", "--no-vignettes")'
