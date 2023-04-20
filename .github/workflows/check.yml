@@ -38,12 +38,6 @@ jobs:
             any::pak
           needs: check
 
-      - name: gestalt install
-        run: |
-          remove.packages("gestalt")
-          pak::pkg_install("egnha/gestalt@v0.1.9")
-        shell: Rscript {0}
-
       - name: Session info
         run: |
           options(width = 100)
