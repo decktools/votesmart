@@ -1,4 +1,3 @@
-
 #' Get SIG (Special Interest Group) ratings for candidates
 #'
 #' @param candidate_ids A vector of candidate ids.
@@ -14,10 +13,11 @@
 #' pelosi_id <- "26732"
 #' rating_get_candidate_ratings(pelosi_id)
 #' }
-rating_get_candidate_ratings <- function(candidate_ids,
-  sig_ids = "",
-  all = TRUE,
-  verbose = TRUE) {
+rating_get_candidate_ratings <- function(
+    candidate_ids,
+    sig_ids = "",
+    all = TRUE,
+    verbose = TRUE) {
   candidate_ids %<>%
     as_char_vec()
 
@@ -31,7 +31,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
         sig_id = sig_ids
       ) %>%
       mutate(
-        query = elmers("&candidateId={candidate_id}&sigId={sig_id}")
+        query = glue::glue("&candidateId={candidate_id}&sigId={sig_id}")
       )
   } else {
     arg_lengths <-
@@ -50,7 +50,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
         sig_id = sig_ids
       ) %>%
       mutate(
-        query = elmers("&candidateId={candidate_id}&sigId={sig_id}")
+        query = glue::glue("&candidateId={candidate_id}&sigId={sig_id}")
       )
   }
 
@@ -63,9 +63,9 @@ rating_get_candidate_ratings <- function(candidate_ids,
     sig_id <- query_df$sig_id[i]
     q <- query_df$query[i]
 
-    elmers_message(
+    message(glue::glue(
       "Requesting data for {{candidate_id: {candidate_id}, sig_id: {sig_id}}}."
-    )
+    ))
 
     suppressWarnings(
       this <-
@@ -79,15 +79,15 @@ rating_get_candidate_ratings <- function(candidate_ids,
 
     if (all(is.na(this))) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       this <-
         query_df %>%
         select(-query) %>%
-        na_if("")
+        empty_to_na("")
     } else {
       suppressWarnings({
         # For the case where we fixed up the JSON which didn't end with `}}`
@@ -139,7 +139,7 @@ rating_get_candidate_ratings <- function(candidate_ids,
                   stringr::str_detect(value, "[0-9]") ~ "id",
                   TRUE ~ "name"
                 ),
-              name = elmers("category_{type}_{chunk}")
+              name = glue::glue("category_{type}_{chunk}")
             ) %>%
             select(-chunk, -type) %>%
             # Back to wide format

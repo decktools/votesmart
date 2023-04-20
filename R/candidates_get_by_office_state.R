@@ -17,11 +17,12 @@
 #'   verbose = TRUE
 #' )
 #' }
-candidates_get_by_office_state <- function(state_ids = NA,
-  office_ids,
-  election_years = lubridate::year(lubridate::today()),
-  all = TRUE,
-  verbose = TRUE) {
+candidates_get_by_office_state <- function(
+    state_ids = NA,
+    office_ids,
+    election_years = lubridate::year(lubridate::today()),
+    all = TRUE,
+    verbose = TRUE) {
   state_ids %<>%
     as_char_vec()
   office_ids %<>%
@@ -38,7 +39,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&stateId={state_id}&officeId={office_id}&electionYear={election_year}"
           )
       )
@@ -61,7 +62,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&stateId={state_id}&officeId={office_id}&electionYear={election_year}"
           )
       )
@@ -78,9 +79,9 @@ candidates_get_by_office_state <- function(state_ids = NA,
     election_year <- query_df$election_year[i]
 
     if (verbose) {
-      elmers_message(
+      message(glue::glue(
         "Requesting data for {{state_id: {state_id}, office_id: {office_id}, election_year: {election_year}}}."
-      )
+      ))
     }
 
     this <- get(
@@ -92,9 +93,9 @@ candidates_get_by_office_state <- function(state_ids = NA,
 
     if (all(is.na(this))) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       # Other cols will be NA
@@ -104,7 +105,7 @@ candidates_get_by_office_state <- function(state_ids = NA,
         rename(
           office_state_id = state_id
         ) %>%
-        na_if("")
+        empty_to_na("")
     } else {
       # Turn each element into a tibble and rowbind them
       this %<>%

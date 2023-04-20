@@ -1,4 +1,3 @@
-
 #' Get a dataframe of ballot measures by year and state
 #'
 #' More information about these ballot measures can be found using the \code{\link{measure_get_measures}} function.
@@ -20,8 +19,7 @@ measure_get_measures_by_year_state <- function(years =
                                                state_ids = state.abb,
                                                all = TRUE,
                                                verbose = TRUE) {
-
-  r <-  "Measure.getMeasuresByYearState?"
+  r <- "Measure.getMeasuresByYearState?"
 
 
   if (all) {
@@ -32,7 +30,7 @@ measure_get_measures_by_year_state <- function(years =
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&year={year}&stateId={state_id}"
           )
       )
@@ -52,7 +50,7 @@ measure_get_measures_by_year_state <- function(years =
         year = years,
         state_id = state_ids,
         query =
-          elmers(
+          glue::glue(
             "&year={year}&stateId={state_id}"
           )
       )
@@ -66,9 +64,9 @@ measure_get_measures_by_year_state <- function(years =
     state_id <- query_df$state_id[i]
 
     if (verbose) {
-      elmers_message(
+      message(glue::glue(
         "Requesting data for {{year: {year}, state_id: {state_id}}}."
-      )
+      ))
     }
 
     this <- get(
@@ -80,9 +78,9 @@ measure_get_measures_by_year_state <- function(years =
 
     if (all(is.na(this)) || nrow(this) == 0) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       this <-
@@ -93,7 +91,7 @@ measure_get_measures_by_year_state <- function(years =
           election_year = year,
           state_id = state_id
         ) %>%
-        na_if("")
+        empty_to_na("")
     } else {
       this %<>%
         mutate(

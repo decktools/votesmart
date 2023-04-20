@@ -4,8 +4,8 @@ clean_df <- function(df) {
       snakecase::to_snake_case
     ) %>%
     as_tibble() %>%
-    na_if("") %>%
-    na_if("NA") %>%
+    empty_to_na("") %>%
+    empty_to_na("NA") %>%
     # Remove \"s
     purrr::map_dfc(
       stringr::str_remove_all,
@@ -50,12 +50,21 @@ as_char_vec <- function(x) {
     as.character()
 }
 
-#' @importFrom gestalt %>>>%
-elmers <- glue::glue %>>>% as.character
+expand_grid <- function(...) {
+  expand.grid(...) %>%
+    as_tibble() %>%
+    purrr::map_dfc(as.character)
+}
 
-elmers_message <- elmers %>>>% message
-
-expand_grid <- expand.grid %>>>% as_tibble %>>>% purrr::map_dfc(as.character)
+empty_to_na <- function(tbl, pattern = "") {
+  tbl %>%
+    mutate(
+      across(
+        where(is.character),
+        ~ na_if(., pattern)
+      )
+    )
+}
 
 transform_election_special <- function(tbl) {
   if ("election_special" %in% names(tbl)) {

@@ -9,17 +9,17 @@
 #' @export
 #'
 #' @examples
-#'
 #' \dontrun{
 #' rating_get_categories() %>%
 #'   dplyr::pull(category_id) %>%
 #'   sample(3) %>%
 #'   rating_get_sig_list()
 #' }
-rating_get_sig_list <- function(category_ids,
-  state_ids = NA,
-  all = TRUE,
-  verbose = TRUE) {
+rating_get_sig_list <- function(
+    category_ids,
+    state_ids = NA,
+    all = TRUE,
+    verbose = TRUE) {
   category_ids %<>%
     as_char_vec()
 
@@ -34,7 +34,7 @@ rating_get_sig_list <- function(category_ids,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&categoryId={category_id}&stateId={state_id}"
           )
       )
@@ -56,7 +56,7 @@ rating_get_sig_list <- function(category_ids,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&categoryId={category_id}&stateId={state_id}"
           )
       )
@@ -71,9 +71,9 @@ rating_get_sig_list <- function(category_ids,
     state_id <- query_df$state_id[i]
     q <- query_df$query[i]
 
-    elmers_message(
+    message(glue::glue(
       "Requesting data for {{category_id: {category_id}, state_id: {state_id}}}."
-    )
+    ))
 
     this <-
       get(
@@ -85,15 +85,15 @@ rating_get_sig_list <- function(category_ids,
 
     if (all(is.na(this))) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       this <-
         query_df %>%
         select(-query) %>%
-        na_if("")
+        empty_to_na("")
     } else {
       this %<>%
         mutate(

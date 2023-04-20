@@ -1,4 +1,3 @@
-
 #' Get candidate data by last name
 #'
 #' @param last_names Vector of candidate last names
@@ -14,11 +13,12 @@
 #' \dontrun{
 #' candidates_get_by_lastname(c("Ocasio-Cortez", "Omar"), 2018)
 #' }
-candidates_get_by_lastname <- function(last_names,
-  election_years = lubridate::year(lubridate::today()),
-  stage_ids = "",
-  all = TRUE,
-  verbose = TRUE) {
+candidates_get_by_lastname <- function(
+    last_names,
+    election_years = lubridate::year(lubridate::today()),
+    stage_ids = "",
+    all = TRUE,
+    verbose = TRUE) {
   last_names %<>%
     as_char_vec()
   election_years %<>%
@@ -35,7 +35,7 @@ candidates_get_by_lastname <- function(last_names,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&lastName={last_name}&electionYear={election_year}&stageId={stage_id}"
           )
       )
@@ -58,7 +58,7 @@ candidates_get_by_lastname <- function(last_names,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&lastName={last_name}&electionYear={election_year}&stageId={stage_id}"
           )
       )
@@ -75,9 +75,9 @@ candidates_get_by_lastname <- function(last_names,
     stage_id <- query_df$stage_id[i]
 
     if (verbose) {
-      elmers_message(
+      message(glue::glue(
         "Requesting data for {{last_name: {last_name}, election_year: {election_year}, stage_id: {stage_id}}}."
-      )
+      ))
     }
 
     this <- get(
@@ -89,15 +89,15 @@ candidates_get_by_lastname <- function(last_names,
 
     if (all(is.na(this))) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       this <-
         query_df %>%
         select(-query) %>%
-        na_if("")
+        empty_to_na()
     } else {
       this %<>%
         mutate(

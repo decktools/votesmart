@@ -1,4 +1,3 @@
-
 #' Get candidate data by Levenshtein distance from last name
 #'
 #' From the API docs, \url{http://api.votesmart.org/docs/Candidates.html}, "This method grabs a list of candidates according to a fuzzy lastname match."
@@ -18,11 +17,12 @@
 #' \dontrun{
 #' candidates_get_by_levenshtein(c("Bookr", "Klobucar"), 2020)
 #' }
-candidates_get_by_levenshtein <- function(last_names,
-  election_years = lubridate::year(lubridate::today()),
-  stage_ids = "",
-  all = TRUE,
-  verbose = TRUE) {
+candidates_get_by_levenshtein <- function(
+    last_names,
+    election_years = lubridate::year(lubridate::today()),
+    stage_ids = "",
+    all = TRUE,
+    verbose = TRUE) {
   last_names %<>%
     as_char_vec()
   election_years %<>%
@@ -39,7 +39,7 @@ candidates_get_by_levenshtein <- function(last_names,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&lastName={last_name}&electionYear={election_year}&stageId={stage_id}"
           )
       )
@@ -62,7 +62,7 @@ candidates_get_by_levenshtein <- function(last_names,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&lastName={last_name}&electionYear={election_year}&stageId={stage_id}"
           )
       )
@@ -79,9 +79,9 @@ candidates_get_by_levenshtein <- function(last_names,
     stage_id <- query_df$stage_id[i]
 
     if (verbose) {
-      elmers_message(
+      message(glue::glue(
         "Requesting data for {{last_name: {last_name}, election_year: {election_year}, stage_id: {stage_id}}}."
-      )
+      ))
     }
 
     this <- get(
@@ -93,15 +93,15 @@ candidates_get_by_levenshtein <- function(last_names,
 
     if (all(is.na(this))) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       this <-
         query_df %>%
         select(-query) %>%
-        na_if("")
+        empty_to_na("")
     } else {
       this %<>%
         mutate(

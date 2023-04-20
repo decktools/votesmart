@@ -12,7 +12,7 @@ get_key <- function() {
 construct_url <- function(req, query = "") {
   key <- get_key()
 
-  elmers("{BASE_URL}{req}key={key}{query}&o=JSON")
+  glue::glue("{BASE_URL}{req}key={key}{query}&o=JSON")
 }
 
 try_parse_content <-
@@ -41,9 +41,9 @@ try_fixup_content <-
 
 request <- function(url, verbose = FALSE) {
   if (verbose) {
-    elmers_message(
+    message(glue::glue(
       "Requesting: {url}."
-    )
+    ))
   }
 
   resp <-
