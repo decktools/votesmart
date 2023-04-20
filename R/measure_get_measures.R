@@ -1,4 +1,3 @@
-
 #' Get information on a ballot measure
 #'
 #' Ballot measure ids can be found with the \code{\link{measure_get_measures_by_year_state}} function.
@@ -10,12 +9,12 @@
 #' @export
 #'
 #' @examples
-#'
 #' \dontrun{
 #' measure_get_measures("1234")
 #' }
-measure_get_measures <- function(measure_ids,
-  verbose = TRUE) {
+measure_get_measures <- function(
+    measure_ids,
+    verbose = TRUE) {
   measure_ids %<>%
     as_char_vec()
 
@@ -25,7 +24,7 @@ measure_get_measures <- function(measure_ids,
     ) %>%
     mutate(
       query =
-        elmers(
+        glue::glue(
           "&measureId={measure_id}"
         )
     )
@@ -38,9 +37,9 @@ measure_get_measures <- function(measure_ids,
     measure_id <- query_df$measure_id[i]
     q <- query_df$query[i]
 
-    elmers_message(
+    message(glue::glue(
       "Requesting data for {{measure_id: {measure_id}}."
-    )
+    ))
 
     this <-
       get(
@@ -52,9 +51,9 @@ measure_get_measures <- function(measure_ids,
 
     if (all(is.na(this))) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       this <-

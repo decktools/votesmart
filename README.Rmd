@@ -75,9 +75,9 @@ conflicted::conflict_prefer("filter", "dplyr")
 We'll first want to know what her VoteSmart `candidate_id` is. We can search for her using `candidates_get_by_lastname`:
 
 ```{r}
-warrens <- 
+warrens <-
   candidates_get_by_lastname(
-    "warren", 
+    "warren",
     election_years = 2012
   )
 
@@ -87,13 +87,13 @@ knitr::kable(warrens)
 Filtering to her first name and taking her `candidate_id`, we can now grab Warren's ratings by all SIGs with `rating_get_candidate_ratings`.
 
 ```{r}
-(id <- 
-  warrens %>% 
-  filter(first_name == "Elizabeth") %>% 
+(id <-
+  warrens %>%
+  filter(first_name == "Elizabeth") %>%
   pull(candidate_id)
 )
 
-ratings <- 
+ratings <-
   rating_get_candidate_ratings(
     candidate_ids = id,
   )
@@ -104,19 +104,21 @@ knitr::kable(ratings %>% sample_n(3))
 And compute on them:
 
 ```{r}
-ratings %>% 
+ratings %>%
   filter(
-    category_name_1 %in% 
-      c("Environment", 
+    category_name_1 %in%
+      c(
+        "Environment",
         "Fiscally Conservative",
-        "Education", 
-        "Civil Liberties and Civil Rights", 
-        "Campaign Finance") 
-  ) %>% 
-  group_by(category_name_1) %>% 
+        "Education",
+        "Civil Liberties and Civil Rights",
+        "Campaign Finance"
+      )
+  ) %>%
+  group_by(category_name_1) %>%
   summarise(
     avg_rating = mean(as.numeric(rating), na.rm = TRUE)
-  ) %>% 
+  ) %>%
   arrange(category_name_1)
 ```
 

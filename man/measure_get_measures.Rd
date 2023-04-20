@@ -18,7 +18,6 @@ A dataframe with the columns \code{measure_id, measure_code, title, election_dat
 Ballot measure ids can be found with the \code{\link{measure_get_measures_by_year_state}} function.
 }
 \examples{
-
 \dontrun{
 measure_get_measures("1234")
 }

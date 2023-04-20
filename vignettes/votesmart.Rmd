@@ -24,7 +24,7 @@ The first step to using the `votesmart` package is to register an API key and st
 Let's make sure our API key is set. 
 
 ```{r}
-# If our key is not registered in this environment variable, 
+# If our key is not registered in this environment variable,
 # the result of `Sys.getenv("VOTESMART_API_KEY")` will be `""` (i.e. a string of `nchar` 0)
 key <- Sys.getenv("VOTESMART_API_KEY")
 
@@ -72,9 +72,9 @@ candidates_get_by_lastname(
 Since the default election year is the current year and Barney Frank left office in 2013, we'll specify a few years in which he ran for office. 
 
 ```{r}
-(franks <- 
-   candidates_get_by_lastname(
-    last_names = "frank", 
+(franks <-
+  candidates_get_by_lastname(
+    last_names = "frank",
     election_years = c(2000, 2004)
   )
 )
@@ -83,22 +83,22 @@ Since the default election year is the current year and Barney Frank left office
 Looking at the `first_name` column, are a number of non-Barneys returned. We can next filter our results to Barney.
 
 ```{r}
-(barneys <- 
-  franks %>% 
-  filter(first_name == "Barney") %>% 
-   select(
-     candidate_id, first_name, last_name, 
-     election_year, election_state_id, election_office
-   )
+(barneys <-
+  franks %>%
+  filter(first_name == "Barney") %>%
+  select(
+    candidate_id, first_name, last_name,
+    election_year, election_state_id, election_office
+  )
 )
 ```
 
  The two rows returned correspond to the two `election_year`s we specified. Each candidate gets their own unique `candidate_id`, which we can `pull` out.
 
 ```{r}
-(barney_id <- 
-  barneys %>% 
-  pull(candidate_id) %>% 
+(barney_id <-
+  barneys %>%
+  pull(candidate_id) %>%
   unique()
 )
 ```
@@ -113,11 +113,11 @@ One of the most powerful things about VoteSmart is its wealth of information abo
 Given a `candidate_id`, we can ask for those ratings using `rating_get_candidate_ratings`.
 
 ```{r}
-(barney_ratings <- 
+(barney_ratings <-
   rating_get_candidate_ratings(
-        candidate_ids = barney_id,
-        sig_ids = "" # All SIGs
-      )
+    candidate_ids = barney_id,
+    sig_ids = "" # All SIGs
+  )
 )
 ```
 
@@ -130,9 +130,9 @@ main_cols <- c("rating", "category_name_1", "sig_id", "timespan")
 We'll filter to Barney's ratings on the environment using just the first category name.
 
 ```{r}
-(barney_on_env <- 
-  barney_ratings %>% 
-  filter(category_name_1 == "Environment") %>% 
+(barney_on_env <-
+  barney_ratings %>%
+  filter(category_name_1 == "Environment") %>%
   select(main_cols)
 )
 ```
@@ -140,21 +140,21 @@ We'll filter to Barney's ratings on the environment using just the first categor
 Something to be aware of is that some SIGs give ratings as letter grades:
 
 ```{r}
-barney_ratings %>% 
+barney_ratings %>%
   filter(
     stringr::str_detect(rating, "[A-Z]")
-  ) %>% 
+  ) %>%
   select(rating, category_name_1)
 ```
 
 But using just Barney's number grades, we can get his average rating on this category per `timespan`:
 
 ```{r}
-barney_on_env %>% 
-  group_by(timespan) %>% 
+barney_on_env %>%
+  group_by(timespan) %>%
   summarise(
     avg_rating = mean(as.numeric(rating), na.rm = TRUE)
-  ) %>% 
+  ) %>%
   arrange(desc(timespan))
 ```
 
@@ -162,8 +162,8 @@ barney_on_env %>%
 Keep in mind that these are ratings given by SIGs, which often have very different baseline stances on issues. For example, a pro-life group might give a candidate a rating of 0 whereas a pro-choice group might give that same candidate a 100.
 
 ```{r}
-barney_ratings %>% 
-  filter(category_name_1 == "Abortion") %>% 
+barney_ratings %>%
+  filter(category_name_1 == "Abortion") %>%
   select(
     rating, sig_id, category_name_1
   )
@@ -178,11 +178,11 @@ When it comes to the Special Interest Groups themselves, the result of `rating_g
 We can get more information about these SIGs given these IDs with `rating_get_sig`.
 
 ```{r}
-(some_sigs <- 
+(some_sigs <-
   barney_ratings %>%
-    pull(sig_id) %>%
-    unique() %>%
-    sample(3)
+  pull(sig_id) %>%
+  unique() %>%
+  sample(3)
 )
 ```
 
@@ -202,8 +202,8 @@ That function requires a vector of issue `category_ids`, however, so let's first
 (category_df <-
   rating_get_categories(
     state_ids = NA # NA for national
-  ) %>% 
-  distinct() %>% 
+  ) %>%
+  distinct() %>%
   sample_n(nrow(.)) # Sampling so we can see multiple categories in the 10 rows shown here
 )
 ```
@@ -215,30 +215,30 @@ Now we can get our dataframe of SIGs given some categories.
 ```
 
 ```{r}
-(sigs <- 
+(sigs <-
   rating_get_sig_list(
     category_ids = some_categories,
     state_ids = NA
-  ) %>% 
-    select(sig_id, name, category_id, state_id) %>% 
-   sample_n(nrow(.))
+  ) %>%
+  select(sig_id, name, category_id, state_id) %>%
+  sample_n(nrow(.))
 )
 ```
 
 We already have the category names corresponding to those `category_id`s in our `category_df`, so we can join `category_df` onto `sigs`s to attach `category_name_1`s to each of those SIGs.
 
 ```{r}
-sigs %>% 
+sigs %>%
   rename(
     sig_name = name
-  ) %>% 
+  ) %>%
   left_join(
     category_df,
     by = c("state_id", "category_id")
-  ) %>% 
+  ) %>%
   rename(
     category_name_1 = name
-  ) %>% 
+  ) %>%
   sample_n(nrow(.))
 ```
 

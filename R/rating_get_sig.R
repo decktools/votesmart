@@ -7,15 +7,15 @@
 #' @export
 #'
 #' @examples
-#'
 #' \dontrun{
 #' rating_get_sig_list(2) %>%
 #'   dplyr::pull(sig_id) %>%
 #'   sample(3) %>%
 #'   rating_get_sig()
 #' }
-rating_get_sig <- function(sig_ids,
-  verbose = TRUE) {
+rating_get_sig <- function(
+    sig_ids,
+    verbose = TRUE) {
   sig_ids %<>%
     as_char_vec()
 
@@ -25,7 +25,7 @@ rating_get_sig <- function(sig_ids,
     ) %>%
     mutate(
       query =
-        elmers(
+        glue::glue(
           "&sigId={sig_id}"
         )
     )
@@ -38,9 +38,9 @@ rating_get_sig <- function(sig_ids,
     sig_id <- query_df$sig_id[i]
     q <- query_df$query[i]
 
-    elmers_message(
+    message(glue::glue(
       "Requesting data for {{sig_id: {sig_id}}."
-    )
+    ))
 
     this <-
       get(
@@ -52,9 +52,9 @@ rating_get_sig <- function(sig_ids,
 
     if (all(is.na(this))) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       this <-

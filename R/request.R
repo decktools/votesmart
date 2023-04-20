@@ -12,7 +12,7 @@ get_key <- function() {
 construct_url <- function(req, query = "") {
   key <- get_key()
 
-  elmers("{BASE_URL}{req}key={key}{query}&o=JSON")
+  glue::glue("{BASE_URL}{req}key={key}{query}&o=JSON")
 }
 
 try_parse_content <-
@@ -41,9 +41,9 @@ try_fixup_content <-
 
 request <- function(url, verbose = FALSE) {
   if (verbose) {
-    elmers_message(
+    message(glue::glue(
       "Requesting: {url}."
-    )
+    ))
   }
 
   resp <-
@@ -134,7 +134,7 @@ get_election <- function(req, query) {
       lst %>%
       purrr::map(purrr::flatten) %>%
       purrr::map(as.data.frame) %>%
-      purrr::modify_depth(2, as.character, .ragged = TRUE) %>%
+      purrr::map(mutate_all, as.character) %>%
       bind_rows() %>%
       as_tibble() %>%
       select(-contains(".")) %>%
@@ -230,7 +230,7 @@ get <- function(req, query, level_one, level_two) {
       # Not tibble because that will give us a list-col we have to explode
       purrr::map(as.data.frame) %>%
       # So that we don't end up combining factor and character in bind_rows
-      purrr::modify_depth(2, as.character, .ragged = TRUE) %>%
+      purrr::map(mutate_all, as.character) %>%
       bind_rows() %>%
       as_tibble()
   }
