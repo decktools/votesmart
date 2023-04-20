@@ -1,7 +1,7 @@
 Type: Package
 Package: votesmart
 Title: Wrapper for the Project 'VoteSmart' API
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     c(person(given = "Deck Technologies",
              role = c("cph", "fnd"),
