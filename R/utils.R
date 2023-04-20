@@ -15,10 +15,11 @@ clean_df <- function(df) {
     purrr::map_dfc(stringr::str_squish)
 }
 
-clean_html <- function(x,
-  split_on_nbsp = TRUE,
-  split_on_newline = FALSE,
-  remove_empty = TRUE) {
+clean_html <- function(
+    x,
+    split_on_nbsp = TRUE,
+    split_on_newline = FALSE,
+    remove_empty = TRUE) {
   if (split_on_nbsp) {
     x %<>%
       stringr::str_split("&nbsp") %>%
@@ -80,10 +81,11 @@ transform_election_special <- function(tbl) {
   }
 }
 
-chunk_it <- function(tbl,
-  n_per_chunk = NA,
-  n_chunks = NA,
-  list_it = FALSE) {
+chunk_it <- function(
+    tbl,
+    n_per_chunk = NA,
+    n_chunks = NA,
+    list_it = FALSE) {
   if ((is.na(n_per_chunk) && is.na(n_chunks)) ||
     !is.na(n_per_chunk) && !is.na(n_chunks)) {
     stop("Exactly one of n_per_chunk or n_chunks must be set.")
