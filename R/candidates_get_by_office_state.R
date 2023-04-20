@@ -80,7 +80,7 @@ candidates_get_by_office_state <- function(
 
     if (verbose) {
       message(glue::glue(
-        "Requesting data for {{state_id: {state_id}, office_id: {office_id}, election_year: {election_year}}}."
+        "Requesting data for {{state_id: {this_state_id}, office_id: {this_office_id}, election_year: {this_election_year}}}."
       ))
     }
 
