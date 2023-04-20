@@ -22,7 +22,6 @@ A dataframe with the columns \code{sig_id, name, category_id, state_id}.
 Get SIG (Special Interest Group) list by category and state
 }
 \examples{
-
 \dontrun{
 rating_get_categories() \%>\%
   dplyr::pull(category_id) \%>\%

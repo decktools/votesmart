@@ -6,7 +6,7 @@
 \alias{votesmart-package}
 \title{votesmart: Wrapper for the Project 'VoteSmart' API}
 \description{
-An R interface to the Project 'VoteSmart'<https://justfacts.votesmart.org/> API.
+An R interface to the Project 'VoteSmart'\url{https://justfacts.votesmart.org/} API.
 }
 \seealso{
 Useful links:
