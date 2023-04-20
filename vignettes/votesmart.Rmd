@@ -3,7 +3,7 @@ title: "votesmart"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{votesmart}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
