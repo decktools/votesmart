@@ -87,7 +87,7 @@ rating_get_candidate_ratings <- function(
       this <-
         query_df %>%
         select(-query) %>%
-        empty_to_na("")
+        vs_na_if("")
     } else {
       suppressWarnings({
         # For the case where we fixed up the JSON which didn't end with `}}`

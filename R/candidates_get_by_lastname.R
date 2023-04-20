@@ -97,7 +97,7 @@ candidates_get_by_lastname <- function(
       this <-
         query_df %>%
         select(-query) %>%
-        empty_to_na()
+        vs_na_if("")
     } else {
       this %<>%
         mutate(

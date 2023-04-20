@@ -91,7 +91,7 @@ measure_get_measures_by_year_state <- function(years =
           election_year = year,
           state_id = state_id
         ) %>%
-        empty_to_na("")
+        vs_na_if("")
     } else {
       this %<>%
         mutate(

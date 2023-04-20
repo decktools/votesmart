@@ -93,7 +93,7 @@ rating_get_sig_list <- function(
       this <-
         query_df %>%
         select(-query) %>%
-        empty_to_na("")
+        vs_na_if("")
     } else {
       this %<>%
         mutate(

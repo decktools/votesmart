@@ -101,7 +101,7 @@ get_endpoints <- function(tbl = pages_tbl) {
       ),
       input = stringr::str_remove(input, "\\*")
     ) %>%
-    empty_to_na("none")
+    vs_na_if("none")
 }
 
 endpoint_input_mapping <- get_endpoints()

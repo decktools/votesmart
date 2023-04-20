@@ -4,8 +4,8 @@ clean_df <- function(df) {
       snakecase::to_snake_case
     ) %>%
     as_tibble() %>%
-    empty_to_na("") %>%
-    empty_to_na("NA") %>%
+    vs_na_if("") %>%
+    vs_na_if("NA") %>%
     # Remove \"s
     purrr::map_dfc(
       stringr::str_remove_all,
@@ -55,16 +55,6 @@ expand_grid <- function(...) {
   expand.grid(...) %>%
     as_tibble() %>%
     purrr::map_dfc(as.character)
-}
-
-empty_to_na <- function(tbl, pattern = "") {
-  tbl %>%
-    mutate(
-      across(
-        where(is.character),
-        ~ na_if(., pattern)
-      )
-    )
 }
 
 transform_election_special <- function(tbl) {
@@ -132,4 +122,17 @@ skip_if_no_auth <- function() {
   if (identical(Sys.getenv("VOTESMART_API_KEY"), "")) {
     testthat::skip("No authentication available")
   }
+}
+
+#' Turn all character strings matching a value to \code{NA} in a dataframe
+#'
+#' @param tbl A data.frame or tibble
+#' @param pattern Pattern to turn to \code{NA}
+#' @noRd
+#' @examples
+#' tibble(x = c("", "not empty"), y = c("not empty", "")) %>%
+#'   vs_na_if()
+vs_na_if <- function(tbl, pattern = "") {
+  tbl %>%
+    mutate_if(is.character, list(~ na_if(., pattern)))
 }

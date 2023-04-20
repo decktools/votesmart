@@ -13,7 +13,7 @@ candidates_get_by_office_state(
 )
 }
 \arguments{
-\item{state_ids}{Optional: vector of state abbreviations. Default is \code{NA}, for national elections.}
+\item{state_ids}{Optional: vector of state abbreviations. Default is \code{NA}, for national-level offices (e.g. US President and Vice President). For all other offices the \code{state_id} must be supplied.}
 
 \item{office_ids}{Required: vector of office ids that candidates hold. See \code{\link{office_get_levels}} and \code{\link{office_get_offices_by_level}} for office ids.}
 
