@@ -18,7 +18,6 @@ A dataframe with the columns \code{sig_id, name, description, state_id, address,
 Get information on a SIG (Special Interest Group) by its ID
 }
 \examples{
-
 \dontrun{
 rating_get_sig_list(2) \%>\%
   dplyr::pull(sig_id) \%>\%

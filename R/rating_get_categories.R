@@ -18,11 +18,11 @@ rating_get_categories <- function(state_ids = NA) {
   out <- tibble()
 
   for (s in state_ids) {
-    elmers_message(
+    message(glue::glue(
       "Beginning to get categories for state {s}."
-    )
+    ))
 
-    q <- elmers("&stateId={s}")
+    q <- glue::glue("&stateId={s}")
 
     this <-
       get(

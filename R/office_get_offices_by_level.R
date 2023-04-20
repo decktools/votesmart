@@ -23,7 +23,7 @@ office_get_offices_by_level <- function(office_level_ids) {
   out <- tibble()
 
   for (l in office_level_ids) {
-    q <- elmers("&levelId={l}")
+    q <- glue::glue("&levelId={l}")
 
     this <-
       get(

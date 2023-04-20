@@ -14,6 +14,7 @@ globalVariables(
     "election_date",
     "election_electionstage_id",
     "election_id",
+    "election_state_id",
     "election_type",
     "election_year",
     "endpoint",

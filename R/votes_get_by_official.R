@@ -1,4 +1,3 @@
-
 #' Get votes by official
 #'
 #' @param candidate_ids Vector of candidate_ids (required). See \link{candidates_get_by_lastname}, \link{candidates_get_by_levenshtein}, and \link{candidates_get_by_office_state}.
@@ -19,12 +18,13 @@
 #' )
 #' votes_get_by_official(aoc$candidate_id)
 #' }
-votes_get_by_official <- function(candidate_ids,
-  office_ids = "",
-  category_ids = "",
-  years = "",
-  all = TRUE,
-  verbose = TRUE) {
+votes_get_by_official <- function(
+    candidate_ids,
+    office_ids = "",
+    category_ids = "",
+    years = "",
+    all = TRUE,
+    verbose = TRUE) {
   candidate_ids %<>%
     as_char_vec()
   office_ids %<>%
@@ -44,7 +44,7 @@ votes_get_by_official <- function(candidate_ids,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&candidateId={candidate_id}&officeId={office_id}&categoryId={category_id}&year={year}"
           )
       )
@@ -68,7 +68,7 @@ votes_get_by_official <- function(candidate_ids,
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&candidateId={candidate_id}&officeId={office_id}&categoryId={category_id}&year={year}"
           )
       )
@@ -86,9 +86,9 @@ votes_get_by_official <- function(candidate_ids,
     year <- query_df$year[i]
 
     if (verbose) {
-      elmers_message(
+      message(glue::glue(
         "Requesting data for {{candidate_id: {candidate_id}, office_id: {office_id}, category_id: {category_id}, year: {year}}}."
-      )
+      ))
     }
 
     this <- get(
@@ -100,9 +100,9 @@ votes_get_by_official <- function(candidate_ids,
 
     if (all(is.na(this))) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       # Other cols will be NA

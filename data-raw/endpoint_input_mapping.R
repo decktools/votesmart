@@ -31,7 +31,7 @@ lowercase <-
   )
 
 base_endpoints <-
-  elmers("{capitals}{lowercase}") %>%
+  glue::glue("{capitals}{lowercase}") %>%
   stringr::str_squish() %>%
   magrittr::extract(
     !. %in% c("Ballot", "Candidate") # Ballot is covered by Measure and Candidate is covered by CandidateBio
@@ -43,7 +43,7 @@ base_endpoints[which(base_endpoints == "Bio")] <- "CandidateBio"
 pages_tbl <-
   tibble(
     base_endpoint = base_endpoints,
-    url = elmers("{base_url}{base_endpoint}.html")
+    url = glue::glue("{base_url}{base_endpoint}.html")
   )
 
 # Grab each endpoint and the possible inputs to it
@@ -54,9 +54,9 @@ get_endpoints <- function(tbl = pages_tbl) {
     url <- tbl$url[i]
     base_endpoint <- tbl$base_endpoint[i]
 
-    elmers_message(
+    message(glue::glue(
       "Getting endpoints beginning with {base_endpoint}."
-    )
+    ))
 
     endpoints <-
       url %>%
@@ -101,7 +101,7 @@ get_endpoints <- function(tbl = pages_tbl) {
       ),
       input = stringr::str_remove(input, "\\*")
     ) %>%
-    na_if("none")
+    vs_na_if("none")
 }
 
 endpoint_input_mapping <- get_endpoints()

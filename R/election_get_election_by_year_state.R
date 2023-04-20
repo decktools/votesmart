@@ -1,4 +1,3 @@
-
 #' Get election info by election year and state
 #'
 #' @param years A vector of election years.
@@ -13,11 +12,12 @@
 #' \dontrun{
 #' election_get_election_by_year_state(years = c(2016, 2017))
 #' }
-election_get_election_by_year_state <- function(years =
-  lubridate::year(lubridate::today()),
-  state_ids = "",
-  all = TRUE,
-  verbose = TRUE) {
+election_get_election_by_year_state <- function(
+    years =
+      lubridate::year(lubridate::today()),
+    state_ids = "",
+    all = TRUE,
+    verbose = TRUE) {
   years %<>%
     as_char_vec()
   state_ids %<>%
@@ -31,7 +31,7 @@ election_get_election_by_year_state <- function(years =
       ) %>%
       mutate(
         query =
-          elmers(
+          glue::glue(
             "&year={year}&stateId={state_id}"
           )
       )
@@ -51,7 +51,7 @@ election_get_election_by_year_state <- function(years =
         year = years,
         state_id = state_ids,
         query =
-          elmers(
+          glue::glue(
             "&year={year}&stateId={state_id}"
           )
       )
@@ -67,9 +67,9 @@ election_get_election_by_year_state <- function(years =
     state_id <- query_df$state_id[i]
 
     if (verbose) {
-      elmers_message(
+      message(glue::glue(
         "Requesting data for {{year: {year}, state_id: {state_id}}}."
-      )
+      ))
     }
 
     this <- get_election(
@@ -79,9 +79,9 @@ election_get_election_by_year_state <- function(years =
 
     if (all(is.na(this))) {
       if (verbose) {
-        elmers_message(
+        message(glue::glue(
           "No results found for query {q}."
-        )
+        ))
       }
 
       this <-
