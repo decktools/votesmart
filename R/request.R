@@ -134,7 +134,7 @@ get_election <- function(req, query) {
       lst %>%
       purrr::map(purrr::flatten) %>%
       purrr::map(as.data.frame) %>%
-      purrr::modify_depth(2, as.character) %>%
+      purrr::map(mutate_all, as.character) %>%
       bind_rows() %>%
       as_tibble() %>%
       select(-contains(".")) %>%
