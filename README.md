@@ -4,8 +4,6 @@
 </p>
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/decktools/votesmart.svg)](https://travis-ci.com/decktools/votesmart)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.org/package=votesmart)
 <!-- badges: end -->
@@ -25,11 +23,15 @@ other data.
 
 ### Installation
 
-    install.packages("votesmart")
+``` r
+install.packages("votesmart")
+```
 
 Or the development version:
 
-    devtools::install_github("decktools/votesmart", build_vignettes = TRUE)
+``` r
+devtools::install_github("decktools/votesmart", build_vignettes = TRUE)
+```
 
 ### API Keys
 
@@ -55,84 +57,92 @@ Groups (SIGs) give to political candidates.
 Let’s say we want to know how Elizabeth Warren tends to be rated on a
 few issues.
 
-    library(votesmart)
-    suppressPackageStartupMessages(library(dplyr))
-    #> Warning: package 'dplyr' was built under R version 4.0.2
-    conflicted::conflict_prefer("filter", "dplyr")
-    #> [conflicted] Will prefer dplyr::filter over any other package
+``` r
+library(votesmart)
+suppressPackageStartupMessages(library(dplyr))
+conflicted::conflict_prefer("filter", "dplyr")
+#> [conflicted] Will prefer dplyr::filter over any other package.
+```
 
 We’ll first want to know what her VoteSmart `candidate_id` is. We can
 search for her using `candidates_get_by_lastname`:
 
-    warrens <- 
-      candidates_get_by_lastname(
-        "warren", 
-        election_years = 2012
-      )
-    #> Requesting data for {last_name: warren, election_year: 2012, stage_id: }.
+``` r
+warrens <-
+  candidates_get_by_lastname(
+    "warren",
+    election_years = 2012
+  )
+#> Requesting data for {last_name: warren, election_year: 2012, stage_id: }.
 
-    knitr::kable(warrens)
+knitr::kable(warrens)
+```
 
-| candidate\_id | first\_name | nick\_name | middle\_name | last\_name | suffix | title          | ballot\_name        | stage\_id | election\_year | preferred\_name | election\_parties | election\_status | election\_stage | election\_district\_id | election\_district\_name | election\_office | election\_office\_id | election\_state\_id | election\_office\_type\_id | election\_special | election\_date | office\_parties | office\_status | office\_district\_id | office\_district\_name | office\_state\_id | office\_id | office\_name | office\_type\_id | running\_mate\_id | running\_mate\_name |
-|:--------------|:------------|:-----------|:-------------|:-----------|:-------|:---------------|:--------------------|:----------|:---------------|:----------------|:------------------|:-----------------|:----------------|:-----------------------|:-------------------------|:-----------------|:---------------------|:--------------------|:---------------------------|:------------------|:---------------|:----------------|:---------------|:---------------------|:-----------------------|:------------------|:-----------|:-------------|:-----------------|:------------------|:--------------------|
-| 139104        | Adam        | NA         | Lee          | Warren     | NA     | NA             | Adam Lee Warren     |           | 2012           | Adam            | Republican        | Lost             | Primary         | NA                     | NA                       | Attorney General | 12                   | MO                  | S                          | FALSE             | 08/07/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
-| 103860        | Dennis      | NA         | NA           | Warren     | NA     | NA             | Dennis C. Warren    |           | 2012           | Dennis          | Republican        | Withdrawn        | General         | 28446                  | 16                       | State Senate     | 9                    | ID                  | L                          | FALSE             | 11/06/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
-| 141272        | Elizabeth   | NA         | Ann          | Warren     | NA     | Senator        | Elizabeth A. Warren |           | 2012           | Elizabeth       | Democratic        | Won              | General         | NA                     | NA                       | U.S. Senate      | 6                    | MA                  | C                          | FALSE             | 11/06/2012     | Democratic      | active         | 20512                | Sr                     | MA                | 6          | U.S. Senate  | C                | NA                | NA                  |
-| 117839        | Harry       | NA         | Joseph       | Warren     | NA     | Representative | Harry Warren        |           | 2012           | Harry           | Republican        | Won              | General         | 25520                  | 77                       | State House      | 8                    | NC                  | L                          | FALSE             | 11/06/2012     | Republican      | active         | 25519                | 76                     | NC                | 8          | State House  | L                | NA                | NA                  |
-| 138202        | Pete        | NA         | NA           | Warren     | NA     | NA             | Pete Warren         |           | 2012           | Pete            | Republican        | Removed          | Primary         | 21842                  | 30                       | State House      | 8                    | FL                  | L                          | FALSE             | 08/14/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
-| 137066        | Stephen     | NA         | NA           | Warren     | NA     | NA             | Stephen Warren      |           | 2012           | Stephen         | Republican        | Lost             | Primary         | 27865                  | 22B                      | State House      | 8                    | ID                  | L                          | FALSE             | 05/15/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
-| 135832        | Tom         | NA         | NA           | Warren     | NA     | NA             | Tom Warren          |           | 2012           | Tom             | Democratic        | Lost             | General         | 25782                  | 76                       | State House      | 8                    | OH                  | L                          | FALSE             | 11/06/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
-| 139311        | Wesley      | NA         | G.           | Warren     | NA     | NA             | Wesley G. Warren    |           | 2012           | Wesley          | Republican        | Lost             | General         | 21874                  | 62                       | State House      | 8                    | FL                  | L                          | FALSE             | 11/06/2012     | NA              | NA             | NA                   | NA                     | NA                | NA         | NA           | NA               | NA                | NA                  |
+| candidate_id | first_name | nick_name | middle_name | last_name | suffix | title          | ballot_name         | stage_id | election_year | preferred_name | election_parties | election_status | election_stage | election_district_id | election_district_name | election_office  | election_office_id | election_state_id | election_office_type_id | election_special | election_date | office_parties | office_status | office_district_id | office_district_name | office_state_id | office_id | office_name | office_type_id | running_mate_id | running_mate_name |
+|:-------------|:-----------|:----------|:------------|:----------|:-------|:---------------|:--------------------|:---------|:--------------|:---------------|:-----------------|:----------------|:---------------|:---------------------|:-----------------------|:-----------------|:-------------------|:------------------|:------------------------|:-----------------|:--------------|:---------------|:--------------|:-------------------|:---------------------|:----------------|:----------|:------------|:---------------|:----------------|:------------------|
+| 139104       | Adam       | NA        | Lee         | Warren    | NA     | NA             | Adam Lee Warren     |          | 2012          | Adam           | Republican       | Lost            | Primary        | NA                   | NA                     | Attorney General | 12                 | MO                | S                       | FALSE            | 08/07/2012    | NA             | NA            | NA                 | NA                   | NA              | NA        | NA          | NA             | NA              | NA                |
+| 103860       | Dennis     | NA        | NA          | Warren    | NA     | NA             | Dennis C. Warren    |          | 2012          | Dennis         | Republican       | Withdrawn       | General        | 28446                | 16                     | State Senate     | 9                  | ID                | L                       | FALSE            | 11/06/2012    | NA             | NA            | NA                 | NA                   | NA              | NA        | NA          | NA             | NA              | NA                |
+| 141272       | Elizabeth  | NA        | Ann         | Warren    | NA     | Senator        | Elizabeth A. Warren |          | 2012          | Elizabeth      | Democratic       | Won             | General        | NA                   | NA                     | U.S. Senate      | 6                  | MA                | C                       | FALSE            | 11/06/2012    | Democratic     | active        | 20512              | Sr                   | MA              | 6         | U.S. Senate | C              | NA              | NA                |
+| 117839       | Harry      | NA        | Joseph      | Warren    | NA     | Representative | Harry Warren        |          | 2012          | Harry          | Republican       | Won             | General        | 25520                | 77                     | State House      | 8                  | NC                | L                       | FALSE            | 11/06/2012    | Republican     | active        | 25519              | 76                   | NC              | 8         | State House | L              | NA              | NA                |
+| 138202       | Pete       | NA        | NA          | Warren    | NA     | NA             | Pete Warren         |          | 2012          | Pete           | Republican       | Removed         | Primary        | 21842                | 30                     | State House      | 8                  | FL                | L                       | FALSE            | 08/14/2012    | NA             | NA            | NA                 | NA                   | NA              | NA        | NA          | NA             | NA              | NA                |
+| 137066       | Stephen    | NA        | NA          | Warren    | NA     | NA             | Stephen Warren      |          | 2012          | Stephen        | Republican       | Lost            | Primary        | 27865                | 22B                    | State House      | 8                  | ID                | L                       | FALSE            | 05/15/2012    | NA             | NA            | NA                 | NA                   | NA              | NA        | NA          | NA             | NA              | NA                |
+| 135832       | Tom        | NA        | NA          | Warren    | NA     | NA             | Tom Warren          |          | 2012          | Tom            | Democratic       | Lost            | General        | 25782                | 76                     | State House      | 8                  | OH                | L                       | FALSE            | 11/06/2012    | NA             | NA            | NA                 | NA                   | NA              | NA        | NA          | NA             | NA              | NA                |
+| 139311       | Wesley     | NA        | G.          | Warren    | NA     | NA             | Wesley G. Warren    |          | 2012          | Wesley         | Republican       | Lost            | General        | 21874                | 62                     | State House      | 8                  | FL                | L                       | FALSE            | 11/06/2012    | NA             | NA            | NA                 | NA                   | NA              | NA        | NA          | NA             | NA              | NA                |
 
 Filtering to her first name and taking her `candidate_id`, we can now
 grab Warren’s ratings by all SIGs with `rating_get_candidate_ratings`.
 
-    (id <- 
-      warrens %>% 
-      filter(first_name == "Elizabeth") %>% 
-      pull(candidate_id)
-    )
-    #> [1] "141272"
+``` r
+(id <-
+  warrens %>%
+  filter(first_name == "Elizabeth") %>%
+  pull(candidate_id)
+)
+#> [1] "141272"
 
-    ratings <- 
-      rating_get_candidate_ratings(
-        candidate_ids = id,
-      )
-    #> Requesting data for {candidate_id: 141272, sig_id: }.
+ratings <-
+  rating_get_candidate_ratings(
+    candidate_ids = id,
+  )
+#> Requesting data for {candidate_id: 141272, sig_id: }.
 
-    knitr::kable(ratings %>% sample_n(3))
+knitr::kable(ratings %>% sample_n(3))
+```
 
-| rating\_id | candidate\_id | sig\_id | rating | rating\_name                 | timespan  | rating\_text                                                                                                                    | category\_id\_1 | category\_name\_1      | category\_id\_2 | category\_name\_2 | category\_id\_3 | category\_name\_3 | category\_id\_4 | category\_name\_4 | category\_id\_5 | category\_name\_5 | category\_id\_6 | category\_name\_6 | category\_id\_7 | category\_name\_7 | category\_id\_8 | category\_name\_8 |
-|:-----------|:--------------|:--------|:-------|:-----------------------------|:----------|:--------------------------------------------------------------------------------------------------------------------------------|:----------------|:-----------------------|:----------------|:------------------|:----------------|:------------------|:----------------|:------------------|:----------------|:------------------|:----------------|:------------------|:----------------|:------------------|:----------------|:------------------|
-| 7347       | 141272        | 1695    | 100    | Positions                    | 2013-2014 | Senator Elizabeth Warren supported the interests of the International Warehouse Logistics Association 100 percent in 2013-2014. | 11              | Business and Consumers | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                |
-| 11425      | 141272        | 2167    | 99     | Lifetime Positions (Overall) | 2019-2020 | NA                                                                                                                              | 87              | Fiscally Liberal       | 110             | Socially Liberal  | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                |
-| 12389      | 141272        | 109     | 92     | Positions                    | 2018      | Senator Elizabeth Warren supported the interests of the Defenders of Wildlife Action Fund 92 percent in 2018.                   | 5               | Animals and Wildlife   | 30              | Environment       | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                | NA              | NA                |
+| rating_id | candidate_id | sig_id | rating | rating_name | timespan  | rating_text                                                                                                                                | category_id_1 | category_name_1            | category_id_2 | category_name_2       | category_id_3 | category_name_3                   | category_id_4 | category_name_4 | category_id_5 | category_name_5 | category_id_6 | category_name_6 | category_id_7 | category_name_7 | category_id_8 | category_name_8 | category_id_9 | category_name_9 |
+|:----------|:-------------|:-------|:-------|:------------|:----------|:-------------------------------------------------------------------------------------------------------------------------------------------|:--------------|:---------------------------|:--------------|:----------------------|:--------------|:----------------------------------|:--------------|:----------------|:--------------|:----------------|:--------------|:----------------|:--------------|:----------------|:--------------|:----------------|:--------------|:----------------|
+| 8946      | 141272       | 265    | 100    | Positions   | 2015      | Senator Elizabeth Warren supported the interests of the Population Connection Action Fund 100 percent in 2015.                             | 2             | Abortion                   | 31            | Family                | NA            | NA                                | NA            | NA              | NA            | NA              | NA            | NA              | NA            | NA              | NA            | NA              | NA            | NA              |
+| 13495     | 141272       | 2231   | 0      | Positions   | 2021      | Senator Elizabeth Warren supported the interests of the Family Research Council (FRC) Action 0 percent in 2021.                            | 31            | Family                     | 109           | Socially Conservative | NA            | NA                                | NA            | NA              | NA            | NA              | NA            | NA              | NA            | NA              | NA            | NA              | NA            | NA              |
+| 12509     | 141272       | 447    | 50     | Positions   | 2019-2020 | Senator Elizabeth Warren supported the interests of the National Active and Retired Federal Employees Association 50 percent in 2019-2020. | 10            | Budget, Spending and Taxes | 82            | Economy and Fiscal    | 3             | Employment and Affirmative Action | NA            | NA              | NA            | NA              | NA            | NA              | NA            | NA              | NA            | NA              | NA            | NA              |
 
 And compute on them:
 
-    ratings %>% 
-      filter(
-        category_name_1 %in% 
-          c("Environment", 
-            "Fiscally Conservative",
-            "Education", 
-            "Civil Liberties and Civil Rights", 
-            "Campaign Finance") 
-      ) %>% 
-      group_by(category_name_1) %>% 
-      summarise(
-        avg_rating = mean(as.numeric(rating), na.rm = TRUE)
-      ) %>% 
-      arrange(category_name_1)
-    #> `summarise()` ungrouping output (override with `.groups` argument)
-    #> # A tibble: 5 x 2
-    #>   category_name_1                  avg_rating
-    #>   <chr>                                 <dbl>
-    #> 1 Campaign Finance                      100  
-    #> 2 Civil Liberties and Civil Rights       84.8
-    #> 3 Education                              91.2
-    #> 4 Environment                            86.3
-    #> 5 Fiscally Conservative                   9.7
+``` r
+ratings %>%
+  filter(
+    category_name_1 %in%
+      c(
+        "Environment",
+        "Fiscally Conservative",
+        "Education",
+        "Civil Liberties and Civil Rights",
+        "Campaign Finance"
+      )
+  ) %>%
+  group_by(category_name_1) %>%
+  summarise(
+    avg_rating = mean(as.numeric(rating), na.rm = TRUE)
+  ) %>%
+  arrange(category_name_1)
+#> # A tibble: 5 × 2
+#>   category_name_1                  avg_rating
+#>   <chr>                                 <dbl>
+#> 1 Campaign Finance                     100   
+#> 2 Civil Liberties and Civil Rights      86.6 
+#> 3 Education                             89.3 
+#> 4 Environment                           87.2 
+#> 5 Fiscally Conservative                  8.78
+```
 
 For more in-depth examples of how these all fit together, check out the
 vignette with:
@@ -235,16 +245,16 @@ or
 
 ### Other Details
 
--   This package currently contains no rate limiting infrastructure as
-    there is very little information about what rate limits VoteSmart
-    imposes, if any
+- This package currently contains no rate limiting infrastructure as
+  there is very little information about what rate limits VoteSmart
+  imposes, if any
 
--   The VoteSmart API does not allow for bulk requests, i.e. a single
-    request can only contain one value for each parameter
+- The VoteSmart API does not allow for bulk requests, i.e. a single
+  request can only contain one value for each parameter
 
-    -   The functions in this package allow multiple inputs to be
-        specified for each argument, but requests are sent one at a time
-        for each combination of inputs
+  - The functions in this package allow multiple inputs to be specified
+    for each argument, but requests are sent one at a time for each
+    combination of inputs
 
 <br>
 
