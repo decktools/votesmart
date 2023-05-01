@@ -7,6 +7,7 @@ output: github_document
 </p>
 
 <!-- badges: start -->
+![check](https://github.com/decktools/votesmart/actions/workflows/check.yml/badge.svg)
 [![CRAN status](https://www.r-pkg.org/badges/version/votesmart)](https://CRAN.R-project.org/package=votesmart)
 <!-- badges: end -->
 

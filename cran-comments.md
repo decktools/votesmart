@@ -8,3 +8,5 @@
 0 errors | 0 warnings | 0 notes
 
 * Fixed a bug reported in https://github.com/decktools/votesmart/issues/27 related to a new version of `dplyr`
+
+* Replace Travis badge with GitHub Actions badge
